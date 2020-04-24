@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\App">
+      <UniqueIdentifier>{22b7d1c9-d4df-462d-b96b-b5de432b9e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App">
+      <UniqueIdentifier>{9e358b82-bdd5-4d06-b0dd-4a0c6a485398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Input">
+      <UniqueIdentifier>{9ed01928-6c04-4daa-ae09-52266185aadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Input">
+      <UniqueIdentifier>{5ab7d4fa-8ac8-41b8-87d6-0c77bf570371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Components">
+      <UniqueIdentifier>{fa1f9c37-6afa-4389-9637-db0242d1ed46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Components">
+      <UniqueIdentifier>{bc433417-1f02-46f4-9e9b-f7dbef2bb0e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Exceptions">
+      <UniqueIdentifier>{98e9ea4d-2a58-44db-981c-0d0901e3cca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Exceptions">
+      <UniqueIdentifier>{322286de-f74c-4215-b958-2a299bf9a098}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Shroom.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Source Files\App\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source Files\App\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ShrWindow.cpp">
+      <Filter>Source Files\App\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomException.cpp">
+      <Filter>Source Files\App\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomExceptionHandler.cpp">
+      <Filter>Source Files\App\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWin.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWindowException.cpp">
+      <Filter>Source Files\App\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShrWindowHandleProcs.cpp">
+      <Filter>Source Files\App\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Header Files\App\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Header Files\App\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ShrWindow.h">
+      <Filter>Header Files\App\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomExceptionHandler.h">
+      <Filter>Header Files\App\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomException.h">
+      <Filter>Header Files\App\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\App\Input</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\shroom.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kisspng_mushroom_cartoon_snacks_5acaa7e9d23ae5_2640844415232306978611_Ovl_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HW3D.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

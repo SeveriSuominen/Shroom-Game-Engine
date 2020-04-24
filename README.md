@@ -1,2 +1,2 @@
-# Shroom-Game-Engine
-Shroom-Game-Engine
+# Shroom-Engine
+Shroom Game Engine
