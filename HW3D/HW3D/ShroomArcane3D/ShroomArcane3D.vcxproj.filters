@@ -22,9 +22,6 @@
     <Filter Include="Source Files\dxerr">
       <UniqueIdentifier>{e5dbfa4e-0329-47c5-8762-7f766963efc9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\dxerr">
-      <UniqueIdentifier>{8d051fca-5a4a-474f-8075-f4018a0a3246}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{1efcc3c5-5d51-47d7-a67b-5314dd96ef86}</UniqueIdentifier>
     </Filter>
@@ -51,17 +48,14 @@
     <ClInclude Include="Components.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="dxerr.h">
-      <Filter>Header Files\dxerr</Filter>
-    </ClInclude>
     <ClInclude Include="ShroomArcaneException.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="dxerr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dxerr.cpp">
-      <Filter>Source Files\dxerr</Filter>
-    </ClCompile>
     <ClCompile Include="ShroomArcaneException.cpp">
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
@@ -71,16 +65,19 @@
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp">
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
+    <ClCompile Include="dxerr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DXTrace.inl">
-      <Filter>Source Files\dxerr</Filter>
-    </None>
     <None Include="DXGetErrorDescription.inl">
-      <Filter>Source Files\dxerr</Filter>
+      <Filter>Header Files</Filter>
     </None>
     <None Include="DXGetErrorString.inl">
-      <Filter>Source Files\dxerr</Filter>
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="DXTrace.inl">
+      <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
 </Project>

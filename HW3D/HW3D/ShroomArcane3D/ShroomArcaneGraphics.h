@@ -41,7 +41,7 @@ public:
 	{
 		using ShroomArcaneException::ShroomArcaneException;
 	};
-	class  HRException : public ShroomArcaneException
+	class  HRException : public Exception
 	{
 	public:
 		HRException(int line,  const char* file, HRESULT hr) noexcept;

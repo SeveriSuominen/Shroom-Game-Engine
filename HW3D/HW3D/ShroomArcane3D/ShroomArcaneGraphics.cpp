@@ -1,5 +1,5 @@
 #include "ShroomArcaneGraphics.h"
-
+#include "dxerr.h"
 #pragma comment(lib, "d3d11.lib") // linking lib file to ccp
 
 //ERROR MACROS
@@ -25,7 +25,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	sd.SwapEffect	= DXGI_SWAP_EFFECT_DISCARD;
 	sd.Flags = 0;
 
-	HRESULT hr = 0; // Error check macros except hr var in local scope
+	HRESULT hr; // Error check macros except hr var in local scope
 
 	//Create device and chain, if failed throw graphics exception
 	GFX_THROW_FAILED
@@ -35,7 +35,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 			nullptr,						//Adapter pointer
 			D3D_DRIVER_TYPE_HARDWARE,		//Driver type
 			nullptr,					    //Driver software handle
-			0,								//Flags
+			D3D10_CREATE_DEVICE_DEBUG,		//Flags
 			nullptr,						//Feature levels pointer
 			0,								//Feature levels
 			D3D11_SDK_VERSION,				//SDK version

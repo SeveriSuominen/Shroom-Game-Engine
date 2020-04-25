@@ -21,6 +21,7 @@ int App::Go()
 		{
 			return *ecode;
 		}
+
 		//Do frames when no messages EQ: No input data transmission, do stuff based 
 		//current data else stop and wait;
 		DoFrame();
