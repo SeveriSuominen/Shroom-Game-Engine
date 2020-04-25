@@ -140,10 +140,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="App.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ShroomException.cpp" />
     <ClCompile Include="Shroom.h" />
+    <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWindowException.cpp" />
@@ -151,12 +153,14 @@
     <ClCompile Include="ShrWindowHandleProcs.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="App.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ShroomException.h" />
     <ClInclude Include="ShroomExceptionHandler.h" />
+    <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShrWindow.h" />
   </ItemGroup>
   <ItemGroup>

@@ -116,7 +116,10 @@ LRESULT Window::HandleMsgSetup(HWND handle, UINT msg, WPARAM wparam, LPARAM lpar
 		//lparam TO Window*
 		const CREATESTRUCTW* pCreate = reinterpret_cast<CREATESTRUCTW*>(lparam);
 		Window* const pWindow = static_cast<Window*>(pCreate->lpCreateParams);
-
+		
+		//Save handle info to window //LINKAGE
+		pWindow->handle = handle;
+		
 		//CHANGE HANDLE  (link)
 		SetWindowLongPtr(handle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWindow));
 		//CHANGE WINPROC (use thunk handler)

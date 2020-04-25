@@ -37,6 +37,12 @@
     <Filter Include="Header Files\App\Exceptions">
       <UniqueIdentifier>{322286de-f74c-4215-b958-2a299bf9a098}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\App\Components\Window">
+      <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Components\Window">
+      <UniqueIdentifier>{4551098f-b797-4054-9add-9946e7b5a159}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shroom.h">
@@ -48,23 +54,29 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>Source Files\App\Input</Filter>
     </ClCompile>
-    <ClCompile Include="ShrWindow.cpp">
-      <Filter>Source Files\App\Components</Filter>
-    </ClCompile>
     <ClCompile Include="ShroomException.cpp">
       <Filter>Source Files\App\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="ShroomExceptionHandler.cpp">
       <Filter>Source Files\App\Exceptions</Filter>
     </ClCompile>
-    <ClCompile Include="ShroomWin.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
     <ClCompile Include="ShroomWindowException.cpp">
       <Filter>Source Files\App\Exceptions</Filter>
     </ClCompile>
-    <ClCompile Include="ShrWindowHandleProcs.cpp">
+    <ClCompile Include="ShroomWin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomTimer.cpp">
       <Filter>Source Files\App\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ShrWindow.cpp">
+      <Filter>Source Files\App\Components\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="ShrWindowHandleProcs.cpp">
+      <Filter>Source Files\App\Components\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +89,6 @@
     <ClInclude Include="Mouse.h">
       <Filter>Header Files\App\Input</Filter>
     </ClInclude>
-    <ClInclude Include="ShrWindow.h">
-      <Filter>Header Files\App\Components</Filter>
-    </ClInclude>
     <ClInclude Include="ShroomExceptionHandler.h">
       <Filter>Header Files\App\Exceptions</Filter>
     </ClInclude>
@@ -88,6 +97,15 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files\App\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomTimer.h">
+      <Filter>Header Files\App\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShrWindow.h">
+      <Filter>Header Files\App\Components\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

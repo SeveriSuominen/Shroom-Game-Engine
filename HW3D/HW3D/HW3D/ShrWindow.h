@@ -12,6 +12,13 @@ public:
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 
+	void SetTitle(const char* text)
+	{
+		SetWindowText(handle, text);
+	};
+	
+	static std::optional<int> ProcessMessages();
+
 	//Window Exception
 	class Exception : public ShroomException 
 	{
