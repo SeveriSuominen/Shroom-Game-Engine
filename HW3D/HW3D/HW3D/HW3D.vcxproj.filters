@@ -72,14 +72,14 @@
     <ClCompile Include="ShroomTimer.cpp">
       <Filter>Source Files\App\Components</Filter>
     </ClCompile>
-    <ClCompile Include="ShrWindow.cpp">
-      <Filter>Source Files\App\Components\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="ShrWindowHandleProcs.cpp">
-      <Filter>Source Files\App\Components\Window</Filter>
-    </ClCompile>
     <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWindow.cpp">
+      <Filter>Source Files\App\Components\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWindowHandleProcs.cpp">
+      <Filter>Source Files\App\Components\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

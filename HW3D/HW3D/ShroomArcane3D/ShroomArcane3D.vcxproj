@@ -116,12 +116,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Components.h" />
+    <ClInclude Include="dxerr.h" />
     <ClInclude Include="ShroomArcane3D.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorDescription.inl" />
+    <None Include="DXGetErrorString.inl" />
+    <None Include="DXTrace.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

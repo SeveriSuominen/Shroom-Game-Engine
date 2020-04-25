@@ -155,8 +155,8 @@
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWindowException.cpp" />
-    <ClCompile Include="ShrWindow.cpp" />
-    <ClCompile Include="ShrWindowHandleProcs.cpp" />
+    <ClCompile Include="ShroomWindow.cpp" />
+    <ClCompile Include="ShroomWindowHandleProcs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />

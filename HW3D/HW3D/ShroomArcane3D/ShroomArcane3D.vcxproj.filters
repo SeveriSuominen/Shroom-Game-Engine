@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{058dde43-825c-4c9d-98ec-123f9a9394a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Structs">
+      <UniqueIdentifier>{6e33f3ad-90c4-45ee-9948-082bcbdb1f1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dxerr">
+      <UniqueIdentifier>{e5dbfa4e-0329-47c5-8762-7f766963efc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dxerr">
+      <UniqueIdentifier>{8d051fca-5a4a-474f-8075-f4018a0a3246}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneGraphics.h">
@@ -24,10 +36,33 @@
     <ClInclude Include="ShroomArcane3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="dxerr.h">
+      <Filter>Header Files\dxerr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShroomArcaneGraphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dxerr.cpp">
+      <Filter>Source Files\dxerr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXTrace.inl">
+      <Filter>Source Files\dxerr</Filter>
+    </None>
+    <None Include="DXGetErrorDescription.inl">
+      <Filter>Source Files\dxerr</Filter>
+    </None>
+    <None Include="DXGetErrorString.inl">
+      <Filter>Source Files\dxerr</Filter>
+    </None>
   </ItemGroup>
 </Project>

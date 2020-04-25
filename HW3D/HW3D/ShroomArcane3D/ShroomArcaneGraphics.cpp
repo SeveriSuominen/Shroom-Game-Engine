@@ -37,12 +37,33 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 		nullptr,						//Feature level pointer
 		&pContext						//Device context
 	);
+
+	//Gain access to back buffer texture in swap chain
+	ID3D11Resource* pBackBuffer = nullptr;
+	//Using COM
+	pSwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**/*PeePee*/>(&pBackBuffer));
+
+	//Creating render target view
+	pDevice->CreateRenderTargetView
+	(
+		pBackBuffer,
+		nullptr,
+		&pTarget
+	);
+	//This temp var can be released
+	pBackBuffer->Release();
 }
 
 void ShroomArcaneGraphics::EndFrame()
 {
 	//Present result
 	pSwapChain->Present(1u, 0u);
+}
+
+void ShroomArcaneGraphics::ClearBuffer(Color c)
+{
+	const float color[] = {c.R, c.G, c.B, c.A};
+	pContext->ClearRenderTargetView( pTarget, color );
 }
 
 ShroomArcaneGraphics::~ShroomArcaneGraphics()
