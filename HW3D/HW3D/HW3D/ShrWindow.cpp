@@ -1,10 +1,12 @@
 #include "ShrWindow.h"
 #include "resource.h"
 
+
 //MACROS
 #define SWND_EXC(hr)    Window::Exception(__LINE__, __FILE__, hr)
 #define SWND_EXC_LAST() Window::Exception(__LINE__, __FILE__, GetLastError())
 
+//--------------------------------------------------
 //WINDOW CLASS
 //--------------------------------------------------
 Window::WindowClass Window::WindowClass::wndClass;
@@ -43,7 +45,6 @@ const HINSTANCE Window::WindowClass::GetInstance() noexcept
 	return wndClass.hInst;
 }
 //--------------------------------------------------
-
 //WINDOW INTERFACE
 //--------------------------------------------------
 Window::Window(int w, int h, const char* name) : width(w), height(h)
@@ -78,6 +79,11 @@ Window::Window(int w, int h, const char* name) : width(w), height(h)
 	
 	if(hWnd == nullptr)
 		throw SWND_EXC_LAST(); //Window error
+
+	//Create graphic object
+	#ifdef __SHROOM_ARCANE_3D__
+	pGfx = std::make_unique<ShroomArcaneGraphics>( hWnd );
+	#endif
 
 	ShowWindow(hWnd, SW_SHOW);	
 }

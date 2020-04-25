@@ -36,9 +36,5 @@ int App::Go()
 
 void App::DoFrame()
 {
-	const float t = timer.Peek();
-	std::ostringstream oss;
-	oss << "TERVE: " << t;
-
-	root_wnd.SetTitle(oss.str().c_str());
+	root_wnd.Gfx().EndFrame();
 }

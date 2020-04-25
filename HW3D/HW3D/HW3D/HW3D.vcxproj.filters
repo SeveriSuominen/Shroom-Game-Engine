@@ -78,6 +78,9 @@
     <ClCompile Include="ShrWindowHandleProcs.cpp">
       <Filter>Source Files\App\Components\Window</Filter>
     </ClCompile>
+    <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">

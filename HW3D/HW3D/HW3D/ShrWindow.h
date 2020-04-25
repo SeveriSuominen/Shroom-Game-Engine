@@ -2,10 +2,19 @@
 
 #include "Shroom.h"
 #include "Input.h"
+#include <memory>
+
+//--------------------------------------------------
+//ARCANE
+//--------------------------------------------------
+#include "ShroomArcane3D/ShroomArcane3D.h"
+//--------------------------------------------------
 
 class Window
 {
+//--------------------------------------------------
 //Base
+//--------------------------------------------------
 public:
 	Window(int width, int height, const char* name);
 	~Window();
@@ -33,26 +42,37 @@ public:
 	private:
 		HRESULT hr;
 	};
-
+//--------------------------------------------------
+//Graphics
+//--------------------------------------------------
+#ifdef __SHROOM_ARCANE_3D__
+public:
+	ShroomArcaneGraphics& Gfx() {return  *pGfx;}
+private:
+	std::unique_ptr<ShroomArcaneGraphics> pGfx;
+#endif
+//--------------------------------------------------
 //Proc msg handling
+//--------------------------------------------------
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND handle, UINT msg, WPARAM wparam, LPARAM lparam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND handle, UINT msg, WPARAM wparam, LPARAM lparam);
 	LRESULT HandleMsg(HWND handle, UINT msg, WPARAM wparam, LPARAM lparam);
-
+//--------------------------------------------------
 //Input
+//--------------------------------------------------
 public:
 	Input input;
-
+//--------------------------------------------------
 //Data & Transform
+//--------------------------------------------------
 private:
 	int  width;
 	int  height;
 	HWND handle;
-
-	void UpdateRect() noexcept;
-
+//--------------------------------------------------
 //Class
+//--------------------------------------------------
 private:
 	//SINGLETON
 	class WindowClass 
@@ -71,3 +91,4 @@ private:
 		HINSTANCE hInst;
 	};
 };
+//--------------------------------------------------

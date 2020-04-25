@@ -20,10 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{85FB0C68-4CE7-40C7-8B1E-2AFD9F1A4097}</ProjectGuid>
-    <RootNamespace>HW3D</RootNamespace>
+    <ProjectGuid>{10C80EAE-3EB9-4A2B-90EE-7A5BAE123BD6}</ProjectGuid>
+    <RootNamespace>ShroomArcane3D</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-    <ProjectName>Shroom Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,16 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -94,14 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -111,18 +94,10 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,54 +108,19 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp" />
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Keyboard.cpp" />
-    <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="ShroomException.cpp" />
-    <ClCompile Include="Shroom.h" />
-    <ClCompile Include="ShroomTimer.cpp" />
-    <ClCompile Include="ShroomWin.cpp" />
-    <ClCompile Include="ShroomExceptionHandler.cpp" />
-    <ClCompile Include="ShroomWindowException.cpp" />
-    <ClCompile Include="ShrWindow.cpp" />
-    <ClCompile Include="ShrWindowHandleProcs.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Keyboard.h" />
-    <ClInclude Include="Mouse.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="ShroomException.h" />
-    <ClInclude Include="ShroomExceptionHandler.h" />
-    <ClInclude Include="ShroomTimer.h" />
-    <ClInclude Include="ShrWindow.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\Downloads\icon.ico" />
-    <Image Include="..\..\..\..\Downloads\kisspng_mushroom_cartoon_snacks_5acaa7e9d23ae5_2640844415232306978611_Ovl_icon.ico" />
-    <Image Include="..\..\..\..\Downloads\shroom.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="HW3D.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ShroomArcane3D\ShroomArcane3D.vcxproj">
-      <Project>{13026733-a278-44c4-990f-33aa2c64ceff}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\HW3D\ShroomArcane3D.h" />
+    <ClCompile Include="..\HW3D\ShroomArcaneException.cpp" />
+    <ClCompile Include="..\HW3D\ShroomArcaneExceptionHandler.cpp" />
+    <ClInclude Include="..\HW3D\ShroomArcaneException.h" />
+    <ClInclude Include="..\HW3D\ShroomArcaneExceptionHandler.h" />
+    <ClInclude Include="Graphics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
