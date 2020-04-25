@@ -3,8 +3,9 @@
 
 
 //MACROS
-#define SWND_EXC(hr)    Window::Exception(__LINE__, __FILE__, hr)
-#define SWND_EXC_LAST() Window::Exception(__LINE__, __FILE__, GetLastError())
+#define SWND_EXC(hr)		   Window::Exception(__LINE__, __FILE__, hr)
+#define SWND_EXC_LAST()		   Window::Exception(__LINE__, __FILE__, GetLastError())
+#define SWND_NO_GFX_EXC()      Window::NoGFXException(__LINE__, __FILE__)
 
 //--------------------------------------------------
 //WINDOW CLASS
@@ -81,9 +82,13 @@ Window::Window(int w, int h, const char* name) : width(w), height(h)
 		throw SWND_EXC_LAST(); //Window error
 
 	//Create graphic object
-	#ifdef __SHROOM_ARCANE_3D__
+	#ifdef __SHROOM_ARCANE_3D__ 
 	pGfx = std::make_unique<ShroomArcaneGraphics>( hWnd );
 	#endif
+
+	//Check if we have GFX instance
+	if (pGfx == nullptr)
+		SWND_NO_GFX_EXC();
 
 	ShowWindow(hWnd, SW_SHOW);	
 }

@@ -27,8 +27,9 @@ public:
 	};
 	
 	static std::optional<int> ProcessMessages();
-
-	//Window Exception
+//--------------------------------------------------
+//Exceptios
+//--------------------------------------------------
 	class Exception : public ShroomException 
 	{
 	public:
@@ -39,6 +40,20 @@ public:
 		HRESULT GetErrorCode() const noexcept;
 		std::string GetErrorString() const noexcept;
 		
+	private:
+		HRESULT hr;
+	};
+
+	class NoGFXException : public ShroomException
+	{
+	public:
+		NoGFXException(int line, const char* file);
+		const char* what()  const  noexcept override;
+		virtual const char* GetType() const noexcept;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+		HRESULT GetErrorCode() const noexcept;
+		std::string GetErrorString() const noexcept;
+
 	private:
 		HRESULT hr;
 	};

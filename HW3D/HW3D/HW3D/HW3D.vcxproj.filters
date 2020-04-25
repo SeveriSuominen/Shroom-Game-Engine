@@ -37,11 +37,11 @@
     <Filter Include="Header Files\App\Exceptions">
       <UniqueIdentifier>{322286de-f74c-4215-b958-2a299bf9a098}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\App\Components\Window">
-      <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\App\Components\Window">
       <UniqueIdentifier>{4551098f-b797-4054-9add-9946e7b5a159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Window">
+      <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,10 +76,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShroomWindow.cpp">
-      <Filter>Source Files\App\Components\Window</Filter>
+      <Filter>Source Files\App\Window</Filter>
     </ClCompile>
     <ClCompile Include="ShroomWindowHandleProcs.cpp">
-      <Filter>Source Files\App\Components\Window</Filter>
+      <Filter>Source Files\App\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

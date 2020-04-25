@@ -25,6 +25,15 @@
     <Filter Include="Header Files\dxerr">
       <UniqueIdentifier>{8d051fca-5a4a-474f-8075-f4018a0a3246}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Exceptions">
+      <UniqueIdentifier>{1efcc3c5-5d51-47d7-a67b-5314dd96ef86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exceptions">
+      <UniqueIdentifier>{39116f68-4b1f-4445-ab85-bac79606598d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{3fc6e051-49b3-427b-adb5-fe5c184856f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneGraphics.h">
@@ -45,13 +54,22 @@
     <ClInclude Include="dxerr.h">
       <Filter>Header Files\dxerr</Filter>
     </ClInclude>
+    <ClInclude Include="ShroomArcaneException.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ShroomArcaneGraphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="dxerr.cpp">
       <Filter>Source Files\dxerr</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomArcaneException.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomArcaneGraphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp">
+      <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
