@@ -5,6 +5,22 @@
 //Only declarations so we also need a links to library see CCP file
 #include <d3d11.h>
 
+#include "DxgiInfoManager.h"
+#include <vector>
+
+// graphics exception checking/throwing macros (some with dxgi infos)
+#define GFX_EXCEPT_NOINFO(hr) ShroomArcaneGraphics::HRException( __LINE__,__FILE__,(hr) )
+#define GFX_THROW_NOINFO(hrcall) if( FAILED( hr = (hrcall) ) ) throw ShroomArcaneGraphics::HRException( __LINE__,__FILE__,hr )
+
+#ifndef NDEBUG
+#define GFX_EXCEPT(hr) ShroomArcaneGraphics::HRException( __LINE__,__FILE__,(hr),infoManager.GetMessages() )
+#define GFX_THROW_INFO(hrcall) infoManager.Set(); if( FAILED( hr = (hrcall) ) ) throw GFX_EXCEPT(hr)
+#define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__,(hr),infoManager.GetMessages() )
+#else
+#define GFX_EXCEPT(hr) ShroomArcaneGraphics::HRException( __LINE__,__FILE__,(hr) )
+#define GFX_THROW_INFO(hrcall) GFX_THROW_NOINFO(hrcall)
+#define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__,(hr) )
+#endif
 
 class ShroomArcaneGraphics
 {
@@ -36,6 +52,11 @@ private:
 //--------------------------------------------------------------------------
 // Exceptions
 //--------------------------------------------------------------------------
+#ifndef NDEBUG;
+private:
+	DxgiInfoManager infoManager;
+#endif
+
 public:
 	class  Exception   : public ShroomArcaneException
 	{
@@ -43,16 +64,20 @@ public:
 	};
 	class  HRException : public Exception
 	{
+		using Exception::Exception;
 	public:
 		HRException(int line,  const char* file, HRESULT hr) noexcept;
+		HRException(int line,  const char* file, HRESULT hr, std::vector<std::string> trace) noexcept;
 		const char* what()     const noexcept override;
 		const char* GetType()  const noexcept override;
 		HRESULT GetErrorCode() const noexcept;
 		std::string GetErrorString() const noexcept;
 		std::string GetErrorDescription() const noexcept;
+		std::string GetErrorInfo() const noexcept;
 		
 	private:
 		HRESULT hr;
+		std::string info;
 	};
 
 	class DeviceRemovedException : public HRException 
@@ -60,6 +85,8 @@ public:
 		using HRException::HRException;
 	public: 
 		const char* GetType() const noexcept override;
+	private:
+		std::string info;
 	};
 };
 //--------------------------------------------------------------------------

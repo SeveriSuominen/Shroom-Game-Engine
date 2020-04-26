@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{3fc6e051-49b3-427b-adb5-fe5c184856f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Exceptions\DX_ERR">
+      <UniqueIdentifier>{538b5a4c-b73a-4fb1-939c-64e56847ca13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exceptions\DX_ERR">
+      <UniqueIdentifier>{092968a0-7331-44d2-baaf-077266537fa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneGraphics.h">
@@ -52,7 +58,10 @@
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="dxerr.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Exceptions\DX_ERR</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.h">
+      <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -66,18 +75,21 @@
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="dxerr.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Exceptions\DX_ERR</Filter>
+    </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>Source Files\dxerr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </None>
     <None Include="DXGetErrorString.inl">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </None>
     <None Include="DXTrace.inl">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </None>
   </ItemGroup>
 </Project>

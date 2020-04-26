@@ -1,9 +1,6 @@
 #include "App.h"
+#include "ShrWindow.h"
 #include <sstream>
-
-//EXCEPTION MACROS
-#define SWND_EXC(hr)    Window::Exception(__LINE__, __FILE__, hr)
-#define SWND_EXC_LAST() Window::Exception(__LINE__, __FILE__, GetLastError())
 
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(900, 600, "Shroom"){}
@@ -12,7 +9,7 @@ int App::Go()
 {
 	BOOL result;
 	MSG  msg;
-
+	
 	//This is our main loop
 	while (true)
 	{

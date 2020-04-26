@@ -1,24 +1,33 @@
 #include "ShroomArcaneGraphics.h"
 #include <sstream>
 #include "dxerr.h"
+ShroomArcaneGraphics::HRException::HRException(int line, const char * file, HRESULT hr) noexcept : hr(hr), Exception(line, file) {}
+ShroomArcaneGraphics::HRException::HRException(int line, const char * file, HRESULT hr, std::vector<std::string> trace) noexcept : hr(hr),Exception(line, file)
+{
+	//Create info message from dx debug trace
+	for (const auto& ref : trace) 
+	{
+		info += ref;
+		info.push_back('\n');
+	}
 
-ShroomArcaneGraphics::HRException::HRException(int line, const char * file, HRESULT hr) noexcept : hr(hr), Exception(line, file){}
+	if (!info.empty())
+		info.pop_back();
+}
 
 const char * ShroomArcaneGraphics::HRException::what() const noexcept
 {
-	/*std::ostringstream oss;
-	oss << GetType() << std::endl
-		<< hr;
-
-	whatBuffer = oss.str();
-	return whatBuffer.c_str();*/
-
 	std::ostringstream oss;
 	oss << GetType() << std::endl
 		<< "[Error Code] 0x" << std::hex << std::uppercase << GetErrorCode()
 		<< std::dec << " (" << GetErrorCode() << ")" << std::endl
 		<< "[Error String] " << GetErrorString() << std::endl
 		<< "[Description] " << GetErrorDescription() << std::endl;
+
+	if (!info.empty())
+	{
+		oss << "[Error Info]\n" << GetErrorInfo() << std::endl;
+	}
 
 	oss << GetOriginString();
 	whatBuffer = oss.str();
@@ -45,6 +54,11 @@ std::string ShroomArcaneGraphics::HRException::GetErrorDescription() const noexc
 	char   buf[512];
 	DXGetErrorDescription(hr, buf, sizeof(buf));
 	return buf;
+}
+
+std::string ShroomArcaneGraphics::HRException::GetErrorInfo() const noexcept
+{
+	return info;
 }
 
 //Special case

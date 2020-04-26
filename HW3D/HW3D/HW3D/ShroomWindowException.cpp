@@ -7,26 +7,6 @@
 
 
 //Window Exception
-//--------------------------------------------------
-Window::Exception::Exception(int line, const char * file, HRESULT hr) : ShroomException(line, file), hr(hr) {}
-
-const char* Window::Exception::what() const noexcept
-{
-	std::ostringstream oss;
-	oss << GetType() << std::endl
-		<< "[Error] " << GetErrorCode() << std::endl
-		<< "[Desc] " << GetErrorString() << std::endl
-		<< GetOriginString();
-
-	whatBuffer = oss.str();
-	return whatBuffer.c_str();
-}
-
-const char* Window::Exception::GetType() const noexcept
-{
-	return "Shroom Window Exception";
-}
-
 std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
 {
 	char* pMsgBuf = nullptr;
@@ -50,49 +30,41 @@ std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
 	return errorString;
 }
 
-HRESULT Window::Exception::GetErrorCode() const noexcept
-{
-	return hr;
-}
+Window::HRException::HRException(int line, const char* file, HRESULT hr) noexcept
+	:
+	Exception(line, file),
+	hr(hr)
+{}
 
-std::string Window::Exception::GetErrorString() const noexcept
-{
-	return TranslateErrorCode(hr);
-}
-//--------------------------------------------------
-//No GFX Exception
-//--------------------------------------------------
-Window::NoGFXException::NoGFXException(int line, const char * file) : ShroomException(line, file) {}
-
-const char* Window::NoGFXException::what() const noexcept
+const char* Window::HRException::what() const noexcept
 {
 	std::ostringstream oss;
 	oss << GetType() << std::endl
-		<< "[Error] " << GetErrorCode() << std::endl
-		<< "[Desc] " << GetErrorString() << std::endl
+		<< "[Error Code] 0x" << std::hex << std::uppercase << GetErrorCode()
+		<< std::dec << " (" << (unsigned long)GetErrorCode() << ")" << std::endl
+		<< "[Description] " << GetErrorDescription() << std::endl
 		<< GetOriginString();
-
 	whatBuffer = oss.str();
 	return whatBuffer.c_str();
 }
 
-const char* Window::NoGFXException::GetType() const noexcept
+const char* Window::HRException::GetType() const noexcept
 {
-	return "Shroom Window No GFX Exception";
+	return "Shroom Window Exception";
 }
 
-std::string Window::NoGFXException::TranslateErrorCode(HRESULT hr) noexcept
-{
-	return "Window GFX is nullptr";
-}
-
-HRESULT Window::NoGFXException::GetErrorCode() const noexcept
+HRESULT Window::HRException::GetErrorCode() const noexcept
 {
 	return hr;
 }
 
-std::string Window::NoGFXException::GetErrorString() const noexcept
+std::string Window::HRException::GetErrorDescription() const noexcept
 {
-	return TranslateErrorCode(hr);
+	return Exception::TranslateErrorCode(hr);
 }
-//--------------------------------------------------
+
+
+const char* Window::NoGFXException::GetType() const noexcept
+{
+	return "Shroom NoGFX Exception";
+}

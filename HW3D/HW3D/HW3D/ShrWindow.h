@@ -9,7 +9,10 @@
 //--------------------------------------------------
 #include "ShroomArcane3D/ShroomArcane3D.h"
 //--------------------------------------------------
-
+// error exception helper macro
+#define SWND_EXC(hr)		 Window::HRException(__LINE__, __FILE__, hr)
+#define SWND_EXC_LAST()		 Window::HRException(__LINE__, __FILE__, GetLastError())
+#define SWND_NO_GFX_EXC()    Window::NoGFXException(__LINE__, __FILE__)
 class Window
 {
 //--------------------------------------------------
@@ -28,34 +31,32 @@ public:
 	
 	static std::optional<int> ProcessMessages();
 //--------------------------------------------------
-//Exceptios
+//Exceptions
 //--------------------------------------------------
 	class Exception : public ShroomException 
 	{
+		using ShroomException::ShroomException;
 	public:
-		Exception(int line, const char* file, HRESULT hr);
-		const char* what()  const  noexcept override;
-		virtual const char* GetType() const noexcept;
-		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;	
+
+	};
+	class HRException : public Exception
+	{
+	public:
+		HRException(int line, const char* file, HRESULT hr) noexcept;
+		const char* what() const noexcept override;
+		const char* GetType() const noexcept override;
 		HRESULT GetErrorCode() const noexcept;
-		std::string GetErrorString() const noexcept;
-		
+		std::string GetErrorDescription() const noexcept;
 	private:
 		HRESULT hr;
 	};
-
-	class NoGFXException : public ShroomException
+	class NoGFXException : public Exception
 	{
+ 		
 	public:
-		NoGFXException(int line, const char* file);
-		const char* what()  const  noexcept override;
-		virtual const char* GetType() const noexcept;
-		static std::string TranslateErrorCode(HRESULT hr) noexcept;
-		HRESULT GetErrorCode() const noexcept;
-		std::string GetErrorString() const noexcept;
-
-	private:
-		HRESULT hr;
+		using Exception::Exception;
+		virtual const char* GetType() const noexcept override;
 	};
 //--------------------------------------------------
 //Graphics

@@ -2,9 +2,6 @@
 #include "dxerr.h"
 #pragma comment(lib, "d3d11.lib") // linking lib file to ccp
 
-//ERROR MACROS
-#define GFX_THROW_FAILED(hrcall) if( FAILED(hr = (hrcall) ) ) throw ShroomArcaneGraphics::HRException( __LINE__,__FILE__, (hr));
-#define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__, (hr));
 
 ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 {
@@ -28,7 +25,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	HRESULT hr; // Error check macros except hr var in local scope
 
 	//Create device and chain, if failed throw graphics exception
-	GFX_THROW_FAILED
+	GFX_THROW_INFO
 	(
 		D3D11CreateDeviceAndSwapChain
 		(
@@ -51,13 +48,13 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	ID3D11Resource* pBackBuffer = nullptr;
 	
 	//Using COM
-	GFX_THROW_FAILED
+	GFX_THROW_INFO
 	(
-		pSwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**/*PeePee*/>(&pBackBuffer))
+		pSwapChain->GetBuffer(22, __uuidof(ID3D11Resource), reinterpret_cast<void**/*PeePee*/>(&pBackBuffer))
 	);
 
 	//Creating render target view
-	GFX_THROW_FAILED
+	GFX_THROW_INFO
 	(
 		pDevice->CreateRenderTargetView
 		(
@@ -87,7 +84,7 @@ void ShroomArcaneGraphics::EndFrame()
 		}
 		else
 		{
-			GFX_THROW_FAILED(hr);
+			GFX_THROW_INFO(hr);
 		}
 	}
 }

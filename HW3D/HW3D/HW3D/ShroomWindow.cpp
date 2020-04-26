@@ -1,12 +1,6 @@
 #include "ShrWindow.h"
 #include "resource.h"
 
-
-//MACROS
-#define SWND_EXC(hr)		   Window::Exception(__LINE__, __FILE__, hr)
-#define SWND_EXC_LAST()		   Window::Exception(__LINE__, __FILE__, GetLastError())
-#define SWND_NO_GFX_EXC()      Window::NoGFXException(__LINE__, __FILE__)
-
 //--------------------------------------------------
 //WINDOW CLASS
 //--------------------------------------------------

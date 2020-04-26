@@ -141,6 +141,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="dxerr.h" />
+    <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="ShroomArcane3D.h" />
     <ClInclude Include="ShroomArcaneException.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dxerr.cpp" />
+    <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="ShroomArcaneException.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp" />
