@@ -19,9 +19,6 @@
     <Filter Include="Header Files\Components\Structs">
       <UniqueIdentifier>{6e33f3ad-90c4-45ee-9948-082bcbdb1f1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\dxerr">
-      <UniqueIdentifier>{e5dbfa4e-0329-47c5-8762-7f766963efc9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{1efcc3c5-5d51-47d7-a67b-5314dd96ef86}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,21 @@
     </Filter>
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{38572f45-33cf-4de3-9129-0541e7ed7fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Bindable">
+      <UniqueIdentifier>{0467859c-bccf-4fc1-964a-65e939bfa22c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Bindable\Shaders">
+      <UniqueIdentifier>{2de3d21a-2dc4-41fb-8a2b-d83973b80997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bindable\CBuffers">
+      <UniqueIdentifier>{9156905d-0b80-49ce-8f4c-169989982de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawable">
+      <UniqueIdentifier>{ac5eabe6-9b24-49dd-949d-a168d42fc723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Drawable">
+      <UniqueIdentifier>{51b6e473-37c9-484d-830b-ee55b0ce2b6a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +105,45 @@
     <ClInclude Include="ShroomArcaneGraphics.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Bindable.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Header Files\Bindable\CBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCbuf.h">
+      <Filter>Header Files\Bindable\CBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindables.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShroomArcaneException.cpp">
@@ -108,7 +159,37 @@
       <Filter>Source Files\Exceptions\DX_ERR</Filter>
     </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
-      <Filter>Source Files\dxerr</Filter>
+      <Filter>Source Files\Exceptions\DX_ERR</Filter>
+    </ClCompile>
+    <ClCompile Include="Bindable.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Source Files\Graphics\Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Source Files\Graphics\Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Topology.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCbuf.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files\Graphics\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

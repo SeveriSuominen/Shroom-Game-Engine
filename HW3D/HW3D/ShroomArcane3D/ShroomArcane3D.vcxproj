@@ -138,6 +138,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bindable.h" />
+    <ClInclude Include="Bindables.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="Drawable.h" />
+    <ClInclude Include="IndexBuffer.h" />
+    <ClInclude Include="InputLayout.h" />
+    <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="dxerr.h" />
@@ -151,15 +160,29 @@
     <ClInclude Include="ShroomArcaneGraphics.h" />
     <ClInclude Include="ShroomArcaneThrowMacros.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
+    <ClInclude Include="Topology.h" />
+    <ClInclude Include="TransformCbuf.h" />
     <ClInclude Include="Vectors.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexBuffer.h" />
+    <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bindable.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
+    <ClCompile Include="InputLayout.cpp" />
+    <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="ShroomArcaneException.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp" />
+    <ClCompile Include="Topology.cpp" />
+    <ClCompile Include="TransformCbuf.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl" />

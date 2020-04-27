@@ -15,3 +15,9 @@
 #define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__,(hr) )
 #define GFX_THROW_INFO_ONLY(call) (call)
 #endif
+
+#ifdef NDEBUG
+#define INIT_DXINFOMNG(gfx) HRESULT hr
+#else
+#define INIT_DXINFOMNG(gfx) HRESULT hr; DxgiInfoManager& infoManager = GetInfoManager((gfx))
+#endif

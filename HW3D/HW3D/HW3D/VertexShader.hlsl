@@ -2,7 +2,6 @@
 //STRUCT MUST BE ORDERED RIGHT 
 struct VSOUT
 { 
-	float4 color  : Color;
 	float4 vexpos : Position;
 	float4 pos    : SV_Position;  //<- position of vertex
 };
@@ -15,7 +14,7 @@ cbuffer CBuf
 	/*row_major*/ matrix transform;
 };
 
-VSOUT main(float3 pos : Position, float4 color : Color)
+VSOUT main(float3 pos : Position)
 {
 	VSOUT vso;
 	vso.vexpos = float4(pos.x, pos.y, pos.z, 1.0f);
@@ -26,8 +25,5 @@ VSOUT main(float3 pos : Position, float4 color : Color)
 		float4(pos.x, pos.y, pos.z, 1.0f),
 		transform
 	);
-
-	vso.color  = color;
-
 	return vso;
 }

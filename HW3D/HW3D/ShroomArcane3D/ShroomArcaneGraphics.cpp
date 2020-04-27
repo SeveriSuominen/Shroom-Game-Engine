@@ -125,13 +125,24 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	(
 		pDevice->CreateDepthStencilView(pDSTexture.Get(), &descDSV, &pDSV)
 	);
-
-
 	//--------------------------------------
 	// Set Render Target with Stencil
 	//--------------------------------------
 	//Bind depth stecil view to pipeline
 	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), pDSV.Get());
+
+	//--------------------------------------
+	// Viewport
+	//--------------------------------------
+	D3D11_VIEWPORT vp;
+	vp.Width  = 900;
+	vp.Height = 600;
+	vp.MinDepth = 0;
+	vp.MaxDepth = 1;
+	vp.TopLeftX = 0;
+	vp.TopLeftY = 0;
+
+	pContext->RSSetViewports(1u, &vp);
 }
 
 void ShroomArcaneGraphics::EndFrame()
@@ -166,328 +177,21 @@ void ShroomArcaneGraphics::ClearBuffer(Color c)
 	pContext->ClearDepthStencilView( pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
-void ShroomArcaneGraphics::DrawTestTriangle(float angle, float x, float y)
+void ShroomArcaneGraphics::DrawIndexed(UINT count) noexcept
 {
-	//Required HRESULT var for exception macros
-	HRESULT hr;
-
-	namespace WRL = Microsoft::WRL;
-
-	DX::XMVECTOR v = DX::XMVectorSet(3.0f, 3.0f, 0.0f, 0.0f);
-	auto result = DX::XMVector4Dot(v, v);
-	
-	//--------------------------------------
-	// VERTICE AND INDICE BUFFERS AND INPUT
-	//--------------------------------------
-	
-	//PYRAMID
-	/*
-	const Vertex vertices[] =
-	{
-		{ Float3( 0.0f,   0.5f,  0.0f), Color(1.0f, 0.2f, 0.2f) },
-		{ Float3( 0.5f,  -0.5f,  0.5f), Color(0.2f, 1.0f, 0.2f) },
-		{ Float3(-0.5f,  -0.5f,  0.5f), Color(0.2f, 0.2f, 1.0)  },
-		{ Float3(-0.5f,  -0.5f, -0.5f), Color(1.0f, 0.2f, 1.0)  },
-		{ Float3( 0.5f,  -0.5f, -0.5f), Color(0.2f, 1.0f, 1.0)  },
-		{ Float3(0.0f,   -0.5f,  0.0f), Color(1.0f, 0.2f, 0.2f) },
-	};
-
-	const int indices[] =
-	{
-		0,1,2,
-		0,2,3,
-		0,4,1,
-		0,3,4,
-	};*/
-
-	//CUBE
-	const Vertex vertices[] =
-	{
-		{ Float3(-1.0f,  -1.0f, -1.0f), Color(1.0f, 0.2f, 0.2f) },
-		{ Float3( 1.0f,  -1.0f, -1.0f), Color(0.2f, 1.0f, 0.2f) },
-		{ Float3(-1.0f,   1.0f, -1.0f), Color(0.2f, 0.2f, 1.0)  },
-		{ Float3( 1.0f,   1.0f, -1.0f), Color(1.0f, 0.2f, 1.0)  },
-		{ Float3(-1.0f,  -1.0f,  1.0f), Color(1.0f, 0.2f, 0.2f) },
-		{ Float3( 1.0f,  -1.0f,  1.0f), Color(1.0f, 1.0f, 0.2f) },
-		{ Float3(-1.0f,   1.0f,  1.0f), Color(1.0f, 0.2f, 1.0)  },
-		{ Float3( 1.0f,   1.0f,  1.0f), Color(1.0f, 0.2f, 1.0)  },
-
-	};
-
-	const int indices[] =
-	{
-		0,2,1,
-		2,3,1,
-		1,3,5,
-		3,7,5,
-		2,6,3,
-		3,6,7,
-		4,5,7,
-		4,7,6,
-		0,4,2,
-		2,4,6,
-		0,1,4,
-		1,5,4
-	};
-
-	//Tell dx what kind is our VERTEX buffer
-	D3D11_BUFFER_DESC vex_bd = {};
-	vex_bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;	// BUFFER TYPE, quite important!
-	vex_bd.Usage = D3D11_USAGE_DEFAULT;				//GPU & CPU Write and Read access setup;
-	vex_bd.CPUAccessFlags = 0u;						//More access stuff
-	vex_bd.MiscFlags = 0u;							//Misc
-	vex_bd.ByteWidth = sizeof(vertices);			//Size of vertex buffer
-	vex_bd.StructureByteStride = sizeof(Vertex);	//Size of single vertex
-		
-								
-	//Tell dx what kind is our INDICE buffer
-	D3D11_BUFFER_DESC ind_bd = {};
-	ind_bd.BindFlags = D3D11_BIND_INDEX_BUFFER;		
-	ind_bd.Usage = D3D11_USAGE_DEFAULT;				
-	ind_bd.CPUAccessFlags = 0u;						
-	ind_bd.MiscFlags = 0u;							
-	ind_bd.ByteWidth = sizeof(indices);			    
-	ind_bd.StructureByteStride = sizeof(int);	 
-
-
-	//Vertex Resource
-	D3D11_SUBRESOURCE_DATA vex_sd = {};
-	vex_sd.pSysMem = vertices;
-
-	//Index Resource
-	D3D11_SUBRESOURCE_DATA ind_sd = {};
-	ind_sd.pSysMem = indices;
-
-	WRL::ComPtr<ID3D11Buffer> pVertexBuffer;
-	WRL::ComPtr<ID3D11Buffer> pIndexBuffer;
-
-	GFX_THROW_INFO
-	(
-		pDevice->CreateBuffer(&vex_bd /*Setup*/, &vex_sd/*Resources*/, &pVertexBuffer/*Buffer goes here!*/)
-	);
-
-	GFX_THROW_INFO
-	(
-		pDevice->CreateBuffer(&ind_bd /*Setup*/, &ind_sd/*Resources*/, &pIndexBuffer/*Buffer goes here!*/)
-	);
-
-	const UINT vex_stride = sizeof(Vertex);
-	const UINT offset = 0u;
-	
-	//IA as InputAssembler
-	//Bind our vertex buffer to pipeline
-	pContext->IASetVertexBuffers
-	(
-		0u,							  //Start index for buffer
-		1u,							  //Amount of of buffers
-		pVertexBuffer.GetAddressOf(), //THE vertex buffer
-		&vex_stride,
-		&offset
-	);
-
-	//Bind our vertex buffer to pipeline
-	pContext->IASetIndexBuffer
-	(
-		pIndexBuffer.Get(), 
-		DXGI_FORMAT_R32_UINT,
-		0u
-	);
-
-	//--------------------------------------
-	// CONSTANT BUFFER 
-	//--------------------------------------
-	struct ConstantBuffer
-	{
-		DX::XMMATRIX transformation;
-	};
-
-	const ConstantBuffer cb = 
-	{
-		{   DX::XMMatrixTranspose
-			(	DX::XMMatrixRotationX(angle) *
-				DX::XMMatrixRotationY(angle) *					//YRotation
-				DX::XMMatrixScaling(3.0f / 4.0f, 1.0f, 1.0f) *  //Scaling
-				DX::XMMatrixTranslation(x, 0.0f, y * 10.0f)	*			//Position
-				DX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f, 10.0f)
-			)
-		}
-	};
-
-	WRL::ComPtr<ID3D11Buffer> pConstantBuffer;
-		
-	D3D11_BUFFER_DESC cbd;
-	cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	cbd.Usage = D3D11_USAGE_DYNAMIC; //dynamic buffer because we want to update constant buffer
-	cbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE; //give CPU access to write for updating buffer
-	cbd.MiscFlags = 0u;
-	cbd.ByteWidth = sizeof(cb);
-	cbd.StructureByteStride = 0u; //stride no need because not array, so zero
-
-	//Constant buffer resource
-	D3D11_SUBRESOURCE_DATA csd = {};
-	csd.pSysMem = &cb;
-
-	//Create constant buffer
 	GFX_THROW_INFO_ONLY
 	(
-		pDevice->CreateBuffer
-		(
-			&cbd,
-			&csd,
-			&pConstantBuffer
-		)
+		pContext->DrawIndexed(count, 0u, 0u)
 	);
-	pContext->VSSetConstantBuffers( 0u,1u, pConstantBuffer.GetAddressOf());
-
-
-	//--------------------------------------
-	// CONSTANT BUFFER, COLOR
-	//--------------------------------------
-	struct ConstantBuffer2
-	{
-		Color face_colors[6];
-	};
-
-	const ConstantBuffer2 cb2 =
-	{
-		{  
-			Color(0.0f, 1.0f, 1.0f),
-			Color(1.0f, 1.0f, 0.0f),
-			Color(1.0f, 0.0f, 1.0f),
-			Color(1.0f, 0.0f, 0.0f),
-			Color(0.0f, 1.0f, 0.0f),
-			Color(0.0f, 0.0f, 1.0f),
-		}
-	};
-
-	WRL::ComPtr<ID3D11Buffer> pConstantBuffer2;
-	D3D11_BUFFER_DESC cbd2;
-	cbd2.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	cbd2.Usage = D3D11_USAGE_DEFAULT;
-	cbd2.CPUAccessFlags = 0u;
-	cbd2.MiscFlags = 0u;
-	cbd2.ByteWidth = sizeof(cb2);
-	cbd2.StructureByteStride = 0u;
-	D3D11_SUBRESOURCE_DATA csd2 = {};
-	csd2.pSysMem = &cb2;
-	GFX_THROW_INFO(pDevice->CreateBuffer(&cbd2, &csd2, &pConstantBuffer2));
-
-	// bind constant buffer to pixel shader
-	pContext->PSSetConstantBuffers(0u, 1u, pConstantBuffer2.GetAddressOf());
-
-	//--------------------------------------
-	// SHADERS
-	//--------------------------------------
-	//Pile of data, temp
-	WRL::ComPtr<ID3DBlob> pBlob; 
-	
-	WRL::ComPtr<ID3D11VertexShader> pVertexShader;
-	WRL::ComPtr<ID3D11PixelShader>  pPixelShader;
-
-	GFX_THROW_INFO
-	(
-		D3DReadFileToBlob(L"../ShroomArcane3D/PixelShader.cso", &pBlob)
-	);
-
-	//Create pixel shader
-	GFX_THROW_INFO_ONLY
-	(
-		pDevice->CreatePixelShader
-		(
-			pBlob->GetBufferPointer(),
-			pBlob->GetBufferSize(),
-			nullptr,
-			&pPixelShader
-		)
-	);
-	//Bind shader to pipeline
-	pContext->PSSetShader(pPixelShader.Get(), nullptr, 0);
-
-	GFX_THROW_INFO
-	(
-		D3DReadFileToBlob(L"../ShroomArcane3D/VertexShader.cso", &pBlob)
-	);
-
-	//Create vertex shader
-	GFX_THROW_INFO_ONLY
-	(
-		pDevice->CreateVertexShader
-		(
-			pBlob->GetBufferPointer(),
-			pBlob->GetBufferSize(),
-			nullptr,
-			&pVertexShader
-		)
-	);
-
-	//Bind shader to pipeline
-	pContext->VSSetShader(pVertexShader.Get(), nullptr, 0);
-	
-
-	//--------------------------------------
-	// Input layout
-	//--------------------------------------
-	//Input vertex layout
-	WRL::ComPtr<ID3D11InputLayout> pInputLayout;
-	const D3D11_INPUT_ELEMENT_DESC ied[] =
-	{
-		{
-			"Position",					 //SEMANTIC
-			0,							 //SEMANTIC INDEX
-			DXGI_FORMAT_R32G32B32_FLOAT, //TELLS ELEMENT IS 3 x FLOAT VALUES
-			0,							 //INPUTSLOT
-			0,							 //OFFSET OF BYTES BEGINNING OF THE STRUCT
-			D3D11_INPUT_PER_VERTEX_DATA,
-			0
-		},
-		{
-			"Color",					 
-			0,							 
-			DXGI_FORMAT_R32G32B32A32_FLOAT, //TELLS ELEMENT IS 4 x FLOAT VALUES
-			0,							 
-			12u, //Balls deep here							 
-			D3D11_INPUT_PER_VERTEX_DATA,
-			0
-		}
-	};
-
-	GFX_THROW_INFO
-	(
-		pDevice->CreateInputLayout
-		(
-			ied, (UINT)std::size(ied),
-			pBlob->GetBufferPointer(),
-			pBlob->GetBufferSize(),
-			&pInputLayout
-		)
-	);
-
-	//Bind vertex layout
-	pContext->IASetInputLayout(pInputLayout.Get());
-
-	//--------------------------------------
-	// Primitive topology
-	//--------------------------------------
-	//Primitive topology, (aka indices in this case)
-	pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-	//--------------------------------------
-	// Viewport
-	//--------------------------------------
-	D3D11_VIEWPORT vp;
-	vp.Width  = 900;
-	vp.Height = 600;
-	vp.MinDepth = 0;
-	vp.MaxDepth = 1;
-	vp.TopLeftX = 0;
-	vp.TopLeftY = 0;
-
-	pContext->RSSetViewports(1u, &vp);
-
-	//--------------------------------------
-	// Draw
-	//--------------------------------------
-	//Draw call
-	GFX_THROW_INFO_ONLY(pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
-	
 }
+
+void ShroomArcaneGraphics::SetProjection(DirectX::FXMMATRIX proj) noexcept
+{
+	projection = proj;
+}
+
+DirectX::XMMATRIX ShroomArcaneGraphics::GetProjection() const noexcept
+{
+	return projection;
+}
+

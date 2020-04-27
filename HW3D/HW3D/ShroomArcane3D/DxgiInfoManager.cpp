@@ -3,7 +3,7 @@
 #pragma comment(lib, "dxguid.lib")
 
 
-#define GFX_THROW_NOINFO(hrcall) if( FAILED(hr = (hrcall) ) ) throw ShroomArcaneGraphics::HRException( __LINE__,__FILE__, (hr));
+#define GFX_THROW_NOINFO(hrcall) if( FAILED(hr = (hrcall) ) ) throw ShroomArcaneException::ShroomArcaneException( __LINE__,__FILE__);
 #define GFX_THROW_GENERAL() throw ShroomArcaneException::ShroomArcaneException( __LINE__,__FILE__)
 
 DxgiInfoManager::DxgiInfoManager()
@@ -27,7 +27,7 @@ DxgiInfoManager::DxgiInfoManager()
 	{
 		GFX_THROW_GENERAL();
 	}
-
+	
 	HRESULT hr;
 	GFX_THROW_NOINFO(DxgiGetDebugInterface(__uuidof(IDXGIInfoQueue), &pDxgiInfoQueue));
 }

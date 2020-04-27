@@ -2,13 +2,16 @@
 #include "ShroomArcaneWin.h"
 #include "Components.h"
 #include <wrl.h> //Smart COM Pointers
-
-#include <d3d11.h> //Only declarations so we also need a links to library see CCP file
 #include "DxgiInfoManager.h"
+#include <d3d11.h> //Only declarations so we also need a links to library see CCP file
+
 #include <vector>
 
 class ShroomArcaneGraphics
 {
+	friend class Bindable;
+
+
 //--------------------------------------------------------------------------
 //Base
 //--------------------------------------------------------------------------
@@ -24,8 +27,9 @@ public:
 public:
 	void EndFrame();
 	void ClearBuffer(Color c);
-	void DrawTestTriangle(float test, float x, float y);
-
+	void DrawIndexed(UINT count) noexcept;
+	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
+	DirectX::XMMATRIX GetProjection() const noexcept;
 //--------------------------------------------------------------------------
 //DX11
 //--------------------------------------------------------------------------
@@ -35,15 +39,15 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext>    pContext	   = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget	   = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDSV     = nullptr;
+private:
 
+#ifndef NDEBUG
+	DxgiInfoManager infoManager;
+#endif
+	DirectX::XMMATRIX projection;
 //--------------------------------------------------------------------------
 // Exceptions
 //--------------------------------------------------------------------------
-#ifndef NDEBUG;
-private:
-	DxgiInfoManager infoManager;
-#endif
-
 public:
 	class  Exception   : public ShroomArcaneException
 	{

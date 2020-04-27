@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ShroomArcane3D\Box.cpp" />
     <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Keyboard.cpp" />

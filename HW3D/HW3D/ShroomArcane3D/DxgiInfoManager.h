@@ -2,10 +2,11 @@
 #pragma once
 #include "ShroomArcaneWin.h"
 #include <vector>
-#include "ShroomArcaneWin.h"
-#include "ShroomArcaneGraphics.h"
+
 #include <dxgidebug.h>
 #include <memory>
+#include <wrl.h> //Smart COM Pointers
+#include <d3d11.h> //Only declarations so we also need a links to library see CCP file
 
 class DxgiInfoManager
 {
