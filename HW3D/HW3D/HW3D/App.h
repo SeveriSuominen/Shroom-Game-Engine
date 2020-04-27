@@ -14,6 +14,8 @@ public:
 
 private:
 	void  DoFrame();
+	void  AddCubes(int amount);
+	void  RemoveCubes(int amount);
 	float frameDelta;
 	std::vector<std::unique_ptr<class Box>> boxes;
 

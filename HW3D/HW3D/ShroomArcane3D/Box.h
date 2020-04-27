@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Drawable.h"
+#include "DrawableStatic.h"
 #include <random>
 
-class Box : public Drawable
+class Box : public DrawableStatic<Box>
 {
 public:
 	Box(ShroomArcaneGraphics& gfx, std::mt19937& rng,

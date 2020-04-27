@@ -10,6 +10,11 @@ void Drawable::Draw(ShroomArcaneGraphics& gfx) const noexcept
 	{
 		b->Bind(gfx);
 	}
+
+	for (auto& sb : GetStaticBinds())
+	{
+		sb->Bind(gfx);
+	}
 	gfx.DrawIndexed(pIndexBuffer->GetCount());
 }
 

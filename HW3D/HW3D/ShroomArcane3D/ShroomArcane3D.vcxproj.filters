@@ -144,6 +144,9 @@
     <ClInclude Include="Bindables.h">
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
+    <ClInclude Include="DrawableStatic.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShroomArcaneException.cpp">
