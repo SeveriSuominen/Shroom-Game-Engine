@@ -1,5 +1,5 @@
 #include "App.h"
-#include "ShrWindow.h"
+#include "ShroomWindow.h"
 #include <sstream>
 
 //APP DEF  //MAIN WINDOW
@@ -35,7 +35,8 @@ int App::Go()
 void App::DoFrame()
 {
 	const float c = sin(timer.Peek()) / 2.0f + 0.5f;
-	root_wnd.Gfx().ClearBuffer(Color(c,c,1.0f));
-	root_wnd.Gfx().DrawTestTriangle(timer.Peek());
+	root_wnd.Gfx().ClearBuffer(Color(c,c,1.0f));	//GPU VIEWPORT RANGE IS -1 to 1 in all axels, + y increasing towards top
+	root_wnd.Gfx().DrawTestTriangle(timer.Peek(), root_wnd.input.mouse.GetPosX() / (900.0f * 0.5f) -1.0f, - root_wnd.input.mouse.GetPosY() / (600.0f * 0.5f) + 1.0f);
+	root_wnd.Gfx().DrawTestTriangle(0, 0.0f, 0.5f);
 	root_wnd.Gfx().EndFrame();
 }

@@ -1,5 +1,10 @@
 
-float4 main(float4 color : Color, float4 pos : Position) : SV_Target
+cbuffer CBuf
 {
-	return float4(color.r + pos.z, color.g + pos.z, color.b + pos.z, color.a);
+	float4 face_colors[6];
+}
+
+float4 main(uint tid : SV_PrimitiveID/*Primitive ID, triangle for example*/) : SV_Target
+{
+	return face_colors[tid / 2];
 }

@@ -40,11 +40,14 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{fda3ddf2-b047-4db2-814b-a01524f106f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Bindable">
+      <UniqueIdentifier>{c5bd73fd-9909-48bf-8c9b-71aeb88c548c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{38572f45-33cf-4de3-9129-0541e7ed7fdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShroomArcaneGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShroomArcaneWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -83,6 +86,12 @@
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomArcaneThrowMacros.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomArcaneGraphics.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

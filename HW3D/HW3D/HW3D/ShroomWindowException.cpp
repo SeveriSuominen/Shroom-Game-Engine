@@ -1,10 +1,9 @@
-#include "ShrWindow.h"
+#include "ShroomWindow.h"
 #include "resource.h"
 
 #include <string>
 #include <sstream>
 #include <iostream>
-
 
 //Window Exception
 std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept

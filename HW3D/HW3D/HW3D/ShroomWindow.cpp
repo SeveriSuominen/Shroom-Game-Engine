@@ -1,4 +1,4 @@
-#include "ShrWindow.h"
+#include "ShroomWindow.h"
 #include "resource.h"
 
 //--------------------------------------------------

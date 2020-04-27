@@ -149,6 +149,7 @@
     <ClInclude Include="ShroomArcane3D.h" />
     <ClInclude Include="ShroomArcaneException.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
+    <ClInclude Include="ShroomArcaneThrowMacros.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
     <ClInclude Include="Vectors.h" />
     <ClInclude Include="Vertex.h" />

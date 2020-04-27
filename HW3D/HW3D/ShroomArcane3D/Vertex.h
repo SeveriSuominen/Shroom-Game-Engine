@@ -3,7 +3,7 @@
 #include "Vectors.h"
 #include "Color.h"
 
-struct Vertex
+struct Vertex 
 {
 public:
 	Vertex(Float3 vec3) : position(vec3), color(Color(1,1,1)){}

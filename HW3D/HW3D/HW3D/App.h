@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Shroom.h"
-#include "ShrWindow.h"
+#include "ShroomWindow.h"
 #include "ShroomTimer.h"
 
 class App

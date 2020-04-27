@@ -9,10 +9,8 @@
 //--------------------------------------------------
 #include "ShroomArcane3D/ShroomArcane3D.h"
 //--------------------------------------------------
-// error exception helper macro
-#define SWND_EXC(hr)		 Window::HRException(__LINE__, __FILE__, hr)
-#define SWND_EXC_LAST()		 Window::HRException(__LINE__, __FILE__, GetLastError())
-#define SWND_NO_GFX_EXC()    Window::NoGFXException(__LINE__, __FILE__)
+#include "ShroomThrowMacros.h"
+
 class Window
 {
 //--------------------------------------------------

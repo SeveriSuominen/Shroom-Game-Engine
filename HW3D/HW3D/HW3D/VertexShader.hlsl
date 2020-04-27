@@ -11,7 +11,8 @@ struct VSOUT
 cbuffer CBuf
 {
 	// row_major == read matrix row by row instead of 4 and 4, slighty slower but easier
-	row_major matrix transform;
+	//You can also transpose on CPU side
+	/*row_major*/ matrix transform;
 };
 
 VSOUT main(float3 pos : Position, float4 color : Color)

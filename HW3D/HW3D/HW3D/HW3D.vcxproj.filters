@@ -37,9 +37,6 @@
     <Filter Include="Header Files\App\Exceptions">
       <UniqueIdentifier>{322286de-f74c-4215-b958-2a299bf9a098}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\App\Components\Window">
-      <UniqueIdentifier>{4551098f-b797-4054-9add-9946e7b5a159}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\App\Window">
       <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Source Files\Assets\Shaders">
       <UniqueIdentifier>{1b095739-e724-43fe-af07-dc60aa986b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Window">
+      <UniqueIdentifier>{4551098f-b797-4054-9add-9946e7b5a159}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -113,8 +113,11 @@
     <ClInclude Include="ShroomTimer.h">
       <Filter>Header Files\App\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ShrWindow.h">
-      <Filter>Header Files\App\Components\Window</Filter>
+    <ClInclude Include="ShroomWindow.h">
+      <Filter>Header Files\App\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomThrowMacros.h">
+      <Filter>Header Files\App\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
