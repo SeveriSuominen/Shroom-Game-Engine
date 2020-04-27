@@ -1,8 +1,4 @@
 #include "DxgiInfoManager.h"
-#include "ShroomArcaneWin.h"
-#include "ShroomArcaneGraphics.h"
-#include <dxgidebug.h>
-#include <memory>
 
 #pragma comment(lib, "dxguid.lib")
 
@@ -33,16 +29,9 @@ DxgiInfoManager::DxgiInfoManager()
 	}
 
 	HRESULT hr;
-	GFX_THROW_NOINFO(DxgiGetDebugInterface(__uuidof(IDXGIInfoQueue), reinterpret_cast<void**>(&pDxgiInfoQueue)));
+	GFX_THROW_NOINFO(DxgiGetDebugInterface(__uuidof(IDXGIInfoQueue), &pDxgiInfoQueue));
 }
 
-DxgiInfoManager::~DxgiInfoManager()
-{
-	if (pDxgiInfoQueue != nullptr)
-	{
-		pDxgiInfoQueue->Release();
-	}
-}
 
 void DxgiInfoManager::Set() noexcept
 {

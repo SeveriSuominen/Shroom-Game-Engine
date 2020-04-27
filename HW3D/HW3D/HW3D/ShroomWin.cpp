@@ -15,6 +15,12 @@ int CALLBACK  WinMain
 	{
 		return App{}.Go();
 	}
+#ifdef __SHROOM_ARCANE_3D__
+	catch (const ShroomArcaneException& e)
+	{
+		ShroomExceptionHandler::Handle(nullptr, e.what(), e.GetType());
+	}
+#endif 
 	catch (const ShroomException& e)
 	{
 		ShroomExceptionHandler::Handle(nullptr, e.what(), e.GetType());

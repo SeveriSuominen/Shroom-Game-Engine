@@ -142,10 +142,16 @@
     <ClInclude Include="Components.h" />
     <ClInclude Include="dxerr.h" />
     <ClInclude Include="DxgiInfoManager.h" />
+    <ClInclude Include="Float2.h" />
+    <ClInclude Include="Float3.h" />
+    <ClInclude Include="Float4.h" />
+    <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="ShroomArcane3D.h" />
     <ClInclude Include="ShroomArcaneException.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
+    <ClInclude Include="Vectors.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dxerr.cpp" />

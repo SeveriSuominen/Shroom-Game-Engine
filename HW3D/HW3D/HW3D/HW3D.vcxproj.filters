@@ -43,6 +43,12 @@
     <Filter Include="Source Files\App\Window">
       <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{474558f0-f7f3-4caf-8557-9622111a06c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets\Shaders">
+      <UniqueIdentifier>{1b095739-e724-43fe-af07-dc60aa986b9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shroom.h">
@@ -126,5 +132,13 @@
     <ResourceCompile Include="HW3D.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Source Files\Assets\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Source Files\Assets\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

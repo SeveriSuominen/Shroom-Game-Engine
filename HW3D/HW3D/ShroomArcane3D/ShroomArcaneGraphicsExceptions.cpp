@@ -1,6 +1,10 @@
 #include "ShroomArcaneGraphics.h"
 #include <sstream>
 #include "dxerr.h"
+
+//------------------------------------------------------------------------------------------
+//HRException
+//------------------------------------------------------------------------------------------
 ShroomArcaneGraphics::HRException::HRException(int line, const char * file, HRESULT hr) noexcept : hr(hr), Exception(line, file) {}
 ShroomArcaneGraphics::HRException::HRException(int line, const char * file, HRESULT hr, std::vector<std::string> trace) noexcept : hr(hr),Exception(line, file)
 {
@@ -60,9 +64,52 @@ std::string ShroomArcaneGraphics::HRException::GetErrorInfo() const noexcept
 {
 	return info;
 }
+//------------------------------------------------------------------------------------------
+//Info exception
+//------------------------------------------------------------------------------------------
+ShroomArcaneGraphics::InfoException::InfoException(int line, const char * file, std::vector<std::string> trace) noexcept : Exception(line, file)
+{
+	//Create info message from dx debug trace
+	for (const auto& ref : trace)
+	{
+		info += ref;
+		info.push_back('\n');
+	}
 
+	if (!info.empty())
+		info.pop_back();
+}
+
+const char * ShroomArcaneGraphics::InfoException::what() const noexcept
+{
+	std::ostringstream oss;
+
+	if (!info.empty())
+	{
+		oss << GetType() << std::endl << std::endl 
+		<< "[Error Info]\n" << GetErrorInfo() << std::endl;
+	}
+
+	whatBuffer = oss.str();
+	return whatBuffer.c_str();
+}
+
+const char * ShroomArcaneGraphics::InfoException::GetType() const noexcept
+{
+	return "Shroom Arcane Graphics Info Exception";
+}
+
+std::string ShroomArcaneGraphics::InfoException::GetErrorInfo() const noexcept
+{
+	return info;
+}
+
+//------------------------------------------------------------------------------------------
+//Device removed exception
+//------------------------------------------------------------------------------------------
 //Special case
 const char * ShroomArcaneGraphics::DeviceRemovedException::GetType() const noexcept
 {
 	return "Shroom Arcane Graphics Exception [DEVICE REMOVED] (DXGI_ERROR_DEVICE_REMOVED)";
 }
+//------------------------------------------------------------------------------------------

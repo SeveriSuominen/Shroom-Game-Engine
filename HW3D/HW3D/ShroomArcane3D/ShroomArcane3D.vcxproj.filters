@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Exceptions\DX_ERR">
       <UniqueIdentifier>{092968a0-7331-44d2-baaf-077266537fa4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{fda3ddf2-b047-4db2-814b-a01524f106f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneGraphics.h">
@@ -62,6 +65,24 @@
     </ClInclude>
     <ClInclude Include="DxgiInfoManager.h">
       <Filter>Header Files\Exceptions\DX_ERR</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Float2.h">
+      <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Float3.h">
+      <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Float4.h">
+      <Filter>Header Files\Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Vectors.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Header Files\Components\Structs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

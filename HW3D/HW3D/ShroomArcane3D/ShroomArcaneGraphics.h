@@ -1,10 +1,9 @@
 #pragma once
 #include "ShroomArcaneWin.h"
 #include "Components.h"
+#include <wrl.h> //Smart COM Pointers
 
-//Only declarations so we also need a links to library see CCP file
-#include <d3d11.h>
-
+#include <d3d11.h> //Only declarations so we also need a links to library see CCP file
 #include "DxgiInfoManager.h"
 #include <vector>
 
@@ -16,10 +15,12 @@
 #define GFX_EXCEPT(hr) ShroomArcaneGraphics::HRException( __LINE__,__FILE__,(hr),infoManager.GetMessages() )
 #define GFX_THROW_INFO(hrcall) infoManager.Set(); if( FAILED( hr = (hrcall) ) ) throw GFX_EXCEPT(hr)
 #define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__,(hr),infoManager.GetMessages() )
+#define GFX_THROW_INFO_ONLY(call) infoManager.Set(); (call); {auto v = infoManager.GetMessages(); if(!v.empty()) {throw ShroomArcaneGraphics::InfoException( __LINE__,__FILE__,v);}}
 #else
 #define GFX_EXCEPT(hr) ShroomArcaneGraphics::HRException( __LINE__,__FILE__,(hr) )
 #define GFX_THROW_INFO(hrcall) GFX_THROW_NOINFO(hrcall)
 #define GFX_DEVICE_REMOVED_EXCEPT(hr) ShroomArcaneGraphics::DeviceRemovedException( __LINE__,__FILE__,(hr) )
+#define GFX_THROW_INFO_ONLY(call) (call)
 #endif
 
 class ShroomArcaneGraphics
@@ -31,7 +32,7 @@ public:
 	ShroomArcaneGraphics(HWND whdl);
 	ShroomArcaneGraphics(const ShroomArcaneGraphics&) = delete;
 	ShroomArcaneGraphics& operator=(const ShroomArcaneGraphics&) = delete;
-   ~ShroomArcaneGraphics();
+   ~ShroomArcaneGraphics() = default; //SMART POINTERS USED, NO NEED FOR DEC DESTRCR
 
 //--------------------------------------------------------------------------
 //API
@@ -39,15 +40,16 @@ public:
 public:
 	void EndFrame();
 	void ClearBuffer(Color c);
+	void DrawTestTriangle(float test);
 
 //--------------------------------------------------------------------------
 //DX11
 //--------------------------------------------------------------------------
 private:
-	ID3D11Device*           pDevice     = nullptr;
-	IDXGISwapChain*		    pSwapChain  = nullptr;
-	ID3D11DeviceContext*    pContext	= nullptr;
-	ID3D11RenderTargetView* pTarget		= nullptr;
+	Microsoft::WRL::ComPtr<ID3D11Device>           pDevice     = nullptr;
+	Microsoft::WRL::ComPtr<IDXGISwapChain> 	       pSwapChain  = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext>    pContext	   = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget	   = nullptr;
 
 //--------------------------------------------------------------------------
 // Exceptions
@@ -77,6 +79,16 @@ public:
 		
 	private:
 		HRESULT hr;
+		std::string info;
+	};
+	class InfoException : public Exception
+	{
+	public:
+		InfoException(int line, const char* file, std::vector<std::string> trace) noexcept;
+		const char* what()     const noexcept override;
+		const char* GetType() const noexcept override;
+		std::string GetErrorInfo() const noexcept;
+	private:
 		std::string info;
 	};
 
