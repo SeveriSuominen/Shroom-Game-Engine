@@ -13,8 +13,12 @@ LRESULT Window::HandleMsg(HWND handle, UINT msg, WPARAM wparam, LPARAM lparam)
 //PROGRAM
 //--------------------------------------------------
 	case WM_CLOSE:
-		PostQuitMessage(5000);
-		return 5000;
+		if (type == Window::SHROOM_WINDOW_TYPE::MAIN)
+		{
+			PostQuitMessage(5000);
+			return 5000;
+		}
+		break;
 //--------------------------------------------------
 //INPUT
 //--------------------------------------------------

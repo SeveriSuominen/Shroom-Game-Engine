@@ -2,16 +2,24 @@
 
 TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Drawable& parent)
 	:
-	vcbuf(gfx),
 	parent(parent)
-{}
+{
+	// CONFIRM STATIC TRANSFORM CBUFFER ALLOCATED
+	if (!pVCbuf)
+	{
+		pVCbuf = std::make_unique<VertexConstantBuffer<DirectX::XMMATRIX>>(gfx);
+	}
+}
 
 void TransformCbuf::Bind(ShroomArcaneGraphics& gfx) noexcept
 {
-	vcbuf.Update(gfx,
+	pVCbuf->Update(gfx,
 		DirectX::XMMatrixTranspose(
 			parent.GetTransformXM() * gfx.GetProjection()
 		)
 	);
-	vcbuf.Bind(gfx);
+	pVCbuf->Bind(gfx);
 }
+
+//Static var declaration
+std::unique_ptr<VertexConstantBuffer<DirectX::XMMATRIX>> TransformCbuf::pVCbuf;

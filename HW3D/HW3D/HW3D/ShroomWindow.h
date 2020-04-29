@@ -17,7 +17,15 @@ class Window
 //Base
 //--------------------------------------------------
 public:
-	Window(int width, int height, const char* name);
+
+	//WINDOW TYPING FOR MULTIPLE BEHAVIOURS
+	enum SHROOM_WINDOW_TYPE
+	{
+		MAIN = 1u,
+		SECONDARY = 2u
+	};
+
+	Window(int width, int height, const char* name, SHROOM_WINDOW_TYPE type, HWND parentHandle);
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
@@ -26,7 +34,7 @@ public:
 	{
 		SetWindowText(handle, text);
 	};
-	
+
 	static std::optional<int> ProcessMessages();
 //--------------------------------------------------
 //Exceptions
@@ -83,6 +91,8 @@ public:
 private:
 	int  width;
 	int  height;
+public:
+	SHROOM_WINDOW_TYPE type;
 	HWND handle;
 //--------------------------------------------------
 //Class

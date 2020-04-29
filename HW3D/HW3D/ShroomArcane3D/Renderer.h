@@ -1,12 +1,15 @@
 #pragma once
 
+#include "IndexedTriangleList.h"
 #include "DrawableStatic.h"
 #include <random>
 
-class Box : public DrawableStatic<Box>
+class Renderer : public DrawableStatic<Renderer>
 {
 public:
-	Box(ShroomArcaneGraphics& gfx, std::mt19937& rng,
+	Renderer(ShroomArcaneGraphics& gfx,
+		IndexedTriangleList<Vertex> model,
+		std::mt19937& rng,
 		std::uniform_real_distribution<float>& adist,
 		std::uniform_real_distribution<float>& ddist,
 		std::uniform_real_distribution<float>& odist,

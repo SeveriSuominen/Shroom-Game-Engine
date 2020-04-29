@@ -49,14 +49,47 @@
     <Filter Include="Source Files\Graphics\Bindable\Shaders">
       <UniqueIdentifier>{2de3d21a-2dc4-41fb-8a2b-d83973b80997}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Bindable\CBuffers">
-      <UniqueIdentifier>{9156905d-0b80-49ce-8f4c-169989982de3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Drawable">
       <UniqueIdentifier>{ac5eabe6-9b24-49dd-949d-a168d42fc723}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics\Drawable">
       <UniqueIdentifier>{51b6e473-37c9-484d-830b-ee55b0ce2b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Surface">
+      <UniqueIdentifier>{606c3250-0a24-4026-b87f-3593067a07b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Surface">
+      <UniqueIdentifier>{04cedd15-6793-41aa-9ff0-c0d8a824d3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Surface\GDI">
+      <UniqueIdentifier>{e0d3cb37-d647-49ef-b975-719b4ba88d14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Surface\GDI">
+      <UniqueIdentifier>{3713e650-2f84-4b57-b9bb-9ab79aa61cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bindable\Shaders">
+      <UniqueIdentifier>{688bc3d9-3a92-41da-b452-d10c3d49cdfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bindable\Cbuffers">
+      <UniqueIdentifier>{9156905d-0b80-49ce-8f4c-169989982de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bindable\Buffers">
+      <UniqueIdentifier>{6f848275-4266-41cf-bcc5-5a4f870951ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Bindable\Buffers">
+      <UniqueIdentifier>{1dcdbb4a-f10b-4544-8016-c92b10b61337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Bindable\CBuffers">
+      <UniqueIdentifier>{7e2936e9-7e87-4b69-bf3b-525db3062e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Bindable\Textures">
+      <UniqueIdentifier>{89e4df0b-9c34-47c4-b827-0c5de9be5605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawable\Renderers">
+      <UniqueIdentifier>{07f2527b-5dc9-404e-9d76-d0c0082184ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Drawable\Renderers">
+      <UniqueIdentifier>{a4967103-8115-48a1-907e-822bbc5068a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,18 +141,6 @@
     <ClInclude Include="Bindable.h">
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files\Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexShader.h">
-      <Filter>Header Files\Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelShader.h">
-      <Filter>Header Files\Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
-    </ClInclude>
     <ClInclude Include="InputLayout.h">
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
@@ -127,18 +148,12 @@
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
-      <Filter>Header Files\Bindable\CBuffers</Filter>
+      <Filter>Header Files\Bindable\Cbuffers</Filter>
     </ClInclude>
     <ClInclude Include="TransformCbuf.h">
-      <Filter>Header Files\Bindable\CBuffers</Filter>
+      <Filter>Header Files\Bindable\Cbuffers</Filter>
     </ClInclude>
     <ClInclude Include="Drawable.h">
-      <Filter>Header Files\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
       <Filter>Header Files\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="Bindables.h">
@@ -146,6 +161,45 @@
     </ClInclude>
     <ClInclude Include="DrawableStatic.h">
       <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedTriangleList.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomArcaneMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Header Files\Graphics\Surface</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIPlusManager.h">
+      <Filter>Header Files\Graphics\Surface\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Header Files\Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Header Files\Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Header Files\Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Header Files\Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>Header Files\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\Drawable\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureRenderer.h">
+      <Filter>Header Files\Drawable\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +224,6 @@
     <ClCompile Include="InputLayout.cpp">
       <Filter>Source Files\Graphics\Bindable</Filter>
     </ClCompile>
-    <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Source Files\Graphics\Bindable</Filter>
-    </ClCompile>
     <ClCompile Include="PixelShader.cpp">
       <Filter>Source Files\Graphics\Bindable\Shaders</Filter>
     </ClCompile>
@@ -182,17 +233,38 @@
     <ClCompile Include="Topology.cpp">
       <Filter>Source Files\Graphics\Bindable</Filter>
     </ClCompile>
-    <ClCompile Include="TransformCbuf.cpp">
-      <Filter>Source Files\Graphics\Bindable</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Source Files\Graphics\Bindable</Filter>
-    </ClCompile>
     <ClCompile Include="Drawable.cpp">
       <Filter>Source Files\Graphics\Drawable</Filter>
     </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Source Files\Graphics\Drawable</Filter>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Source Files\Graphics\Surface</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomArcaneSurfaceException.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIPlusManager.cpp">
+      <Filter>Source Files\Graphics\Surface\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\Graphics\Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Source Files\Graphics\Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCbuf.cpp">
+      <Filter>Source Files\Graphics\Bindable\CBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Graphics\Bindable\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>Source Files\Graphics\Bindable\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Graphics\Drawable\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureRenderer.cpp">
+      <Filter>Source Files\Graphics\Drawable\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,5 +277,10 @@
     <None Include="DXTrace.inl">
       <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

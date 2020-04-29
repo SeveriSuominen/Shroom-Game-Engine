@@ -42,7 +42,7 @@
 #define NOTAPE
 #endif
 
-//NOPE
+//NOPE... NEVER!
 #define NOMINMAX
 
 #define STRICT

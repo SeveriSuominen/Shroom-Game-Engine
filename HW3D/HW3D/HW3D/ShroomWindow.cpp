@@ -42,10 +42,20 @@ const HINSTANCE Window::WindowClass::GetInstance() noexcept
 //--------------------------------------------------
 //WINDOW INTERFACE
 //--------------------------------------------------
-Window::Window(int w, int h, const char* name) : width(w), height(h)
+Window::Window(int w, int h, const char* name, SHROOM_WINDOW_TYPE type, HWND parentHandle) : width(w), height(h), type(type) 
 {
 	//TEMP def Style
-	const DWORD style = WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU;
+	DWORD style;
+
+	switch (type)
+	{
+		case SHROOM_WINDOW_TYPE::MAIN:
+			style = WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU;
+			break;
+		case SHROOM_WINDOW_TYPE::SECONDARY:
+			style = WS_THICKFRAME | WS_CAPTION;
+			break;
+	}
 
 	RECT rect;
 	rect.left   = 0;
@@ -66,7 +76,7 @@ Window::Window(int w, int h, const char* name) : width(w), height(h)
 		CW_USEDEFAULT,			 //Y
 		rect.right - rect.left,  //Width
 		rect.bottom - rect.top,  //Height,
-		nullptr,
+		parentHandle,
 		nullptr,
 		WindowClass::GetInstance(),
 		this

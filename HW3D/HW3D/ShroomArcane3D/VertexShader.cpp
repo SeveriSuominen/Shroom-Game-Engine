@@ -11,7 +11,7 @@ VertexShader::VertexShader(ShroomArcaneGraphics & gfx, const std::wstring & path
 	//Get file
 	GFX_THROW_INFO
 	(
-		D3DReadFileToBlob(L"../ShroomArcane3D/VertexShader.cso", &pBytecodeBlob)
+		D3DReadFileToBlob(path.c_str(), &pBytecodeBlob)
 	);
 
 	//Create Vertex shader

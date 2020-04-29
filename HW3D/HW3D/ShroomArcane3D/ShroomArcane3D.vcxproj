@@ -140,13 +140,16 @@
   <ItemGroup>
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="Bindables.h" />
-    <ClInclude Include="Box.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableStatic.h" />
+    <ClInclude Include="GDIPlusManager.h" />
     <ClInclude Include="IndexBuffer.h" />
+    <ClInclude Include="IndexedTriangleList.h" />
     <ClInclude Include="InputLayout.h" />
     <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="Sampler.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Components.h" />
@@ -159,8 +162,12 @@
     <ClInclude Include="ShroomArcane3D.h" />
     <ClInclude Include="ShroomArcaneException.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
+    <ClInclude Include="ShroomArcaneMath.h" />
     <ClInclude Include="ShroomArcaneThrowMacros.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
+    <ClInclude Include="Surface.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="Topology.h" />
     <ClInclude Include="TransformCbuf.h" />
     <ClInclude Include="Vectors.h" />
@@ -170,16 +177,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bindable.cpp" />
-    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
+    <ClCompile Include="GDIPlusManager.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="InputLayout.cpp" />
     <ClCompile Include="PixelShader.cpp" />
+    <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShroomArcaneException.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp" />
+    <ClCompile Include="ShroomArcaneSurfaceException.cpp" />
+    <ClCompile Include="Surface.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureRenderer.cpp" />
     <ClCompile Include="Topology.cpp" />
     <ClCompile Include="TransformCbuf.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
@@ -189,6 +202,9 @@
     <None Include="DXGetErrorDescription.inl" />
     <None Include="DXGetErrorString.inl" />
     <None Include="DXTrace.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\test.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

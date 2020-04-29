@@ -1,7 +1,11 @@
 #pragma once
 
 #include "Drawable.h"
+
 #include "IndexBuffer.h"
+#include "TransformCbuf.h"
+
+#include <DirectXMath.h>
 //Static version of "Drawable" to allow sharing bind between Drawable instances
 
 template<class T>

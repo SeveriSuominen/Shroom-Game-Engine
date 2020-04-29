@@ -4,7 +4,9 @@
 #include "ShroomWindow.h"
 #include "ShroomTimer.h"
 #include <vector>
-#include "ShroomArcane3D/Box.h";
+
+#include "ShroomArcane3D/Renderer.h";
+#include "ShroomArcane3D/TextureRenderer.h"
 
 class App
 {
@@ -17,7 +19,8 @@ private:
 	void  AddCubes(int amount);
 	void  RemoveCubes(int amount);
 	float frameDelta;
-	std::vector<std::unique_ptr<class Box>> boxes;
+	std::vector<std::unique_ptr<class Renderer>> boxes;
+	std::vector<std::unique_ptr<class TextureRenderer>> tboxes;
 
 private:
 	ShroomTimer timer;

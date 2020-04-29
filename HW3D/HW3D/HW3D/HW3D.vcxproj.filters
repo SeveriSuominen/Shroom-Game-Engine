@@ -49,6 +49,27 @@
     <Filter Include="Resource Files\Source Files\Assets\Shaders">
       <UniqueIdentifier>{1b095739-e724-43fe-af07-dc60aa986b9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Renderers">
+      <UniqueIdentifier>{ad523b5d-a8c8-4cf4-9639-4df5d8bee343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Primitives">
+      <UniqueIdentifier>{8646fa3d-c1b6-4799-801b-7805fdd50c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{dc887940-38e0-420f-ac85-f555981317ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Primitives">
+      <UniqueIdentifier>{de911391-b40c-40b9-8919-8b939e7d4a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Images">
+      <UniqueIdentifier>{ed0e5df2-138e-4467-8712-52d8dea39d3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Shaders\Pixel">
+      <UniqueIdentifier>{18e79ac9-eb23-4833-b2ba-fc7b9482b276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Shaders\Vertex">
+      <UniqueIdentifier>{c1cf4dbb-c75d-470a-90b7-c53d757393a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shroom.h">
@@ -87,9 +108,6 @@
     <ClCompile Include="ShroomWindowHandleProcs.cpp">
       <Filter>Resource Files\Source Files\App\Window</Filter>
     </ClCompile>
-    <ClCompile Include="..\ShroomArcane3D\Box.cpp">
-      <Filter>Resource Files\Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -122,6 +140,18 @@
     <ClInclude Include="ShroomThrowMacros.h">
       <Filter>Header Files\App\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Header Files\Assets\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files\Assets\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Cone.h">
+      <Filter>Header Files\Assets\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files\Assets\Primitives</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\icon.ico">
@@ -140,11 +170,17 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="VertexShader.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="PixelShader.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders</Filter>
+      <Filter>Resource Files\Source Files\Assets\Shaders\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Resource Files\Source Files\Assets\Shaders\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturePS.hlsl">
+      <Filter>Resource Files\Source Files\Assets\Shaders\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="TextureVS.hlsl">
+      <Filter>Resource Files\Source Files\Assets\Shaders\Vertex</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

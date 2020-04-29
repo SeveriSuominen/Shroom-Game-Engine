@@ -1,12 +1,17 @@
-#include "Box.h"
+#include "Renderer.h"
 #include "Bindables.h"
 #include "Components.h"
 #include "ShroomArcaneThrowMacros.h"
+
 #include <utility>
 #include <iostream>
 #include <sstream>;
 #include <filesystem>
-Box::Box(ShroomArcaneGraphics& gfx,
+
+Renderer::Renderer(ShroomArcaneGraphics& gfx,
+
+	IndexedTriangleList<Vertex> model,
+
 	std::mt19937& rng,
 	std::uniform_real_distribution<float>& adist,
 	std::uniform_real_distribution<float>& ddist,
@@ -26,31 +31,14 @@ Box::Box(ShroomArcaneGraphics& gfx,
 {
 	if ( ! (IsStaticInitialized()))
 	{
-		//--------------------------------------
-		// VERTICES INPUT
-		//--------------------------------------
-		struct Vertex
-		{
-			struct
-			{
-				float x;
-				float y;
-				float z;
-			} pos;
-		};
-		const std::vector<Vertex> vertices =
-		{
-			{ -1.0f,-1.0f,-1.0f },
-			{ 1.0f,-1.0f,-1.0f },
-			{ -1.0f,1.0f,-1.0f },
-			{ 1.0f,1.0f,-1.0f },
-			{ -1.0f,-1.0f,1.0f },
-			{ 1.0f,-1.0f,1.0f },
-			{ -1.0f,1.0f,1.0f },
-			{ 1.0f,1.0f,1.0f },
-		};
-		AddStaticBind(std::make_unique<VertexBuffer>(gfx, vertices));
 
+		model.Transform(DirectX::XMMatrixScaling(1.0f, 1.0f, 1.2f));
+
+		//--------------------------------------
+		// TEXTURE
+		//--------------------------------------
+		//AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("test.png")));
+		//AddStaticBind(std::make_unique<Sampler>(gfx, D3D11_TEXTURE_ADDRESS_WRAP  ));
 		//--------------------------------------
 		// SHADERS
 		//--------------------------------------
@@ -59,20 +47,6 @@ Box::Box(ShroomArcaneGraphics& gfx,
 
 		AddStaticBind(std::move(pvs));
 		AddStaticBind(std::make_unique<PixelShader>(gfx, L"../ShroomArcane3D/PixelShader.cso"));
-
-		//--------------------------------------
-		// INDICES INPUT
-		//--------------------------------------
-		const std::vector<unsigned short> indices =
-		{
-			0,2,1, 2,3,1,
-			1,3,5, 3,7,5,
-			2,6,3, 3,6,7,
-			4,5,7, 4,7,6,
-			0,4,2, 2,4,6,
-			0,1,4, 1,5,4
-		};
-		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, indices));
 
 		//--------------------------------------
 		// CONSTANT BUFFERS
@@ -106,6 +80,7 @@ Box::Box(ShroomArcaneGraphics& gfx,
 		const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
 		{
 			{ "Position",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 },
+			{ "TexCoord",0,DXGI_FORMAT_R32G32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0 },
 		};
 		AddStaticBind(std::make_unique<InputLayout>(gfx, ied, pvsbc));
 
@@ -116,18 +91,29 @@ Box::Box(ShroomArcaneGraphics& gfx,
 	}
 
 	//--------------------------------------
+	// VERTICES
+	//--------------------------------------
+	AddBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
+
+	//--------------------------------------
+	// INDICES INPUT
+	//--------------------------------------
+	AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));
+
+
+	//--------------------------------------
 	// TRANSFORM MATRIX CONSTANT BUFFER
 	//--------------------------------------
-	//Only non static
+    //Only non static, automatically shares static pointer for transforms
 	AddBind(std::make_unique<TransformCbuf>(gfx, *this));
 
 	//Use this method to set index buffer for drawable when StaticInitialized
 	//if not, IndexBuffer will be nullptr even we have indices binded to pipeline
 	//we still need to set buffer for drawable
-	SetIndexBufferFromStaticBinds();
+	//SetIndexBufferFromStaticBinds();
 }
 
-void Box::Update(float dt) noexcept
+void Renderer::Update(float dt) noexcept
 {
 	roll += droll * dt;
 	pitch += dpitch * dt;
@@ -137,7 +123,7 @@ void Box::Update(float dt) noexcept
 	chi += dchi * dt;
 }
 
-DirectX::XMMATRIX Box::GetTransformXM() const noexcept
+DirectX::XMMATRIX Renderer::GetTransformXM() const noexcept
 {
 	return DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
 		DirectX::XMMatrixTranslation(r, 0.0f, 0.0f) *

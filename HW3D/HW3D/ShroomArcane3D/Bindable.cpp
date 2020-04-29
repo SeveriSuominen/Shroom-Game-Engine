@@ -12,10 +12,9 @@ ID3D11Device* Bindable::GetDevice(ShroomArcaneGraphics& gfx) noexcept
 
 DxgiInfoManager & Bindable::GetInfoManager(ShroomArcaneGraphics & gfx)
 {
-	return gfx.infoManager;
 #ifndef NDEBUG
-	//return gfx.infoManager;
+	return gfx.infoManager;
 #else
-	//throw std::logic_error("YouFuckedUp! (tried to access gfx.infoManager in Release config)");
+	throw std::logic_error("YouFuckedUp! (tried to access gfx.infoManager in Release config)");
 #endif
 }

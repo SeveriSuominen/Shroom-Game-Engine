@@ -81,7 +81,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 
 	//Depth stensil state buffer desc
 	D3D11_DEPTH_STENCIL_DESC dsDesc = {};
-	dsDesc.DepthEnable    = TRUE; 
+	dsDesc.DepthEnable = TRUE;
 	dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;//Turn on or off writing to the depth stencil buffer
 	dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
 
@@ -93,10 +93,10 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 
 	//Depth stensil texture
 	WRL::ComPtr<ID3D11Texture2D> pDSTexture;
-	
+
 	//Depth stencil texture description
 	D3D11_TEXTURE2D_DESC descDepth = {};
-	descDepth.Width  = 900;
+	descDepth.Width = 900;
 	descDepth.Height = 600;
 	descDepth.MipLevels = 1u;
 	descDepth.ArraySize = 1u;
@@ -173,7 +173,7 @@ void ShroomArcaneGraphics::ClearBuffer(Color c)
 	//CLEAR VIEW
 	pContext->ClearRenderTargetView( pTarget.Get(), color /*clear with color*/ );
 	
-	//CLEAR VIEW
+	//CLEAR DEPTH STENCIL 
 	pContext->ClearDepthStencilView( pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
@@ -194,4 +194,5 @@ DirectX::XMMATRIX ShroomArcaneGraphics::GetProjection() const noexcept
 {
 	return projection;
 }
+
 
