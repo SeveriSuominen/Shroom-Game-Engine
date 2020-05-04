@@ -95,10 +95,13 @@ Window::Window(int w, int h, const char* name, SHROOM_WINDOW_TYPE type, HWND par
 		SWND_NO_GFX_EXC();
 
 	ShowWindow(hWnd, SW_SHOW);	
+
+	ImGui_ImplWin32_Init( hWnd );
 }
 
 Window::~Window()
 {
+	ImGui_ImplWin32_Shutdown();
 	DestroyWindow(handle);
 }
 

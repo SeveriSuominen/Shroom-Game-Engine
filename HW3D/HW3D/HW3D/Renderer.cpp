@@ -11,6 +11,7 @@
 #include "MeshRenderer.h";
 #include <sstream>
 
+
 void Renderer::Initialize() 
 {
 	auto view = secs.view<Transform, MeshRenderer>();
@@ -86,10 +87,10 @@ void Renderer::Initialize()
 		//--------------------------------------
 
 		//UVS
-		renderer.model.vertices[0].tex = { 0.0f,0.0f };
-		renderer.model.vertices[1].tex = { 1.0f,0.0f };
-		renderer.model.vertices[2].tex = { 0.0f,1.0f };
-		renderer.model.vertices[3].tex = { 1.0f,1.0f };
+		/*renderer.model.vertices[0].tex = { 0.0f,0.0f };
+		renderer.model.vertices[1].tex = { 2.0f,0.0f };
+		renderer.model.vertices[2].tex = { 0.0f,2.0f };
+		renderer.model.vertices[3].tex = { 2.0f,2.0f };*/
 
 		renderer.AddBind(std::make_unique<VertexBuffer>(gfx, renderer.model.vertices));
 		

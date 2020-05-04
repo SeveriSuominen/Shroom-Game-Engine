@@ -91,6 +91,12 @@
     <Filter Include="Header Files\ECS">
       <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files\App\Imgui">
+      <UniqueIdentifier>{b4820c3b-b678-4333-8204-51480b1f54b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui">
+      <UniqueIdentifier>{fbcef3b2-0594-49fa-a7d7-5662a0632a6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -131,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Resource Files\Source Files\Assets\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomInguiManager.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="SECS.h">
       <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomInguiManager.h">
+      <Filter>Header Files\App\Imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

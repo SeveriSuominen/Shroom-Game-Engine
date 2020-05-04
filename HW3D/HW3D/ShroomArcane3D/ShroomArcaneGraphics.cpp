@@ -6,6 +6,10 @@
 #include <iostream>
 #include <filesystem>
 #include <DirectXMath.h>
+
+//IMGUI
+#include "imgui/imgui_impl_dx11.h"
+
 #pragma comment(lib, "d3d11.lib")		// linking lib file to ccp
 #pragma comment(lib, "D3DCompiler.lib") // linking this to get those shader 
 
@@ -96,8 +100,8 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 
 	//Depth stencil texture description
 	D3D11_TEXTURE2D_DESC descDepth = {};
-	descDepth.Width = 900;
-	descDepth.Height = 600;
+	descDepth.Width = 1920;
+	descDepth.Height = 1080;
 	descDepth.MipLevels = 1u;
 	descDepth.ArraySize = 1u;
 	descDepth.Format = DXGI_FORMAT_D32_FLOAT; //D32 FLOAT PER INDEX, normal for textures 3xD32FLoat EQ R32G32B32
@@ -135,14 +139,17 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	// Viewport
 	//--------------------------------------
 	D3D11_VIEWPORT vp;
-	vp.Width  = 900;
-	vp.Height = 600;
+	vp.Width  = 1920;
+	vp.Height = 1080;
 	vp.MinDepth = 0;
 	vp.MaxDepth = 1;
 	vp.TopLeftX = 0;
 	vp.TopLeftY = 0;
 
 	pContext->RSSetViewports(1u, &vp);
+
+	//IMGUI
+	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
 void ShroomArcaneGraphics::EndFrame()

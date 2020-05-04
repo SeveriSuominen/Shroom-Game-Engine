@@ -4,6 +4,9 @@
 #include "Input.h"
 #include <memory>
 
+//IMGUI
+#include "ShroomArcane3D/imgui/imgui_impl_win32.h";
+
 //--------------------------------------------------
 //ARCANE
 //--------------------------------------------------

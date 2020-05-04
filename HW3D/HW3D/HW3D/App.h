@@ -10,14 +10,25 @@
 #include "Renderer.h";
 #include "ShroomArcane3D/TextureRenderer.h"
 
+//IMGUI
+#include "ShroomInguiManager.h"
+
 class App
 {
 public:
 	    App();
 	int Go();
 
+	//IMGUI manager
+	ShroomImguiManager imgui;
+
+	//MAIN WINDOW
 	Window  root_wnd;
+	
+	//SECS ECS
 	SECS secs;
+	
+	//TEMP ECS SYSTEM;
 	Renderer renderer;
 private:
 	void  DoFrame();

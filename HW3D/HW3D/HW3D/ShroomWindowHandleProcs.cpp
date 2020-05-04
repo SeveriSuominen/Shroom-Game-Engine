@@ -7,6 +7,15 @@
 //Handle msgs proc
 LRESULT Window::HandleMsg(HWND handle, UINT msg, WPARAM wparam, LPARAM lparam)
 {
+//**************************************************
+//IMGUI
+//**************************************************
+	//INGUI MIGHT, BUT NORMALLY USES ANOTHER WAYS TO SIGNAL
+	if (ImGui_ImplWin32_WndProcHandler(handle, msg, wparam, lparam))
+	{
+		return true;
+	}
+//**************************************************
 	switch (msg)
 	{
 //--------------------------------------------------

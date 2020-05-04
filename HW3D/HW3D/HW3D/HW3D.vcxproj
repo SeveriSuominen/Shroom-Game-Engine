@@ -152,6 +152,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShroomECSException.cpp" />
     <ClCompile Include="ShroomException.cpp" />
+    <ClCompile Include="ShroomInguiManager.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="ShroomException.h" />
     <ClInclude Include="ShroomExceptionHandler.h" />
+    <ClInclude Include="ShroomInguiManager.h" />
     <ClInclude Include="ShroomThrowMacros.h" />
     <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShroomWindow.h" />
