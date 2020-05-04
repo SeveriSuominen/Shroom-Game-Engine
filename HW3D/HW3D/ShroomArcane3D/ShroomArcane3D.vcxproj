@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="Bindables.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableStatic.h" />
@@ -169,6 +168,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="Topology.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformCbuf.h" />
     <ClInclude Include="Vectors.h" />
     <ClInclude Include="Vertex.h" />
@@ -177,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bindable.cpp" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />

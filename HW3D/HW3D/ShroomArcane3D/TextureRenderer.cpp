@@ -78,7 +78,14 @@ TextureRenderer::TextureRenderer(ShroomArcaneGraphics& gfx,
 	{
 		SetIndexBufferFromStaticBinds();
 	}
-	AddBind(std::make_unique<TransformCbuf>(gfx, *this));
+
+	//TTEMP
+	/*DirectX::XMMATRIX matrix = 
+		DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
+		DirectX::XMMatrixTranslation(r, 0.0f, 0.0f) *
+		DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi) *
+		DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f);
+	AddBind(std::make_unique<TransformCbuf>(gfx, matrix));*/
 }
 
 void TextureRenderer::Update(float dt) noexcept
@@ -91,10 +98,10 @@ void TextureRenderer::Update(float dt) noexcept
 	chi += dchi * dt;
 }
 
-DirectX::XMMATRIX TextureRenderer::GetTransformXM() const noexcept
+/*DirectX::XMMATRIX TextureRenderer::GetTransformXM() const noexcept
 {
 	return DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
 		DirectX::XMMatrixTranslation(r, 0.0f, 0.0f) *
 		DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi) *
 		DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f);
-}
+}*/

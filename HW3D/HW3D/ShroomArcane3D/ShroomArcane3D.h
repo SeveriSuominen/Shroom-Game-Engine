@@ -6,6 +6,12 @@
 #define __SHROOM_ARCANE_3D__
 #endif
 
+#include "ShroomArcaneThrowMacros.h"
 #include "ShroomArcaneGraphics.h"
 #include "ShroomArcaneMath.h"
 #include "IndexedTriangleList.h"
+#include "Components.h"
+#include "DrawableStatic.h"
+#include "Drawable.h"
+#include "Bindable.h"
+#include "Bindables.h"

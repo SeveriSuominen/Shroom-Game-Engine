@@ -70,22 +70,34 @@
     <Filter Include="Resource Files\Source Files\Assets\Shaders\Vertex">
       <UniqueIdentifier>{c1cf4dbb-c75d-470a-90b7-c53d757393a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files\App\Exceptions\Base">
+      <UniqueIdentifier>{78eb9373-1034-438a-afdb-7395881e5d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\Utility">
+      <UniqueIdentifier>{32216d39-49b6-4b21-b607-e55b0fd1e5f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Utility">
+      <UniqueIdentifier>{d4148b9a-87b6-4ba6-9ebb-2a8b9e51b6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Renderers">
+      <UniqueIdentifier>{fdea70db-85db-4065-9bf8-955b49bd4915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Components">
+      <UniqueIdentifier>{859edcf1-1bd9-4859-b18e-e6eb4e1508a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Assets\Systems">
+      <UniqueIdentifier>{aba65d48-e0d9-40b9-b814-43c6272abd27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS">
+      <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Shroom.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Resource Files\Source Files\App\Input</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>Resource Files\Source Files\App\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="ShroomException.cpp">
-      <Filter>Resource Files\Source Files\App\Exceptions</Filter>
-    </ClCompile>
-    <ClCompile Include="ShroomExceptionHandler.cpp">
-      <Filter>Resource Files\Source Files\App\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="ShroomWindowException.cpp">
       <Filter>Resource Files\Source Files\App\Exceptions</Filter>
@@ -108,11 +120,20 @@
     <ClCompile Include="ShroomWindowHandleProcs.cpp">
       <Filter>Resource Files\Source Files\App\Window</Filter>
     </ClCompile>
+    <ClCompile Include="ShroomECSException.cpp">
+      <Filter>Resource Files\Source Files\App\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomException.cpp">
+      <Filter>Resource Files\Source Files\App\Exceptions\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomExceptionHandler.cpp">
+      <Filter>Resource Files\Source Files\App\Exceptions\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Resource Files\Source Files\Assets\Renderers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>Header Files\App\Input</Filter>
     </ClInclude>
@@ -151,6 +172,15 @@
     </ClInclude>
     <ClInclude Include="Plane.h">
       <Filter>Header Files\Assets\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\Assets\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Header Files\Assets\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SECS.h">
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

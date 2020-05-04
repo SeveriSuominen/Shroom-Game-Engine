@@ -1,6 +1,8 @@
 #include "ShroomWindow.h"
 #include "resource.h"
 
+#include "ShroomECS.h"
+
 //--------------------------------------------------
 //WINDOW CLASS
 //--------------------------------------------------

@@ -1,8 +1,9 @@
+
 #include "TransformCbuf.h"
 
-TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Drawable& parent)
+TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform)
 	:
-	parent(parent)
+	parentTransform(parentTransform)
 {
 	// CONFIRM STATIC TRANSFORM CBUFFER ALLOCATED
 	if (!pVCbuf)
@@ -15,7 +16,7 @@ void TransformCbuf::Bind(ShroomArcaneGraphics& gfx) noexcept
 {
 	pVCbuf->Update(gfx,
 		DirectX::XMMatrixTranspose(
-			parent.GetTransformXM() * gfx.GetProjection()
+			parentTransform.GetTransformXM() * gfx.GetProjection()
 		)
 	);
 	pVCbuf->Bind(gfx);

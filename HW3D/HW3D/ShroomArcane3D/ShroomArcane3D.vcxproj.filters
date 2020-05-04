@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Graphics\Drawable\Renderers">
       <UniqueIdentifier>{a4967103-8115-48a1-907e-822bbc5068a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{d0d0a221-d8ed-4899-bc4c-f2b703d18074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\Components">
+      <UniqueIdentifier>{619949c2-9d99-4bdd-a973-97ab15694f60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneWin.h">
@@ -195,11 +201,11 @@
     <ClInclude Include="Sampler.h">
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Header Files\Drawable\Renderers</Filter>
-    </ClInclude>
     <ClInclude Include="TextureRenderer.h">
       <Filter>Header Files\Drawable\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Assets\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -259,9 +265,6 @@
     </ClCompile>
     <ClCompile Include="Sampler.cpp">
       <Filter>Source Files\Graphics\Bindable\Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\Graphics\Drawable\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="TextureRenderer.cpp">
       <Filter>Source Files\Graphics\Drawable\Renderers</Filter>

@@ -149,8 +149,9 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ShroomECSException.cpp" />
     <ClCompile Include="ShroomException.cpp" />
-    <ClCompile Include="Shroom.h" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
@@ -160,13 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SECS.h" />
     <ClInclude Include="Cone.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Plane.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ShroomException.h" />
     <ClInclude Include="ShroomExceptionHandler.h" />
     <ClInclude Include="ShroomThrowMacros.h" />
