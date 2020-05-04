@@ -11,14 +11,9 @@
 #include "MeshRenderer.h";
 #include <sstream>
 
-void Renderer::Initialize() noexcept
+void Renderer::Initialize() 
 {
 	auto view = secs.view<Transform, MeshRenderer>();
-
-	std::stringstream ss;
-	ss << view.size();
-
-	//MessageBox(nullptr, ss.str().c_str(), "terve", MB_OK);
 
 	for (auto entity : view) {
 		
@@ -89,33 +84,38 @@ void Renderer::Initialize() noexcept
 		//--------------------------------------
 		// VERTICES
 		//--------------------------------------
-		AddBind(std::make_unique<VertexBuffer>(gfx, renderer.model.vertices));
 
+		//UVS
+		renderer.model.vertices[0].tex = { 0.0f,0.0f };
+		renderer.model.vertices[1].tex = { 1.0f,0.0f };
+		renderer.model.vertices[2].tex = { 0.0f,1.0f };
+		renderer.model.vertices[3].tex = { 1.0f,1.0f };
+
+		renderer.AddBind(std::make_unique<VertexBuffer>(gfx, renderer.model.vertices));
+		
 		//--------------------------------------
 		// INDICES INPUT
 		//--------------------------------------
-		AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, renderer.model.indices));
-
-
+		renderer.AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, renderer.model.indices));
+		
 		//--------------------------------------
 		// TRANSFORM MATRIX CONSTANT BUFFER
 		//--------------------------------------
 		//Only non static, automatically shares static pointer for transforms
-		AddBind(std::make_unique<TransformCbuf>(gfx, transform/**this*/));
+		renderer.AddBind(std::make_unique<TransformCbuf>(gfx, transform/**this*/));
 
 		//Use this method to set index buffer for drawable when StaticInitialized
 		//if not, IndexBuffer will be nullptr even we have indices binded to pipeline
 		//we still need to set buffer for drawable
 		//SetIndexBufferFromStaticBinds();
 
-		Draw(gfx);
+		//Draw(gfx);
 	}
 }
 
-void Renderer::Update(float dt) noexcept
+void Renderer::Update(float dt) 
 {
 	auto view = secs.view<Transform, MeshRenderer>();
-	//MessageBox(nullptr, "terska", "terve", MB_OK);
 
 	for (auto entity : view) 
 	{
@@ -129,7 +129,7 @@ void Renderer::Update(float dt) noexcept
 		transform.phi   += transform.dphi   * dt;
 		transform.chi   += transform.dchi   * dt;
 
-		Draw(gfx);
+		Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
 	}
 }
 

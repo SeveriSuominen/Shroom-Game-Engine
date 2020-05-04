@@ -28,7 +28,7 @@ GDIPlusManager gdipm;
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(900, 600, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), renderer(root_wnd.Gfx(), secs)
 {
-	AddCubes(15);
+	AddCubes(5000);
 
 	secs.AddSystem<Renderer>(&renderer);
 
@@ -46,53 +46,23 @@ void App::AddCubes(int amount)
 	std::uniform_real_distribution<float> odist(0.0f, 3.1415f * 0.3f);
 	std::uniform_real_distribution<float> rdist(6.0f, 20.0f);
 	
-	
 	for (auto i = 0; i < amount; i++)
 	{
 		//ECS TEST
-
 		auto entity = secs.create();
-		//secs.emplace<Transform>(entity, i * 1.f, i * 1.f);
-		secs.assign<Transform>    (entity, rng, adist, ddist, odist, rdist);
-		secs.assign<MeshRenderer> (entity, Plane::Make<Vertex>());
 
-		/*Transform transform
-		(
-			rng, adist, ddist, odist, rdist
-		);
+		secs.assign<Transform>    (entity, rng, adist, ddist, odist, rdist, 3);
+		auto& test = secs.assign<MeshRenderer> (entity, Plane::Make<Vertex>(), i + 1);
+		test.test = i;
 
-		MeshRenderer renderer
-		(
-			root_wnd.Gfx(),
-			Sphere::MakeTesselated<Vertex>(32, 32)
-		);
+		auto& test2 = secs.get<MeshRenderer>(entity);
+		
+		//std::stringstream ss;
+		//ss << test2.test;
 
-		ECS.MakeEntity(transform, renderer);*/
+		//MessageBox(nullptr, ss.str().c_str(), "moi2", MB_OK);
 
-		/*boxes.push_back(std::make_unique<Renderer>(
-			root_wnd.Gfx(),
-			Sphere::MakeTesselated<Vertex>(32, 32),
-			rng, adist, ddist, odist, rdist
-			));
-
-		boxes.push_back(std::make_unique<Renderer>(
-			root_wnd.Gfx(),
-			Cube::Make<Vertex>(),
-			rng, adist, ddist, odist, rdist
-			));
-
-		boxes.push_back(std::make_unique<Renderer>(
-			root_wnd.Gfx(),
-			Cone::Make<Vertex>(),
-			rng, adist, ddist, odist, rdist
-			));
-			*/
-		/*tboxes.push_back(std::make_unique<TextureRenderer>(
-			root_wnd.Gfx(),
-			Plane::MakeTesselated<Vertex>(1, 1),
-			timer.Peek(),
-			rng, adist, ddist, odist, rdist
-			));*/
+		//auto& test = secs.get<MeshRenderer>(entity);
 	}
 }
 
@@ -121,12 +91,12 @@ int App::Go()
 	{
 		if (root_wnd.input.mouse.LeftIsPressed())
 		{
-			AddCubes(1);
+			//AddCubes(1);
 		}
 
 		if (root_wnd.input.mouse.RightIsPressed())
 		{
-			RemoveCubes(1);
+			//RemoveCubes(1);
 		}
 
 		//Peeking messages from all windows with static ProcessMessages
@@ -157,17 +127,6 @@ void App::DoFrame()
 
 	secs.Update(deltatime);
 
-	/*for (auto& b : boxes )
-	{
-		b->Update(deltatime);
-		b->Draw(root_wnd.Gfx());
-	}
-
-	for (auto& tb : tboxes)
-	{
-		tb->Update(deltatime);
-		tb->Draw(root_wnd.Gfx());
-	}*/
     root_wnd.Gfx().EndFrame();
 }
 

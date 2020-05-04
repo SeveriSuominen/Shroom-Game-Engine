@@ -16,8 +16,8 @@ public:
 	public:
 		System(SECS* pSECS) : pSECS(pSECS) {};
 
-		virtual void Initialize() noexcept     = 0;
-		virtual void Update(float dt) noexcept = 0;
+		virtual void Initialize() = 0;
+		virtual void Update(float dt) = 0;
 	private:
 		SECS* pSECS;
 	};

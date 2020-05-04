@@ -13,7 +13,8 @@ public:
 		std::uniform_real_distribution<float>& adist,
 		std::uniform_real_distribution<float>& ddist,
 		std::uniform_real_distribution<float>& odist,
-		std::uniform_real_distribution<float>& rdist
+		std::uniform_real_distribution<float>& rdist,
+		int test
 	) :
 		r(rdist(rng)),
 		droll(ddist(rng)),
@@ -34,6 +35,8 @@ public:
 				DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi) *
 				DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f);
 	}
+
+	int test;
 
 	// positional
 	float r;

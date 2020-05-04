@@ -1,4 +1,6 @@
 #pragma once
+#include "ShroomArcaneWin.h"
+#include <sstream>
 #include "Bindable.h"
 #include "ShroomArcaneThrowMacros.h"
 
@@ -11,6 +13,11 @@ public:
 		stride(sizeof(V))
 	{
 		INIT_DXINFOMNG(gfx);
+
+		std::stringstream ss;
+		ss << vertices.size();
+
+		//MessageBox(nullptr, ss.str().c_str(), "moi", MB_OK);
 
 		D3D11_BUFFER_DESC bd = {};
 		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
