@@ -12,6 +12,50 @@
 #include <sstream>
 
 
+//SNIPPET
+#include <codecvt>
+#include <string>
+
+inline bool file_exists(const std::string& name) {
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
+}
+
+std::wstring wstr(const std::string str)
+{//
+	//std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
+
+	std::wstring str2(str.length(), L' '); // Make room for characters
+
+	 // Copy string to wstring.
+	std::copy(str.begin(), str.end(), str2.begin());
+
+	return str2;
+}
+
+template<class Shd>
+inline std::unique_ptr<Shd> get_shader(ShroomArcaneGraphics& gfx ,const std::string& name)
+{
+	std::stringstream ss;
+	ss <<  "Shaders/" << name;
+
+	std::stringstream ss2;
+	ss2 << "../ShroomArcane3D/" << name;
+
+	//std::wstring wss;
+	//wss = std::wstring(ss.str().c_str().begin(), ss.str().c_str().end());
+	if (file_exists(ss.str().c_str()))
+	{
+		return std::make_unique<Shd>(gfx, wstr(ss.str()));
+	}
+	else
+	{
+		return std::make_unique<Shd>(gfx, wstr(ss2.str()));
+	}
+}
+// __SNIPPET
+
+
 void Renderer::Initialize() 
 {
 	auto view = secs.view<Transform, MeshRenderer>();
@@ -34,11 +78,13 @@ void Renderer::Initialize()
 			//--------------------------------------
 			// SHADERS
 			//--------------------------------------
-			auto pvs = std::make_unique<VertexShader>(gfx, L"../ShroomArcane3D/TextureVS.cso");
+		
+			auto pvs = get_shader<VertexShader>(gfx, "TextureVS.cso");
+			
 			auto pvsbc = pvs->GetBytecode();
-
 			AddStaticBind(std::move(pvs));
-			AddStaticBind(std::make_unique<PixelShader>(gfx, L"../ShroomArcane3D/TexturePS.cso"));
+
+			AddStaticBind(get_shader<PixelShader>(gfx, "TexturePS.cso"));
 
 			//--------------------------------------
 			// CONSTANT BUFFERS

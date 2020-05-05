@@ -50,7 +50,7 @@ Window::Window(int w, int h, const char* name, SHROOM_WINDOW_TYPE type, HWND par
 	switch (type)
 	{
 		case SHROOM_WINDOW_TYPE::MAIN:
-			style = WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU;
+			style = /*WS_THICKFRAME | */ WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU;
 			break;
 		case SHROOM_WINDOW_TYPE::SECONDARY:
 			style = WS_THICKFRAME | WS_CAPTION;
