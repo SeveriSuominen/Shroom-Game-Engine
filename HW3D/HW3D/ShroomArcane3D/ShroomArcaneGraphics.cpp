@@ -9,6 +9,7 @@
 
 //IMGUI
 #include "imgui/imgui_impl_dx11.h"
+#include "imgui/imgui_impl_win32.h"
 
 #pragma comment(lib, "d3d11.lib")		// linking lib file to ccp
 #pragma comment(lib, "D3DCompiler.lib") // linking this to get those shader 
@@ -139,7 +140,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	// Viewport
 	//--------------------------------------
 	D3D11_VIEWPORT vp;
-	vp.Width  = 1920;
+	vp.Width  = 1920 * 0.8f;
 	vp.Height = 1080;
 	vp.MinDepth = 0;
 	vp.MaxDepth = 1;
@@ -152,10 +153,28 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
+void ShroomArcaneGraphics::BeginFrame()
+{
+	//--------------------------------------
+	//IMGUI, new FRAME
+	//---------------------------
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+	//---------------------------
+}
+
 void ShroomArcaneGraphics::EndFrame()
 {
 	HRESULT hr;
-	 
+
+	//--------------------------------------
+	//IMGUI Render to dx11 vbuffer
+	//--------------------------------------
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	//--------------------------------------
+
 	//Present back buffer result AKA flip buffers
 	if (hr = FAILED (pSwapChain->Present(1u, 0u)))
 	{

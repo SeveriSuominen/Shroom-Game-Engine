@@ -34,9 +34,6 @@
     <Filter Include="Resource Files\Source Files\App\Input">
       <UniqueIdentifier>{9ed01928-6c04-4daa-ae09-52266185aadd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Source Files\App\Components">
-      <UniqueIdentifier>{fa1f9c37-6afa-4389-9637-db0242d1ed46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Source Files\App\Exceptions">
       <UniqueIdentifier>{98e9ea4d-2a58-44db-981c-0d0901e3cca9}</UniqueIdentifier>
     </Filter>
@@ -92,10 +89,22 @@
       <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\Source Files\App\Imgui">
-      <UniqueIdentifier>{b4820c3b-b678-4333-8204-51480b1f54b1}</UniqueIdentifier>
+      <UniqueIdentifier>{b708d591-04f6-4fbd-a154-85668c065480}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\App\Imgui">
-      <UniqueIdentifier>{fbcef3b2-0594-49fa-a7d7-5662a0632a6a}</UniqueIdentifier>
+      <UniqueIdentifier>{7635b5d1-a156-45fb-847f-64d6bff7d254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\Imgui\Main">
+      <UniqueIdentifier>{e14c5411-fa19-4ec4-b7a2-ec573909c307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\Main">
+      <UniqueIdentifier>{b36fa1a4-fea0-419c-9716-0aeeb9f926a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\Analytics">
+      <UniqueIdentifier>{4f2f0607-00fa-45b1-9765-b2a1972814f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\Imgui\Analytics">
+      <UniqueIdentifier>{8ec2a00c-2f3c-4c40-82bb-fd9e68d14ac6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +122,6 @@
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Resource Files\Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="ShroomTimer.cpp">
-      <Filter>Resource Files\Source Files\App\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp">
       <Filter>Resource Files\Source Files</Filter>
@@ -138,8 +144,14 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Resource Files\Source Files\Assets\Renderers</Filter>
     </ClCompile>
-    <ClCompile Include="ShroomInguiManager.cpp">
-      <Filter>Resource Files\Source Files\App\Imgui</Filter>
+    <ClCompile Include="ShroomTimer.cpp">
+      <Filter>Resource Files\Source Files\App\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiAnalyticsOverlay.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\Analytics</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiMenuBar.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,8 +203,20 @@
     <ClInclude Include="SECS.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ShroomInguiManager.h">
+    <ClInclude Include="ShroomImguiAnalyticsOverlay.h">
+      <Filter>Header Files\App\Imgui\Analytics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiViews.h">
       <Filter>Header Files\App\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiContainer.h">
+      <Filter>Header Files\App\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiView.h">
+      <Filter>Header Files\App\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiMenuBar.h">
+      <Filter>Header Files\App\Imgui\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

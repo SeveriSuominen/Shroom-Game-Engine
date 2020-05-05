@@ -32,7 +32,7 @@ GDIPlusManager gdipm;
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), renderer(root_wnd.Gfx(), secs)
 {
-	AddCubes(500);
+	AddCubes(50);
 
 	secs.AddSystem<Renderer>(&renderer);
 
@@ -128,31 +128,31 @@ void App::DoFrame()
 	auto deltatime = timer.Mark();
 
 	root_wnd.Gfx().ClearBuffer(Color(0.05f,0.05f,0.1f));
+	root_wnd.Gfx().BeginFrame();
 
 	secs.Update(deltatime);
 	
 	//---------------------------
 	//IMGUI
 	//---------------------------
-	
-	//IMGUI, new FRAME
-	//---------------------------
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
-	//---------------------------
-
 	static bool show_demo_window = true;
 	if (show_demo_window)
 	{
 		ImGui::ShowDemoWindow(&show_demo_window);
 	}
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	DrawImguiViews();
 	//---------------------------
 
 	//present, swap
     root_wnd.Gfx().EndFrame();
+}
+
+void App::DrawImguiViews()
+{
+	static bool open = true;
+	imguiContainer.DrawContainerByCategory(this);
+	
+	//ImGui::End();
 }
 
 

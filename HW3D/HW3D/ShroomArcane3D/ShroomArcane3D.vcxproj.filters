@@ -103,6 +103,12 @@
     <Filter Include="Source Files\Imgui">
       <UniqueIdentifier>{728adcea-6d08-45d8-90dc-38c0eb0323ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Imgui\IMGUI">
+      <UniqueIdentifier>{b9652443-0d3c-4974-85eb-a4c130fbae5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Imgui\IMGUI">
+      <UniqueIdentifier>{e2c29a4b-0ee2-4b12-b946-52bb7bf0e072}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneWin.h">
@@ -213,28 +219,31 @@
     <ClInclude Include="Transform.h">
       <Filter>Header Files\Assets\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Imgui\imstb_truetype.h">
+      <Filter>Header Files\Imgui\IMGUI</Filter>
+    </ClInclude>
     <ClInclude Include="Imgui\imconfig.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imgui.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imgui_impl_dx11.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imgui_impl_win32.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imgui_internal.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imstb_rectpack.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Imgui\imstb_textedit.h">
-      <Filter>Header Files\Imgui</Filter>
+      <Filter>Header Files\Imgui\IMGUI</Filter>
     </ClInclude>
-    <ClInclude Include="Imgui\imstb_truetype.h">
+    <ClInclude Include="ShroomArcaneImguiManager.h">
       <Filter>Header Files\Imgui</Filter>
     </ClInclude>
   </ItemGroup>
@@ -299,22 +308,25 @@
     <ClCompile Include="TextureRenderer.cpp">
       <Filter>Source Files\Graphics\Drawable\Renderers</Filter>
     </ClCompile>
+    <ClCompile Include="Imgui\imgui_widgets.cpp">
+      <Filter>Source Files\Imgui\IMGUI</Filter>
+    </ClCompile>
     <ClCompile Include="Imgui\imgui.cpp">
-      <Filter>Source Files\Imgui</Filter>
+      <Filter>Source Files\Imgui\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_demo.cpp">
-      <Filter>Source Files\Imgui</Filter>
+      <Filter>Source Files\Imgui\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_draw.cpp">
-      <Filter>Source Files\Imgui</Filter>
+      <Filter>Source Files\Imgui\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_impl_dx11.cpp">
-      <Filter>Source Files\Imgui</Filter>
+      <Filter>Source Files\Imgui\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_impl_win32.cpp">
-      <Filter>Source Files\Imgui</Filter>
+      <Filter>Source Files\Imgui\IMGUI</Filter>
     </ClCompile>
-    <ClCompile Include="Imgui\imgui_widgets.cpp">
+    <ClCompile Include="ShroomArcaneImguiManager.cpp">
       <Filter>Source Files\Imgui</Filter>
     </ClCompile>
   </ItemGroup>

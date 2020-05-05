@@ -137,6 +137,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
       <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -152,7 +153,8 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShroomECSException.cpp" />
     <ClCompile Include="ShroomException.cpp" />
-    <ClCompile Include="ShroomInguiManager.cpp" />
+    <ClCompile Include="ShroomImguiAnalyticsOverlay.cpp" />
+    <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
@@ -173,7 +175,11 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="ShroomException.h" />
     <ClInclude Include="ShroomExceptionHandler.h" />
-    <ClInclude Include="ShroomInguiManager.h" />
+    <ClInclude Include="ShroomImguiAnalyticsOverlay.h" />
+    <ClInclude Include="ShroomImguiContainer.h" />
+    <ClInclude Include="ShroomImguiMenuBar.h" />
+    <ClInclude Include="ShroomImguiView.h" />
+    <ClInclude Include="ShroomImguiViews.h" />
     <ClInclude Include="ShroomThrowMacros.h" />
     <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShroomWindow.h" />

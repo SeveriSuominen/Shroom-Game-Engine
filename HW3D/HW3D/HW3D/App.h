@@ -11,7 +11,10 @@
 #include "ShroomArcane3D/TextureRenderer.h"
 
 //IMGUI
-#include "ShroomInguiManager.h"
+#include "ShroomArcane3D/ShroomArcaneImguiManager.h"
+
+//Shroom imgui views in here
+#include "ShroomImguiContainer.h"
 
 class App
 {
@@ -20,7 +23,8 @@ public:
 	int Go();
 
 	//IMGUI manager
-	ShroomImguiManager imgui;
+	ShroomArcaneImguiManager imgui;
+	ShroomImguiContainer	 imguiContainer;
 
 	//MAIN WINDOW
 	Window  root_wnd;
@@ -30,8 +34,14 @@ public:
 	
 	//TEMP ECS SYSTEM;
 	Renderer renderer;
+
+public:
+
+	;
+
 private:
 	void  DoFrame();
+	void  DrawImguiViews();
 	void  AddCubes(int amount);
 	void  RemoveCubes(int amount);
 	float frameDelta;

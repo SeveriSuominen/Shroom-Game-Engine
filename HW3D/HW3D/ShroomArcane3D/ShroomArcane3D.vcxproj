@@ -180,6 +180,7 @@
     <ClInclude Include="ShroomArcaneMath.h" />
     <ClInclude Include="ShroomArcaneThrowMacros.h" />
     <ClInclude Include="ShroomArcaneWin.h" />
+    <ClInclude Include="ShroomArcaneImguiManager.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureRenderer.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ShroomArcaneException.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp" />
+    <ClCompile Include="ShroomArcaneImguiManager.cpp" />
     <ClCompile Include="ShroomArcaneSurfaceException.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture.cpp" />

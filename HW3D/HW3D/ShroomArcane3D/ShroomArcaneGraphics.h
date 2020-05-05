@@ -25,7 +25,9 @@ public:
 //API
 //--------------------------------------------------------------------------
 public:
+	void BeginFrame();
 	void EndFrame();
+
 	void ClearBuffer(Color c);
 	void DrawIndexed(UINT count) noexcept;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
