@@ -5,3 +5,6 @@
 
 //Analytics
 #include "ShroomImguiAnalyticsOverlay.h"
+
+//Controls
+#include "ShroomImguiCameraControl.h"

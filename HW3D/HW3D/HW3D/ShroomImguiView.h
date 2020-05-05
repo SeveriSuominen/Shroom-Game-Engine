@@ -13,10 +13,11 @@ class ShroomImguiView
 public:
 	enum Category
 	{
-		All		  = 0u,
-		General   = 1u,
-		Rendering = 2u,
-		Network   = 3u,
+		All		  = 10u,
+		General   = 20u,
+		SECS      = 30u,
+		Rendering = 40u,
+		Network   = 50u,
 	};
 
 	ShroomImguiView(Category category) : category(category) {}

@@ -15,8 +15,9 @@ TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentT
 void TransformCbuf::Bind(ShroomArcaneGraphics& gfx) noexcept
 {
 	pVCbuf->Update(gfx,
-		DirectX::XMMatrixTranspose(
-			parentTransform.GetTransformXM() * gfx.GetProjection()
+		DirectX::XMMatrixTranspose
+		(
+			parentTransform.GetTransformXM() * gfx.camera.GetMatrix() * gfx.GetProjection()
 		)
 	);
 	pVCbuf->Bind(gfx);

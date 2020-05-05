@@ -20,7 +20,8 @@ public:
 		//-----------------------------------------------------------------
 		//Utility
 		//-----------------------------------------------------------------
-		views.push_back(std::make_unique<ShroomImguiAnalyticsOverlay>(ShroomImguiView::Category::General));
+		views.push_back(std::make_unique<ShroomImguiAnalyticsOverlay>(ShroomImguiView::Category::All));
+		views.push_back(std::make_unique<ShroomImguiCameraControl>(ShroomImguiView::Category::General));
 	}
 
 	std::vector<std::unique_ptr<ShroomImguiView>*> GetByCategory(ShroomImguiView::Category category)
@@ -41,9 +42,10 @@ public:
 	{
 		std::vector<ShroomImguiView::Category> categories = 
 		{
-			ShroomImguiView::Category::All,
+			ShroomImguiView::Category::All, // <---- SHOW EVERYWHERE
 
 			ShroomImguiView::Category::General,
+			ShroomImguiView::Category::SECS,
 			ShroomImguiView::Category::Rendering,
 			ShroomImguiView::Category::Network
 		};
@@ -53,6 +55,7 @@ public:
 		    "ALL",
 
 			"General",
+			"SECS",
 			"Rendering",
 			"Network"
 		};

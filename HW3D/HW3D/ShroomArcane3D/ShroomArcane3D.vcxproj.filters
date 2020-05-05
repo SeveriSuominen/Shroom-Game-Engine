@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Components">
-      <UniqueIdentifier>{058dde43-825c-4c9d-98ec-123f9a9394a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Components\Structs">
-      <UniqueIdentifier>{6e33f3ad-90c4-45ee-9948-082bcbdb1f1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{1efcc3c5-5d51-47d7-a67b-5314dd96ef86}</UniqueIdentifier>
     </Filter>
@@ -109,6 +103,18 @@
     <Filter Include="Source Files\Imgui\IMGUI">
       <UniqueIdentifier>{e2c29a4b-0ee2-4b12-b946-52bb7bf0e072}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Meshing">
+      <UniqueIdentifier>{75200544-6bf1-468a-9d81-aa21826ba0da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Camera">
+      <UniqueIdentifier>{c3116b04-0bfc-4379-97f4-789b847cbf0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parts">
+      <UniqueIdentifier>{058dde43-825c-4c9d-98ec-123f9a9394a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parts\Structs">
+      <UniqueIdentifier>{6e33f3ad-90c4-45ee-9948-082bcbdb1f1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneWin.h">
@@ -118,10 +124,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\Parts</Filter>
     </ClInclude>
     <ClInclude Include="ShroomArcaneException.h">
       <Filter>Header Files\Exceptions</Filter>
@@ -133,22 +139,22 @@
       <Filter>Header Files\Exceptions\DX_ERR</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Float2.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Float3.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Float4.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Vectors.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\Parts</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
-      <Filter>Header Files\Components\Structs</Filter>
+      <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
     <ClInclude Include="ShroomArcaneThrowMacros.h">
       <Filter>Header Files\Exceptions</Filter>
@@ -179,9 +185,6 @@
     </ClInclude>
     <ClInclude Include="DrawableStatic.h">
       <Filter>Header Files\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexedTriangleList.h">
-      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ShroomArcaneMath.h">
       <Filter>Header Files</Filter>
@@ -245,6 +248,12 @@
     </ClInclude>
     <ClInclude Include="ShroomArcaneImguiManager.h">
       <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedTriangleList.h">
+      <Filter>Header Files\Graphics\Meshing</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomArcaneCamera.h">
+      <Filter>Header Files\Graphics\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="ShroomArcaneImguiManager.cpp">
       <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomArcaneCamera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -154,6 +154,7 @@
     <ClCompile Include="ShroomECSException.cpp" />
     <ClCompile Include="ShroomException.cpp" />
     <ClCompile Include="ShroomImguiAnalyticsOverlay.cpp" />
+    <ClCompile Include="ShroomImguiCameraControl.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
@@ -164,6 +165,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="ShroomImguiCameraControl.h" />
+    <ClInclude Include="ShroomEntity.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SECS.h" />

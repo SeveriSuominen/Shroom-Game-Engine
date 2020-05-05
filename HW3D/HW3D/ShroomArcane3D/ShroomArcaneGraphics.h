@@ -7,6 +7,8 @@
 #include "DxgiInfoManager.h"
 #include <d3d11.h> //Only declarations so we also need a links to library see CCP file
 
+#include "ShroomArcaneCamera.h"
+
 #include <vector>
 
 class ShroomArcaneGraphics
@@ -27,11 +29,15 @@ public:
 public:
 	void BeginFrame();
 	void EndFrame();
-
 	void ClearBuffer(Color c);
 	void DrawIndexed(UINT count) noexcept;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
 	DirectX::XMMATRIX GetProjection() const noexcept;
+//--------------------------------------------------------------------------
+//Camera
+//--------------------------------------------------------------------------
+public:
+	ShroomArcaneCamera camera;
 //--------------------------------------------------------------------------
 //DX11
 //--------------------------------------------------------------------------

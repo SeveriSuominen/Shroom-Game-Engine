@@ -20,8 +20,8 @@ namespace DX  = DirectX;
 ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 {
 	DXGI_SWAP_CHAIN_DESC sd = {};
-	sd.BufferDesc.Width  = 0;
-	sd.BufferDesc.Height = 0;
+	sd.BufferDesc.Width  = 0; //DEFAULT
+	sd.BufferDesc.Height = 0; //DEFAULT
 	sd.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM; //VTEXTURE FORMAT
 	sd.BufferDesc.RefreshRate.Numerator   = 0;
 	sd.BufferDesc.RefreshRate.Denominator = 0;
@@ -101,13 +101,13 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 
 	//Depth stencil texture description
 	D3D11_TEXTURE2D_DESC descDepth = {};
-	descDepth.Width = 1920;
-	descDepth.Height = 1080;
+	descDepth.Width   = 1920;
+	descDepth.Height  = 1080;
 	descDepth.MipLevels = 1u;
 	descDepth.ArraySize = 1u;
 	descDepth.Format = DXGI_FORMAT_D32_FLOAT; //D32 FLOAT PER INDEX, normal for textures 3xD32FLoat EQ R32G32B32
 	//ANTIALIASING stuff
-	descDepth.SampleDesc.Count = 1u;
+	descDepth.SampleDesc.Count   = 1u;
 	descDepth.SampleDesc.Quality = 0u;
 	//------------------
 	descDepth.Usage = D3D11_USAGE_DEFAULT;
@@ -140,7 +140,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	// Viewport
 	//--------------------------------------
 	D3D11_VIEWPORT vp;
-	vp.Width  = 1920 * 0.8f;
+	vp.Width  = 1920;
 	vp.Height = 1080;
 	vp.MinDepth = 0;
 	vp.MaxDepth = 1;

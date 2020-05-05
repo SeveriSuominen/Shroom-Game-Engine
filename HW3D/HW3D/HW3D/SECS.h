@@ -8,6 +8,8 @@
 
 typedef entt::registry ENTT_ECS;
 
+//ENTT SHROOM LAYER
+
 class SECS : public ENTT_ECS
 {
 public:

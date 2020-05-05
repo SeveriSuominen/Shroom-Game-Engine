@@ -175,6 +175,7 @@
     <ClInclude Include="Float4.h" />
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="ShroomArcane3D.h" />
+    <ClInclude Include="ShroomArcaneCamera.h" />
     <ClInclude Include="ShroomArcaneException.h" />
     <ClInclude Include="ShroomArcaneGraphics.h" />
     <ClInclude Include="ShroomArcaneMath.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="InputLayout.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="Sampler.cpp" />
+    <ClCompile Include="ShroomArcaneCamera.cpp" />
     <ClCompile Include="ShroomArcaneException.cpp" />
     <ClCompile Include="ShroomArcaneGraphics.cpp" />
     <ClCompile Include="ShroomArcaneGraphicsExceptions.cpp" />

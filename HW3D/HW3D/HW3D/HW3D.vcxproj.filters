@@ -106,6 +106,15 @@
     <Filter Include="Resource Files\Source Files\App\Imgui\Analytics">
       <UniqueIdentifier>{8ec2a00c-2f3c-4c40-82bb-fd9e68d14ac6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ECS\Entities">
+      <UniqueIdentifier>{1d76111f-b22e-4f0a-b296-dfa25f5ba4af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Systems">
+      <UniqueIdentifier>{8f3623c2-1861-456c-94ea-7101bfe2ee00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\Controls">
+      <UniqueIdentifier>{17beabd3-1b6f-44ea-b47c-41ba1deb1127}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -152,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="ShroomImguiMenuBar.cpp">
       <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiCameraControl.cpp">
+      <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="ShroomImguiMenuBar.h">
       <Filter>Header Files\App\Imgui\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomEntity.h">
+      <Filter>Header Files\ECS\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiCameraControl.h">
+      <Filter>Header Files\App\Imgui\Controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
