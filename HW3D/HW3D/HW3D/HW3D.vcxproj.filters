@@ -106,14 +106,23 @@
     <Filter Include="Resource Files\Source Files\App\Imgui\Analytics">
       <UniqueIdentifier>{8ec2a00c-2f3c-4c40-82bb-fd9e68d14ac6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ECS\Entities">
-      <UniqueIdentifier>{1d76111f-b22e-4f0a-b296-dfa25f5ba4af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ECS\Systems">
-      <UniqueIdentifier>{8f3623c2-1861-456c-94ea-7101bfe2ee00}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\App\Imgui\Controls">
       <UniqueIdentifier>{17beabd3-1b6f-44ea-b47c-41ba1deb1127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\SECS">
+      <UniqueIdentifier>{6f4be382-d88e-4495-912b-d953e9d5c210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\Imgui\SECS">
+      <UniqueIdentifier>{9883a332-6c02-4dfa-bd2f-d404769a1cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\Imgui\Analytics\Controls">
+      <UniqueIdentifier>{dca3e75a-1c4f-4ca2-89eb-d9cdd0694113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RTTR">
+      <UniqueIdentifier>{5b3c261b-6a46-4eb0-a5e9-54e789d4b0fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\App\RTTR">
+      <UniqueIdentifier>{c0515a26-9e76-4a5b-9f9f-85ba7e4d73ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -126,14 +135,8 @@
     <ClCompile Include="ShroomWindowException.cpp">
       <Filter>Resource Files\Source Files\App\Exceptions</Filter>
     </ClCompile>
-    <ClCompile Include="ShroomWin.cpp">
-      <Filter>Resource Files\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Resource Files\Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp">
-      <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShroomWindow.cpp">
       <Filter>Resource Files\Source Files\App\Window</Filter>
@@ -163,6 +166,12 @@
       <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
     </ClCompile>
     <ClCompile Include="ShroomImguiCameraControl.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\Analytics\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiSECSHierarchy.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\SECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWin.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -230,11 +239,11 @@
     <ClInclude Include="ShroomImguiMenuBar.h">
       <Filter>Header Files\App\Imgui\Main</Filter>
     </ClInclude>
-    <ClInclude Include="ShroomEntity.h">
-      <Filter>Header Files\ECS\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="ShroomImguiCameraControl.h">
       <Filter>Header Files\App\Imgui\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiSECSHierarchy.h">
+      <Filter>Header Files\App\Imgui\SECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -146,7 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\ShroomArcane3D\ShroomArcaneGraphics.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Mouse.cpp" />
@@ -156,9 +155,10 @@
     <ClCompile Include="ShroomImguiAnalyticsOverlay.cpp" />
     <ClCompile Include="ShroomImguiCameraControl.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
+    <ClCompile Include="ShroomImguiSECSHierarchy.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
-    <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
+    <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomWindowException.cpp" />
     <ClCompile Include="ShroomWindow.cpp" />
     <ClCompile Include="ShroomWindowHandleProcs.cpp" />
@@ -166,7 +166,6 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="ShroomImguiCameraControl.h" />
-    <ClInclude Include="ShroomEntity.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SECS.h" />
@@ -181,6 +180,7 @@
     <ClInclude Include="ShroomImguiAnalyticsOverlay.h" />
     <ClInclude Include="ShroomImguiContainer.h" />
     <ClInclude Include="ShroomImguiMenuBar.h" />
+    <ClInclude Include="ShroomImguiSECSHierarchy.h" />
     <ClInclude Include="ShroomImguiView.h" />
     <ClInclude Include="ShroomImguiViews.h" />
     <ClInclude Include="ShroomThrowMacros.h" />

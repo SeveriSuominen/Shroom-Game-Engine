@@ -5,7 +5,10 @@
 #include <memory>;
 #include <algorithm>;
 #include <utility>;
-struct MeshRenderer 
+
+#include "SECS.h"
+
+struct MeshRenderer : SECS::Component
 {
 public:
 	//----------------------------------
@@ -16,12 +19,11 @@ public:
 		IndexedTriangleList<Vertex> model,
 		int test
 	)
-	: model(model), test(test) {}
+	: model(model), test(test), Component() {}
 	//----------------------------------
 
 	int test = 0;
 
-	//MeshRenderer(const MeshRenderer &) = delete;
 	//MeshRenderer & operator=(const MeshRenderer &) = delete;
 	//MeshRenderer() = default;
 
@@ -31,7 +33,8 @@ public:
 	MeshRenderer(MeshRenderer &&other)
 		: binds{ std::move(other.binds) },
 		  model{ std::move(other.model) },
-		  test { std::move(other.test) }
+		  test { std::move(other.test) },
+		  Component()
 	{}
 
 	MeshRenderer & operator=(MeshRenderer &&other) {

@@ -26,8 +26,6 @@
 #include "ShroomArcane3D/imgui/imgui_impl_dx11.h"
 #include "ShroomArcane3D/imgui/imgui_impl_win32.h"
 
-#include "ShroomEntity.h"
-
 //GDIPlusManager needs to be initialised to use Surface
 GDIPlusManager gdipm;
 
@@ -42,8 +40,7 @@ App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nu
 	
 	const Surface s = Surface::FromFile("test.png");
 
-	root_wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f/*Min clip*/, 400.0f));
-	//root_wnd.Gfx().camera.SetMatrix(DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f));
+	root_wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f/*Min clip*/, 400.0f/*Max clip*/));
 }
 
 void App::AddCubes(int amount)
@@ -56,32 +53,11 @@ void App::AddCubes(int amount)
 
 	for (auto i = 0; i < amount; i++)
 	{
-		auto shroomentity = ShroomEntity::Create(this->secs);
-		secs.assign<MeshRenderer>(shroomentity.Get, Sphere::Make<Vertex>(), i + 1);
+		auto& shroomentity  = SECS::Entity::Create("entiteetti", this->secs);
+		shroomentity.get()  -> AssignComponent<MeshRenderer>(Cube::MakeSkinned<Vertex>(), 1);
 
-		auto shroomentity2 = ShroomEntity::Create(this->secs);
-		secs.assign<MeshRenderer>(shroomentity2.Get, Cube::MakeSkinned<Vertex>(), i + 1);
-
-		//ECS TEST
-		/*auto entity = secs.create();
-		
-		secs.assign<Transform>    (entity, rng, adist, ddist, odist, rdist, 3);
-		secs.assign<MeshRenderer> (entity, Sphere::Make<Vertex>() , i + 1);
-	
-
-		//ECS TEST
-		auto entity2 = secs.create();
-
-		secs.assign<Transform>(entity2, rng, adist, ddist, odist, rdist, 3);
-		secs.assign<MeshRenderer>(entity2, Cube::MakeSkinned<Vertex>(), i + 1);*/
-	
-
-		//std::stringstream ss;
-		//ss << test2.test;
-
-		//MessageBox(nullptr, ss.str().c_str(), "moi2", MB_OK);
-
-		//auto& test = secs.get<MeshRenderer>(entity);
+		auto& shroomentity2 = SECS::Entity::Create("entiteetti", this->secs);
+		shroomentity2.get() -> AssignComponent<MeshRenderer>(Sphere::Make<Vertex>(), 1);
 	}
 }
 
@@ -166,8 +142,6 @@ void App::DrawImguiViews()
 {
 	static bool open = true;
 	imguiContainer.DrawContainerByCategory(this);
-	
-	//ImGui::End();
 }
 
 

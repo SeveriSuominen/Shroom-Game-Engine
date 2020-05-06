@@ -8,3 +8,6 @@
 
 //Controls
 #include "ShroomImguiCameraControl.h"
+
+//SECS
+#include "ShroomImguiSECSHierarchy.h"
