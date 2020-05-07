@@ -40,33 +40,6 @@
     <Filter Include="Resource Files\Source Files\App\Window">
       <UniqueIdentifier>{d44fb724-c475-4ec4-a359-d53ede3b6f4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Source Files\Assets">
-      <UniqueIdentifier>{474558f0-f7f3-4caf-8557-9622111a06c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Shaders">
-      <UniqueIdentifier>{1b095739-e724-43fe-af07-dc60aa986b9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Renderers">
-      <UniqueIdentifier>{ad523b5d-a8c8-4cf4-9639-4df5d8bee343}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Primitives">
-      <UniqueIdentifier>{8646fa3d-c1b6-4799-801b-7805fdd50c9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Assets">
-      <UniqueIdentifier>{dc887940-38e0-420f-ac85-f555981317ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Assets\Primitives">
-      <UniqueIdentifier>{de911391-b40c-40b9-8919-8b939e7d4a02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Images">
-      <UniqueIdentifier>{ed0e5df2-138e-4467-8712-52d8dea39d3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Shaders\Pixel">
-      <UniqueIdentifier>{18e79ac9-eb23-4833-b2ba-fc7b9482b276}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Shaders\Vertex">
-      <UniqueIdentifier>{c1cf4dbb-c75d-470a-90b7-c53d757393a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Source Files\App\Exceptions\Base">
       <UniqueIdentifier>{78eb9373-1034-438a-afdb-7395881e5d65}</UniqueIdentifier>
     </Filter>
@@ -75,18 +48,6 @@
     </Filter>
     <Filter Include="Header Files\App\Utility">
       <UniqueIdentifier>{d4148b9a-87b6-4ba6-9ebb-2a8b9e51b6b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Assets\Renderers">
-      <UniqueIdentifier>{fdea70db-85db-4065-9bf8-955b49bd4915}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Assets\Components">
-      <UniqueIdentifier>{859edcf1-1bd9-4859-b18e-e6eb4e1508a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Source Files\Assets\Systems">
-      <UniqueIdentifier>{aba65d48-e0d9-40b9-b814-43c6272abd27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ECS">
-      <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\Source Files\App\Imgui">
       <UniqueIdentifier>{b708d591-04f6-4fbd-a154-85668c065480}</UniqueIdentifier>
@@ -118,11 +79,71 @@
     <Filter Include="Resource Files\Source Files\App\Imgui\Analytics\Controls">
       <UniqueIdentifier>{dca3e75a-1c4f-4ca2-89eb-d9cdd0694113}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\RTTR">
-      <UniqueIdentifier>{5b3c261b-6a46-4eb0-a5e9-54e789d4b0fa}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{fb361ed1-f18e-4e4f-b69d-f5abfabe0a77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Source Files\App\RTTR">
-      <UniqueIdentifier>{c0515a26-9e76-4a5b-9f9f-85ba7e4d73ca}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine\ECS">
+      <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Assets">
+      <UniqueIdentifier>{dc887940-38e0-420f-ac85-f555981317ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Assets\Standard">
+      <UniqueIdentifier>{7def070a-a457-4ecb-9782-0391a41de1a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Assets\Standard\Components">
+      <UniqueIdentifier>{859edcf1-1bd9-4859-b18e-e6eb4e1508a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Assets\Standard\Primitives">
+      <UniqueIdentifier>{de911391-b40c-40b9-8919-8b939e7d4a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Assets\Standard\Renderers">
+      <UniqueIdentifier>{fdea70db-85db-4065-9bf8-955b49bd4915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine">
+      <UniqueIdentifier>{bfcd3a15-0f1e-49df-a53c-a2e28362fe89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets">
+      <UniqueIdentifier>{474558f0-f7f3-4caf-8557-9622111a06c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard">
+      <UniqueIdentifier>{f7bc8099-b693-46bf-ac3c-e06787c5b9d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Images">
+      <UniqueIdentifier>{ed0e5df2-138e-4467-8712-52d8dea39d3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Primitives">
+      <UniqueIdentifier>{8646fa3d-c1b6-4799-801b-7805fdd50c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Renderers">
+      <UniqueIdentifier>{ad523b5d-a8c8-4cf4-9639-4df5d8bee343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Shaders">
+      <UniqueIdentifier>{1b095739-e724-43fe-af07-dc60aa986b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel">
+      <UniqueIdentifier>{18e79ac9-eb23-4833-b2ba-fc7b9482b276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex">
+      <UniqueIdentifier>{c1cf4dbb-c75d-470a-90b7-c53d757393a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Scripting">
+      <UniqueIdentifier>{ec2ef5c4-d5db-42de-9b07-5bb60545605c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Scripting">
+      <UniqueIdentifier>{9085c335-3899-40e9-bdb1-1f9b670e491a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Scripting\Lua">
+      <UniqueIdentifier>{1be77e1f-1ddc-43da-8947-7c26b3665f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Scripting\Lua">
+      <UniqueIdentifier>{38003edd-2533-464e-993e-8887742836c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\Icons">
+      <UniqueIdentifier>{9596602c-0b01-4644-b610-85282a46120f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\Utility">
+      <UniqueIdentifier>{aa13a350-0a7b-429b-94f7-c3b17608fb27}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +175,7 @@
       <Filter>Resource Files\Source Files\App\Exceptions\Base</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Resource Files\Source Files\Assets\Renderers</Filter>
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="ShroomTimer.cpp">
       <Filter>Resource Files\Source Files\App\Utility</Filter>
@@ -173,6 +194,9 @@
     </ClCompile>
     <ClCompile Include="ShroomWin.cpp">
       <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiAssetView.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,25 +228,25 @@
       <Filter>Header Files\App\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
-      <Filter>Header Files\Assets\Primitives</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Header Files\Assets\Primitives</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Cone.h">
-      <Filter>Header Files\Assets\Primitives</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>Header Files\Assets\Primitives</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Header Files\Assets\Renderers</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
     </ClInclude>
     <ClInclude Include="MeshRenderer.h">
-      <Filter>Header Files\Assets\Components</Filter>
+      <Filter>Header Files\Engine\Assets\Standard\Components</Filter>
     </ClInclude>
     <ClInclude Include="SECS.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>Header Files\Engine\ECS</Filter>
     </ClInclude>
     <ClInclude Include="ShroomImguiAnalyticsOverlay.h">
       <Filter>Header Files\App\Imgui\Analytics</Filter>
@@ -245,6 +269,72 @@
     <ClInclude Include="ShroomImguiSECSHierarchy.h">
       <Filter>Header Files\App\Imgui\SECS</Filter>
     </ClInclude>
+    <ClInclude Include="lua.h">
+      <Filter>Header Files\Engine\Scripting\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiAssetView.h">
+      <Filter>Header Files\App\Imgui\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomAssets.h">
+      <Filter>Header Files\Engine\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontaudio.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontaudio_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome4.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome4_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5Brands.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5Brands_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5Pro.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5Pro_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5ProBrands.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsFontAwesome5ProBrands_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsForkAwesome.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsForkAwesome_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsKenney.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsKenney_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsMaterialDesign.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\IconsMaterialDesign_c.h">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiViewUtility.h">
+      <Filter>Header Files\App\Imgui\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\icon.ico">
@@ -264,16 +354,21 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders\Pixel</Filter>
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel</Filter>
     </FxCompile>
     <FxCompile Include="VertexShader.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders\Vertex</Filter>
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
     </FxCompile>
     <FxCompile Include="TexturePS.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders\Pixel</Filter>
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel</Filter>
     </FxCompile>
     <FxCompile Include="TextureVS.hlsl">
-      <Filter>Resource Files\Source Files\Assets\Shaders\Vertex</Filter>
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\Downloads\fa-solid-900.ttf">
+      <Filter>Header Files\App\Imgui\Icons</Filter>
+    </Font>
   </ItemGroup>
 </Project>

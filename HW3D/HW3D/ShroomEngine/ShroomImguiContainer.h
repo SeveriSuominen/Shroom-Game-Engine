@@ -22,7 +22,7 @@ public:
 		//-----------------------------------------------------------------
 		views.push_back(std::make_unique<ShroomImguiAnalyticsOverlay>(ShroomImguiView::Category::All));
 		views.push_back(std::make_unique<ShroomImguiCameraControl>(ShroomImguiView::Category::All));
-
+		views.push_back(std::make_unique<ShroomImguiAssetView>(ShroomImguiView::Category::All));
 
 		views.push_back(std::make_unique<ShroomImguiSECSHierarchy>(ShroomImguiView::Category::SECS));
 	}

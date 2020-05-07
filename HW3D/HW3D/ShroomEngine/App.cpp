@@ -15,6 +15,10 @@
 #include "MeshRenderer.h"
 #include "Renderer.h"
 
+#include "imgui/IconsFontAwesome5.h"
+
+#include <filesystem>
+
 //ECS
 #include "SECS.h";
 #include <cstdint>
@@ -26,12 +30,26 @@
 #include "ShroomArcane3D/imgui/imgui_impl_dx11.h"
 #include "ShroomArcane3D/imgui/imgui_impl_win32.h"
 
+//LUA
+//#include "ShroomScript/ShroomLua.h"
+
 //GDIPlusManager needs to be initialised to use Surface
 GDIPlusManager gdipm;
 
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), renderer(root_wnd.Gfx(), secs)
 {
+	/*std::string cmd = "a = 7 + 12";
+	lua_State* L = luaL_newstate();
+
+	int r = luaL_dostring(L, cmd.c_str());
+
+	if (r == LUA_OK)
+	{
+		//MessageBox(nullptr, "terve", "yolonki", MB_OK);
+	}*/
+
+
 	AddCubes(50);
 
 	secs.AddSystem<Renderer>(&renderer);
@@ -117,8 +135,17 @@ void App::DoFrame()
 {
 	auto time      = timer.Peek();
 	auto deltatime = timer.Mark();
+	
+	ImGuiIO& io = ImGui::GetIO();
+	io.Fonts->AddFontDefault();
+	
+	root_wnd.Gfx().ClearBuffer(Color(0.05f, 0.05f, 0.1f));
+	
+	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+	ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
 
-	root_wnd.Gfx().ClearBuffer(Color(0.05f,0.05f,0.1f));
+	io.Fonts->AddFontFromFileTTF(std::filesystem::current_path().append("fa-solid-900.ttf").string().c_str(), 16.0f, &icons_config, icons_ranges);
+	
 	root_wnd.Gfx().BeginFrame();
 
 	secs.Update(deltatime);

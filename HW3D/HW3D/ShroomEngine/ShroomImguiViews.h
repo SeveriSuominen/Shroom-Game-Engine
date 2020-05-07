@@ -2,7 +2,7 @@
 
 //Main
 #include "ShroomImguiMenuBar.h"
-
+#include "ShroomImguiAssetView.h"
 //Analytics
 #include "ShroomImguiAnalyticsOverlay.h"
 

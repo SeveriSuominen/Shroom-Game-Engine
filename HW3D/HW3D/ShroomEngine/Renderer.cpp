@@ -42,6 +42,9 @@ inline std::unique_ptr<Shd> get_shader(ShroomArcaneGraphics& gfx ,const std::str
 	std::stringstream ss2;
 	ss2 << "../ShroomArcane3D/" << name;
 
+	std::stringstream cur;
+	cur << std::filesystem::current_path();
+
 	//std::wstring wss;
 	//wss = std::wstring(ss.str().c_str().begin(), ss.str().c_str().end());
 	if (file_exists(ss.str().c_str()))
