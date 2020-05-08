@@ -19,6 +19,9 @@ namespace DX  = DirectX;
 
 ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 {
+	static int AntialiasingSampleCount = 2;
+
+
 	DXGI_SWAP_CHAIN_DESC sd = {};
 	sd.BufferDesc.Width  = 0; //DEFAULT
 	sd.BufferDesc.Height = 0; //DEFAULT
@@ -27,7 +30,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	sd.BufferDesc.RefreshRate.Denominator = 0;
 	sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED; //VTEXTURE SCALING
 	sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-	sd.SampleDesc.Count	  = 1; //ANTIALIASING
+	sd.SampleDesc.Count	  = 4; //ANTIALIASING
 	sd.SampleDesc.Quality = 0; //ANTIALIASING
 	sd.BufferUsage  = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	sd.BufferCount  = 1; //<- ONE FRONT AND ONE BACK BUFFER
@@ -107,7 +110,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	descDepth.ArraySize = 1u;
 	descDepth.Format = DXGI_FORMAT_D32_FLOAT; //D32 FLOAT PER INDEX, normal for textures 3xD32FLoat EQ R32G32B32
 	//ANTIALIASING stuff
-	descDepth.SampleDesc.Count   = 1u;
+	descDepth.SampleDesc.Count   = 4u;
 	descDepth.SampleDesc.Quality = 0u;
 	//------------------
 	descDepth.Usage = D3D11_USAGE_DEFAULT;
@@ -122,7 +125,7 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	//Depth stensil view for our depth stensil texture
 	D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
 	descDSV.Format = DXGI_FORMAT_D32_FLOAT;
-	descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+	descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;//D3D11_DSV_DIMENSION_TEXTURE2D;
 	descDSV.Texture2D.MipSlice = 0u;
 
 	//Create depth stencil view
