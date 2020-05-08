@@ -21,6 +21,9 @@ public:
 		float u;
 		float v;
 	} tex;
+
+	//0u
+	DirectX::XMFLOAT3 n;
 }; 
 
 struct VertexTexCoord

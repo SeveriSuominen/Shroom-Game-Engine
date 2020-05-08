@@ -198,6 +198,9 @@
     <ClCompile Include="ShroomImguiAssetView.cpp">
       <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
     </ClCompile>
+    <ClCompile Include="SolidRenderer.cpp">
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Renderers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h">
@@ -335,6 +338,12 @@
     <ClInclude Include="ShroomImguiViewUtility.h">
       <Filter>Header Files\App\Imgui\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="SolidRenderer.h">
+      <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files\Engine\Assets\Standard\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\icon.ico">
@@ -356,14 +365,20 @@
     <FxCompile Include="PixelShader.hlsl">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel</Filter>
     </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
+    <FxCompile Include="TextureVS.hlsl">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexVS.hlsl">
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="SolidVS.hlsl">
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="SolidPS.hlsl">
+      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel</Filter>
     </FxCompile>
     <FxCompile Include="TexturePS.hlsl">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Pixel</Filter>
-    </FxCompile>
-    <FxCompile Include="TextureVS.hlsl">
-      <Filter>Resource Files\Source Files\Engine\Assets\Standard\Shaders\Vertex</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

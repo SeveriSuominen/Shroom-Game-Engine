@@ -12,8 +12,8 @@
 #include <vector>
 
 #include "ShroomArcane3D/Transform.h"
+#include "PointLight.h"
 #include "MeshRenderer.h"
-#include "Renderer.h"
 
 #include "imgui/IconsFontAwesome5.h"
 
@@ -37,7 +37,7 @@
 GDIPlusManager gdipm;
 
 //APP DEF  //MAIN WINDOW
-App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), renderer(root_wnd.Gfx(), secs)
+App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)
 {
 	/*std::string cmd = "a = 7 + 12";
 	lua_State* L = luaL_newstate();
@@ -49,11 +49,15 @@ App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nu
 		//MessageBox(nullptr, "terve", "yolonki", MB_OK);
 	}*/
 
+	auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
+	shroomentity.get()->AssignComponent<PointLight>();
 
 	AddCubes(50);
 
 	secs.AddSystem<Renderer>(&renderer);
+	secs.AddSystem<SolidRenderer>(&solid_renderer);
 
+	//INITIALIZE ALL SYSTEMS
 	secs.Initialize();
 	
 	const Surface s = Surface::FromFile("test.png");
@@ -72,10 +76,10 @@ void App::AddCubes(int amount)
 	for (auto i = 0; i < amount; i++)
 	{
 		auto& shroomentity  = SECS::Entity::Create("entiteetti", this->secs);
-		shroomentity.get()  -> AssignComponent<MeshRenderer>(Cube::MakeSkinned<Vertex>(), 1);
+		shroomentity.get()  -> AssignComponent<MeshRenderer>(Cube::MakeIndependent<Vertex>(), 1);
 
-		auto& shroomentity2 = SECS::Entity::Create("entiteetti", this->secs);
-		shroomentity2.get() -> AssignComponent<MeshRenderer>(Sphere::Make<Vertex>(), 1);
+		//auto& shroomentity2 = SECS::Entity::Create("entiteetti", this->secs);
+		//shroomentity2.get() -> AssignComponent<MeshRenderer>(Sphere::Make<Vertex>(), 1);
 	}
 }
 
@@ -96,6 +100,18 @@ int App::Go()
 {
 	BOOL result;
 	MSG  msg;
+
+	//--------------------------------------------
+	//IMGUI FONTS
+	//--------------------------------------------
+	ImGuiIO& io = ImGui::GetIO();
+	io.Fonts->AddFontDefault();
+
+	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+	ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
+
+	io.Fonts->AddFontFromFileTTF(std::filesystem::current_path().append("fa-solid-900.ttf").string().c_str(), 16.0f, &icons_config, icons_ranges);
+	//--------------------------------------------
 
 	//Window wnd(300, 500, "Shroom Tool", Window::SHROOM_WINDOW_TYPE::SECONDARY, root_wnd.handle);
 
@@ -135,17 +151,8 @@ void App::DoFrame()
 {
 	auto time      = timer.Peek();
 	auto deltatime = timer.Mark();
-	
-	ImGuiIO& io = ImGui::GetIO();
-	io.Fonts->AddFontDefault();
-	
-	root_wnd.Gfx().ClearBuffer(Color(0.05f, 0.05f, 0.1f));
-	
-	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
-	ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
 
-	io.Fonts->AddFontFromFileTTF(std::filesystem::current_path().append("fa-solid-900.ttf").string().c_str(), 16.0f, &icons_config, icons_ranges);
-	
+	root_wnd.Gfx().ClearBuffer(Color(0.05f, 0.05f, 0.1f));
 	root_wnd.Gfx().BeginFrame();
 
 	secs.Update(deltatime);

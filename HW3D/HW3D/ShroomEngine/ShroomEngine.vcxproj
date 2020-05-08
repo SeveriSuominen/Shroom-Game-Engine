@@ -195,6 +195,7 @@
     <ClCompile Include="ShroomWindowException.cpp" />
     <ClCompile Include="ShroomWindow.cpp" />
     <ClCompile Include="ShroomWindowHandleProcs.cpp" />
+    <ClCompile Include="SolidRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
@@ -217,6 +218,7 @@
     <ClInclude Include="Imgui\IconsMaterialDesign.h" />
     <ClInclude Include="Imgui\IconsMaterialDesign_c.h" />
     <ClInclude Include="lua.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="ShroomAssets.h" />
     <ClInclude Include="ShroomImguiAssetView.h" />
     <ClInclude Include="ShroomImguiCameraControl.h" />
@@ -241,6 +243,7 @@
     <ClInclude Include="ShroomThrowMacros.h" />
     <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShroomWindow.h" />
+    <ClInclude Include="SolidRenderer.h" />
     <ClInclude Include="Sphere.h" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +284,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
+    <FxCompile Include="SolidPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="SolidVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="TextureVS.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
@@ -291,7 +306,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
+    <FxCompile Include="VertexVS.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)ShroomArcane3D\%(Filename).cso</ObjectFileOutput>

@@ -11,9 +11,15 @@ public:
 	TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform);
 	void Bind(ShroomArcaneGraphics& gfx) noexcept override;
 private:
+	struct Transforms
+	{
+		DirectX::XMMATRIX transform;
+		DirectX::XMMATRIX transformViewProjection;
+	};
+
 	const Transform& parentTransform;
 
 	//ONLY ONE STATIC TRANSFORM BUFFER NEEDED FOR SHARING, WE DONT NEED EVERY SINGLE INSTANCE HAVE THEIR OWN CBUFFER TO BIND,
 	//WASTED MEMORY, SO MODIFYING ONLY ONE 
-	static std::unique_ptr<VertexConstantBuffer<DirectX::XMMATRIX>> pVCbuf;
+	static std::unique_ptr<VertexConstantBuffer<Transforms>> pVCbuf;
 };

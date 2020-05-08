@@ -11,53 +11,7 @@
 #include "MeshRenderer.h";
 #include <sstream>
 
-
-//SNIPPET
-#include <codecvt>
-#include <string>
-
-inline bool file_exists(const std::string& name) {
-	struct stat buffer;
-	return (stat(name.c_str(), &buffer) == 0);
-}
-
-std::wstring wstr(const std::string str)
-{//
-	//std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-
-	std::wstring str2(str.length(), L' '); // Make room for characters
-
-	 // Copy string to wstring.
-	std::copy(str.begin(), str.end(), str2.begin());
-
-	return str2;
-}
-
-template<class Shd>
-inline std::unique_ptr<Shd> get_shader(ShroomArcaneGraphics& gfx ,const std::string& name)
-{
-	std::stringstream ss;
-	ss <<  "Shaders/" << name;
-
-	std::stringstream ss2;
-	ss2 << "../ShroomArcane3D/" << name;
-
-	std::stringstream cur;
-	cur << std::filesystem::current_path();
-
-	//std::wstring wss;
-	//wss = std::wstring(ss.str().c_str().begin(), ss.str().c_str().end());
-	if (file_exists(ss.str().c_str()))
-	{
-		return std::make_unique<Shd>(gfx, wstr(ss.str()));
-	}
-	else
-	{
-		return std::make_unique<Shd>(gfx, wstr(ss2.str()));
-	}
-}
-// __SNIPPET
-
+#include "ShroomAssets.h"
 
 void Renderer::Initialize() 
 {
@@ -82,17 +36,17 @@ void Renderer::Initialize()
 			// SHADERS
 			//--------------------------------------
 		
-			auto pvs = get_shader<VertexShader>(gfx, "TextureVS.cso");
+			auto pvs = ShroomAssets::Get_shader<VertexShader>(gfx, "TextureVS.cso");
 			
 			auto pvsbc = pvs->GetBytecode();
 			AddStaticBind(std::move(pvs));
 
-			AddStaticBind(get_shader<PixelShader>(gfx, "TexturePS.cso"));
+			AddStaticBind(ShroomAssets::Get_shader<PixelShader>(gfx, "TexturePS.cso"));
 
 			//--------------------------------------
 			// CONSTANT BUFFERS
 			//--------------------------------------
-			struct ConstantBuffer2
+			/*struct ConstantBuffer2
 			{
 				struct
 				{
@@ -113,7 +67,13 @@ void Renderer::Initialize()
 					{ 0.0f,1.0f,1.0f },
 				}
 			};
-			AddStaticBind(std::make_unique<PixelConstantBuffer<ConstantBuffer2>>(gfx, cb2));
+
+			AddStaticBind(std::make_unique<PixelConstantBuffer<ConstantBuffer2>>(gfx, cb2));*/
+			struct PSLightConstants
+			{	
+				DirectX::XMVECTOR pos;
+			};
+			AddStaticBind(std::make_unique<PixelConstantBuffer<PSLightConstants>>(gfx));
 
 			//--------------------------------------
 			// INPUT LAYOUT
@@ -122,6 +82,7 @@ void Renderer::Initialize()
 			{
 				{ "Position",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 },
 				{ "TexCoord",0,DXGI_FORMAT_R32G32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0 },
+				{ "Normal",  0,DXGI_FORMAT_R32G32B32_FLOAT,0,20,D3D11_INPUT_PER_VERTEX_DATA,0 },
 			};
 			AddStaticBind(std::make_unique<InputLayout>(gfx, ied, pvsbc));
 
@@ -130,6 +91,8 @@ void Renderer::Initialize()
 			//--------------------------------------
 			AddStaticBind(std::make_unique<Topology>(gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
 		}
+
+		renderer.model.SetNormalsIndependentFlat();
 
 		//--------------------------------------
 		// VERTICES

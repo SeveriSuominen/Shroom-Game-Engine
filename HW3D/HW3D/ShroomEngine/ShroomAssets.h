@@ -3,6 +3,8 @@
 #include "Shroom.h"
 #include <filesystem>
 #include <string>
+#include <sstream>
+#include <codecvt>
 
 #include <boost\filesystem.hpp>
 
@@ -38,4 +40,46 @@ public:
 		}
 		return path;
 	}
+
+	static bool File_exists(const std::string& name) {
+		struct stat buffer;
+		return (stat(name.c_str(), &buffer) == 0);
+	}
+
+	static std::wstring wstr(const std::string str)
+	{//
+		//std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
+
+		std::wstring str2(str.length(), L' '); // Make room for characters
+
+		 // Copy string to wstring.
+		std::copy(str.begin(), str.end(), str2.begin());
+
+		return str2;
+	}
+
+	template<class Shd>
+	static std::unique_ptr<Shd> Get_shader(ShroomArcaneGraphics& gfx, const std::string& name)
+	{
+		std::stringstream ss;
+		ss << "Shaders/" << name;
+
+		std::stringstream ss2;
+		ss2 << "../ShroomArcane3D/" << name;
+
+		std::stringstream cur;
+		cur << std::filesystem::current_path();
+
+		//std::wstring wss;
+		//wss = std::wstring(ss.str().c_str().begin(), ss.str().c_str().end());
+		if (file_exists(ss.str().c_str()))
+		{
+			return std::make_unique<Shd>(gfx, wstr(ss.str()));
+		}
+		else
+		{
+			return std::make_unique<Shd>(gfx, wstr(ss2.str()));
+		}
+	}
+	// __SNIPPET
 };

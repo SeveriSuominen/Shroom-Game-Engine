@@ -1,5 +1,6 @@
 #include "App.h"
 #include "ShroomImguiSECSHierarchy.h"
+#include "ShroomImguiViewUtility.h"
 
 void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 {
@@ -33,17 +34,20 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			{
 				for (size_t i = 0; i < entity.get()->components.size(); i++)
 				{
-					if (i == 0)
+					/*if (i == 0)
 					{
-						LetterMarker("T", ImVec4(0.0f, 0.95, 0.3f, 1.0f));
+						LetterMarker("C", ImVec4(0.0f, 0.95, 0.3f, 1.0f));
 						ImGui::SameLine();
 						ImGui::TextColored(ImVec4(0.0f, 0.95, 0.1f, 1.0f), entity.get()->componentNames[i].c_str());
 						continue;
-					}
-
-					LetterMarker("C", ImVec4(1.0f, 1.0, 0.0f, 1.0f));
-					ImGui::SameLine();
+					}*/
+				
+					ShroomImguiViewUtility::IconByComponentType(entity.get()->componentNames[i].c_str());
+					ImGui::SameLine(0.0f, 0.0f);
+					ImGui::PushItemWidth(50);
 					ImGui::TextColored(ImVec4(1.0f, 0.95, 0.1f, 1.0f), entity.get()->componentNames[i].c_str());
+					ImGui::Separator();
+					
 				}
 				static float dummy_members[8] = { 0.0f,0.0f,1.0f,3.1416f,100.0f,999.0f };
 

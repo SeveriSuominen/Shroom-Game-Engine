@@ -8,6 +8,8 @@
 #include "SECS.h"
 
 #include "Renderer.h";
+#include "SolidRenderer.h"
+
 #include "ShroomArcane3D/TextureRenderer.h"
 
 //IMGUI
@@ -34,6 +36,7 @@ public:
 	
 	//TEMP ECS SYSTEM;
 	Renderer renderer;
+	SolidRenderer solid_renderer;
 
 public:
 
