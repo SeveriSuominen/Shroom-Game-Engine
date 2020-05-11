@@ -16,7 +16,7 @@ public:
 		std::uniform_real_distribution<float>& rdist,
 		int test
 	) :
-		r(rdist(rng)),
+		//r(rdist(rng)),
 		droll(ddist(rng)),
 		dpitch(ddist(rng)),
 		dyaw(ddist(rng)),
@@ -26,16 +26,21 @@ public:
 		chi(adist(rng)),
 		theta(adist(rng)),
 		phi(adist(rng))
-	{}
+	{
+		//TEMP
+		pos.z = rdist(rng);
+	}
 
 	DirectX::XMMATRIX GetTransformXM() const noexcept
 	{
 		return  DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
-			DirectX::XMMatrixTranslation(r, 0.0f, 0.0f) *
-			DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi);
+			    DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z) *
+			    DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi);
 	}
 
 	int test;
+
+	DirectX::XMFLOAT3 pos;
 
 	// positional
 	float r;

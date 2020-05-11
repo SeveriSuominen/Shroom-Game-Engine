@@ -10,6 +10,7 @@
 #include "SECS.h"
 
 #include "Sphere.h"
+#include "ShroomArcane3D/Imgui/imgui.h"
 
 struct PointLight : SECS::Component
 {
@@ -17,11 +18,29 @@ public:
 	//----------------------------------
 	//CONSTRUCT
 	//----------------------------------
-	PointLight() : model(Sphere::Make<Vertex>()),  Component() {}
+	PointLight(ShroomArcaneGraphics& gfx) : model(Sphere::Make<Vertex>()), cbuf(gfx), Component() {}
 	//----------------------------------
 
 	//PointLight & operator=(const PointLight &) = delete;
 	//PointLight() = default;
+
+
+	void SpawnControlWindow() noexcept
+	{
+		/*if (ImGui::Begin("Light"))
+		{
+			ImGui::Text("Position");
+			ImGui::SliderFloat("X", &pos.x, -60.0f, 60.0f, "%.1f");
+			ImGui::SliderFloat("Y", &pos.y, -60.0f, 60.0f, "%.1f");
+			ImGui::SliderFloat("Z", &pos.z, -60.0f, 60.0f, "%.1f");
+			if (ImGui::Button("Reset"))
+			{
+				//Reset();
+			}
+		}
+		ImGui::End();*/
+	}
+	//DirectX::XMFLOAT3 pos = { 5000.0f,0.0f,0.0f };
 
 	//----------------------------------
 	//NON COPY & MOVEABLE CONST
@@ -29,13 +48,15 @@ public:
 	PointLight(PointLight &&other)
 		: binds{ std::move(other.binds) },
 		  model{ std::move(other.model) },
-		Component()
+		  cbuf{ std::move(other.cbuf) },
+		  Component()
 	{}
 
 	PointLight & operator=(PointLight &&other) {
 		auto tmp{ std::move(other) };
 		std::swap(binds, other.binds);
 		std::swap(model, other.model);
+		std::swap(cbuf,  other.cbuf);
 		return *this;
 	}
 	//----------------------------------
@@ -52,10 +73,17 @@ public:
 
 	void AddIndexBuffer(std::unique_ptr<IndexBuffer> ibuf) noexcept
 	{
-
 		assert("Attempting to add index buffer a second time" && pIndexBuffer == nullptr);
 		pIndexBuffer = ibuf.get();
 		binds.push_back(std::move(ibuf));
 	}
+
+	struct PSLightConstants
+	{
+		DirectX::XMFLOAT3 pos;
+		float padding;
+	};
+
+	mutable PixelConstantBuffer<PSLightConstants> cbuf;
 };
 

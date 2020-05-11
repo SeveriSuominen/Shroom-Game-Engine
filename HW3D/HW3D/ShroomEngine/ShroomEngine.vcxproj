@@ -189,13 +189,14 @@
     <ClCompile Include="ShroomImguiCameraControl.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomImguiSECSHierarchy.cpp" />
+    <ClCompile Include="ShroomImguiSECSObjectView.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
     <ClCompile Include="ShroomWindowException.cpp" />
     <ClCompile Include="ShroomWindow.cpp" />
     <ClCompile Include="ShroomWindowHandleProcs.cpp" />
-    <ClCompile Include="SolidRenderer.cpp" />
+    <ClCompile Include="LightBinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
@@ -237,13 +238,14 @@
     <ClInclude Include="ShroomImguiContainer.h" />
     <ClInclude Include="ShroomImguiMenuBar.h" />
     <ClInclude Include="ShroomImguiSECSHierarchy.h" />
+    <ClInclude Include="ShroomImguiSECSObjectView.h" />
     <ClInclude Include="ShroomImguiView.h" />
     <ClInclude Include="ShroomImguiViews.h" />
     <ClInclude Include="ShroomImguiViewUtility.h" />
     <ClInclude Include="ShroomThrowMacros.h" />
     <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShroomWindow.h" />
-    <ClInclude Include="SolidRenderer.h" />
+    <ClInclude Include="LightBinder.h" />
     <ClInclude Include="Sphere.h" />
   </ItemGroup>
   <ItemGroup>

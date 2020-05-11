@@ -2,10 +2,10 @@
 #include "ShroomArcane3D/ShroomArcane3D.h"
 #include "SECS.h"
 
-class SolidRenderer : public SECS::System, public DrawableStatic<SolidRenderer>
+class LightBinder : public SECS::System, public DrawableStatic<LightBinder>
 {
 public:
-	SolidRenderer(ShroomArcaneGraphics& gfx, SECS& secs) : gfx(gfx), secs(secs), SECS::System(&secs) {};
+	LightBinder(ShroomArcaneGraphics& gfx, SECS& secs) : gfx(gfx), secs(secs), SECS::System(&secs) {};
 	void SetPos(DirectX::XMFLOAT3 pos);
 	
 	virtual void Initialize() override;

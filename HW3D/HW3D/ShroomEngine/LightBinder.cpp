@@ -1,18 +1,17 @@
-#include "SolidRenderer.h"
 
-#include "SolidRenderer.h"
+#include "LightBinder.h"
 #include "ShroomArcane3D/Bindable.h"
 #include "ShroomArcane3D/ShroomArcaneThrowMacros.h"
 
 #include "PointLight.h"
 #include "ShroomAssets.h"
 
-void SolidRenderer::Initialize()
+void LightBinder::Initialize()
 {
 	namespace dx = DirectX;
 	auto view = secs.view<Transform, PointLight>();
 
-	for (auto entity : view) 
+	/*for (auto entity : view) 
 	{
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer  = view.get<PointLight>(entity);
@@ -32,6 +31,7 @@ void SolidRenderer::Initialize()
 				dx::XMFLOAT3 color = { 1.0f,1.0f,1.0f };
 				float padding;
 			} colorConst;
+
 			AddStaticBind(std::make_unique<PixelConstantBuffer<PSColorConstant>>(gfx, colorConst));
 
 			const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
@@ -46,10 +46,12 @@ void SolidRenderer::Initialize()
 		renderer.AddBind(std::make_unique<VertexBuffer>(gfx, renderer.model.vertices));
 		renderer.AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, renderer.model.indices));
 		renderer.AddBind(std::make_unique<TransformCbuf>(gfx, transform));
-	}
+		
+		//renderer.BindLight(gfx);
+	}*/
 }
 
-void SolidRenderer::Update(float dt)
+void LightBinder::Update(float dt)
 {
 	auto view = secs.view<Transform, PointLight>();
 
@@ -57,12 +59,17 @@ void SolidRenderer::Update(float dt)
 	{
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<PointLight>(entity);
+		
+		renderer.SpawnControlWindow();
 
-		Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
+		renderer.cbuf.Update(gfx, PointLight::PSLightConstants{ transform.pos });
+		renderer.cbuf.Bind(gfx);
+
+		//Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
 	}
 }
 
-void SolidRenderer::SetPos(DirectX::XMFLOAT3 pos)
+void LightBinder::SetPos(DirectX::XMFLOAT3 pos)
 {
 	this->pos = pos;
 }

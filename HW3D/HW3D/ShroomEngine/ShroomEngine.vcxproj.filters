@@ -198,7 +198,10 @@
     <ClCompile Include="ShroomImguiAssetView.cpp">
       <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
     </ClCompile>
-    <ClCompile Include="SolidRenderer.cpp">
+    <ClCompile Include="ShroomImguiSECSObjectView.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui\SECS</Filter>
+    </ClCompile>
+    <ClCompile Include="LightBinder.cpp">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -338,11 +341,14 @@
     <ClInclude Include="ShroomImguiViewUtility.h">
       <Filter>Header Files\App\Imgui\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="SolidRenderer.h">
-      <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
-    </ClInclude>
     <ClInclude Include="PointLight.h">
       <Filter>Header Files\Engine\Assets\Standard\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiSECSObjectView.h">
+      <Filter>Header Files\App\Imgui\SECS</Filter>
+    </ClInclude>
+    <ClInclude Include="LightBinder.h">
+      <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

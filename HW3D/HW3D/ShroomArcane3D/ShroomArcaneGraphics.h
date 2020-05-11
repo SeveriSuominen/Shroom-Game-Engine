@@ -29,6 +29,7 @@ public:
 public:
 	void BeginFrame();
 	void EndFrame();
+	//void EditTransform();
 	void ClearBuffer(Color c);
 	void DrawIndexed(UINT count) noexcept;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;

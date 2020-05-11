@@ -2,8 +2,14 @@
 #include "ShroomImguiSECSHierarchy.h"
 #include "ShroomImguiViewUtility.h"
 
+#include "ShroomArcane3D/Transform.h"
+
+#include <string>
+
 void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 {
+	static int clicked = -1;
+
 	struct FUNCS
 	{
 		static void LetterMarker(std::string m, ImVec4 col = ImVec4(1.0f, 1.0, 1.0f, 1.0f))
@@ -15,7 +21,7 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::Text("]");
 		}
 
-		static void ShowDummyObject(std::unique_ptr<SECS::Entity>& entity, int uid)
+		static void ShowEntityComponents(std::unique_ptr<SECS::Entity>& entity, int& clicked, int uid)
 		{
 			ImGui::PushID(uid);                      // Use object uid as identifier. Most commonly you could also use the object pointer as a base ID.
 			ImGui::AlignTextToFramePadding();  // Text and Tree nodes are less high than regular widgets, here we add vertical spacing to make the tree lines equal high.
@@ -24,24 +30,14 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::SameLine();
 			
 			bool node_open = ImGui::TreeNode("Object", "%s_%u", entity.get()->entityName.c_str(), uid);
-
-			/*ImGui::NextColumn();
-			ImGui::AlignTextToFramePadding();
-			ImGui::Text("my sailor is rich");
-			ImGui::NextColumn();*/
 			
+			if (ImGui::IsItemClicked() || ImGui::IsItemFocused())
+				clicked = uid;
+
 			if (node_open)
 			{
 				for (size_t i = 0; i < entity.get()->components.size(); i++)
-				{
-					/*if (i == 0)
-					{
-						LetterMarker("C", ImVec4(0.0f, 0.95, 0.3f, 1.0f));
-						ImGui::SameLine();
-						ImGui::TextColored(ImVec4(0.0f, 0.95, 0.1f, 1.0f), entity.get()->componentNames[i].c_str());
-						continue;
-					}*/
-				
+				{	
 					ShroomImguiViewUtility::IconByComponentType(entity.get()->componentNames[i].c_str());
 					ImGui::SameLine(0.0f, 0.0f);
 					ImGui::PushItemWidth(50);
@@ -49,34 +45,65 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 					ImGui::Separator();
 					
 				}
-				static float dummy_members[8] = { 0.0f,0.0f,1.0f,3.1416f,100.0f,999.0f };
-
-				/*for (int i = 0; i < 8; i++)
-				{
-					ImGui::PushID(i); // Use field index as identifier.
-					if (i < 2)
-					{
-						ShowDummyObject("Child", 424242);
-					}
-					else
-					{
-						// Here we use a TreeNode to highlight on hover (we could use e.g. Selectable as well)
-						ImGui::AlignTextToFramePadding();
-						ImGui::TreeNodeEx("Field", ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen | ImGuiTreeNodeFlags_Bullet, "Field_%d", i);
-						ImGui::NextColumn();
-						ImGui::PushItemWidth(-1);
-						if (i >= 5)
-							ImGui::InputFloat("##value", &dummy_members[i], 1.0f);
-						else
-							ImGui::DragFloat("##value", &dummy_members[i], 0.01f);
-						ImGui::PopItemWidth();
-						ImGui::NextColumn();
-					}
-					ImGui::PopID();
-				}*/
 				ImGui::TreePop();
 			}
 			ImGui::PopID();
+		}
+
+		static void ShowEntityEditor(std::unique_ptr<SECS::Entity>& entity)
+		{
+			auto name = entity.get()->entityName.c_str();
+			std::stringstream ss;
+			ss << "SECS Entity Editor";
+			
+			ImGui::SetNextWindowSize(ImVec2(430, 450), ImGuiCond_FirstUseEver);
+			if (!ImGui::Begin(ss.str().c_str()))
+			{
+				ImGui::End();
+				return;
+			}
+
+			//ImGui::InputFloat3("Rotation", {transform->} );
+			/*if (!ImGui::BeginChild("Transform"))
+			{
+				ImGui::EndChild();
+				return;
+			}*/
+
+			//TRANSFORM
+			auto transform = entity.get()->GetComponent<Transform>();
+			auto size = ImGui::GetWindowSize();
+
+			ImGui::BeginChild("too big" /*ImVec2(size.x -15, 260),true*/);
+			ImGui::GetFont()->DisplayOffset.y = 0;
+
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
+
+			//ImGui::Columns(2);
+			ShroomImguiViewUtility::IconByComponentType("struct Transform");
+			ImGui::SameLine();
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.3f, 1), "Transform");
+			ImGui::Text("");
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Global Position");
+			ImGui::InputFloat("X", &transform->pos.x);
+			ImGui::InputFloat("Y", &transform->pos.y);
+			ImGui::InputFloat("Z", &transform->pos.z);
+
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation");
+			ImGui::InputFloat("Rot X", &transform->roll);
+			ImGui::InputFloat("Rot Y", &transform->pitch);
+			ImGui::InputFloat("Rot Z", &transform->yaw);
+			
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation over Pivot");
+			ImGui::InputFloat("Theta", &transform->theta);
+			ImGui::InputFloat("Phi", &transform->phi);
+			ImGui::InputFloat("Chi", &transform->chi);
+	
+			ImGui::PopStyleVar();
+			ImGui::EndChild();
+
+			//ImGui::EndChild();
+			ImGui::End();
 		}
 	};
 
@@ -90,12 +117,16 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(2, 2));
 	ImGui::Columns(1);
 	//ImGui::Separator();
-	
-	for (size_t i = 0; i < app->secs.GetEntitiesSize(); i++)
-		FUNCS::ShowDummyObject(app->secs.GetEntity(i), i);
 
+	for (size_t i = 0; i < app->secs.GetEntitiesSize(); i++)
+		FUNCS::ShowEntityComponents(app->secs.GetEntity(i), clicked, i);
 	//ImGui::Columns(1);
 	//ImGui::Separator();
 	ImGui::PopStyleVar();
 	ImGui::End();
+
+	if (clicked != -1) 
+	{
+		FUNCS::ShowEntityEditor(app->secs.GetEntity(clicked));
+	}
 }

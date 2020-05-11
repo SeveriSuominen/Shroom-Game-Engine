@@ -11,3 +11,4 @@
 
 //SECS
 #include "ShroomImguiSECSHierarchy.h"
+#include "ShroomImguiSECSObjectView.h"

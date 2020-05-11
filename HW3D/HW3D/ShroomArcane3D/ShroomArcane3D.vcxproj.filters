@@ -115,6 +115,12 @@
     <Filter Include="Header Files\Parts\Structs">
       <UniqueIdentifier>{6e33f3ad-90c4-45ee-9948-082bcbdb1f1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Imgui\ImGuizmo">
+      <UniqueIdentifier>{2420f92f-9dd2-4034-bcee-8e8b7e7dd14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Imgui\ImGuizmo">
+      <UniqueIdentifier>{898289df-11b2-40c4-a0cd-2781dd55fb62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShroomArcaneWin.h">
@@ -255,6 +261,18 @@
     <ClInclude Include="ShroomArcaneCamera.h">
       <Filter>Header Files\Graphics\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="ImGuizmo\ImCurveEdit.h">
+      <Filter>Header Files\Imgui\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuizmo\ImGradient.h">
+      <Filter>Header Files\Imgui\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuizmo\ImGuizmo.h">
+      <Filter>Header Files\Imgui\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuizmo\ImSequencer.h">
+      <Filter>Header Files\Imgui\ImGuizmo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShroomArcaneException.cpp">
@@ -339,7 +357,19 @@
       <Filter>Source Files\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="ShroomArcaneCamera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuizmo\ImCurveEdit.cpp">
+      <Filter>Source Files\Imgui\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuizmo\ImGradient.cpp">
+      <Filter>Source Files\Imgui\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuizmo\ImGuizmo.cpp">
+      <Filter>Source Files\Imgui\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuizmo\ImSequencer.cpp">
+      <Filter>Source Files\Imgui\ImGuizmo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

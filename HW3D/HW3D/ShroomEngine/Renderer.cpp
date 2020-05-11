@@ -69,12 +69,8 @@ void Renderer::Initialize()
 			};
 
 			AddStaticBind(std::make_unique<PixelConstantBuffer<ConstantBuffer2>>(gfx, cb2));*/
-			struct PSLightConstants
-			{	
-				DirectX::XMVECTOR pos;
-			};
-			AddStaticBind(std::make_unique<PixelConstantBuffer<PSLightConstants>>(gfx));
-
+			
+			
 			//--------------------------------------
 			// INPUT LAYOUT
 			//--------------------------------------
@@ -135,6 +131,7 @@ void Renderer::Update(float dt)
 		auto&  transform = view.get<Transform>   (entity);
 		auto&  renderer  = view.get<MeshRenderer>(entity);
 
+		//TESTING
 		transform.roll  += transform.droll  * dt;
 		transform.pitch += transform.dpitch * dt;
 		transform.yaw   += transform.dyaw   * dt;

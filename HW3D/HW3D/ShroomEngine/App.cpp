@@ -23,9 +23,6 @@
 #include "SECS.h";
 #include <cstdint>
 
-#include "ShroomArcane3D/Surface.h"
-#include "ShroomArcane3D/GDIPlusManager.h"
-
 //IMGUI
 #include "ShroomArcane3D/imgui/imgui_impl_dx11.h"
 #include "ShroomArcane3D/imgui/imgui_impl_win32.h"
@@ -33,34 +30,21 @@
 //LUA
 //#include "ShroomScript/ShroomLua.h"
 
-//GDIPlusManager needs to be initialised to use Surface
-GDIPlusManager gdipm;
-
 //APP DEF  //MAIN WINDOW
-App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)
+App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), secs(root_wnd.Gfx()) /*, solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)*/
 {
-	/*std::string cmd = "a = 7 + 12";
-	lua_State* L = luaL_newstate();
-
-	int r = luaL_dostring(L, cmd.c_str());
-
-	if (r == LUA_OK)
-	{
-		//MessageBox(nullptr, "terve", "yolonki", MB_OK);
-	}*/
-
 	auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
-	shroomentity.get()->AssignComponent<PointLight>();
+	shroomentity.get()->AssignComponent<PointLight>(root_wnd.Gfx());
 
 	AddCubes(50);
 
-	secs.AddSystem<Renderer>(&renderer);
-	secs.AddSystem<SolidRenderer>(&solid_renderer);
+	secs.AddSystem<LightBinder>();
+	secs.AddSystem<Renderer>();
 
 	//INITIALIZE ALL SYSTEMS
 	secs.Initialize();
 	
-	const Surface s = Surface::FromFile("test.png");
+	//const Surface s = Surface::FromFile("test.png");
 
 	root_wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f/*Min clip*/, 400.0f/*Max clip*/));
 }
@@ -77,9 +61,6 @@ void App::AddCubes(int amount)
 	{
 		auto& shroomentity  = SECS::Entity::Create("entiteetti", this->secs);
 		shroomentity.get()  -> AssignComponent<MeshRenderer>(Cube::MakeIndependent<Vertex>(), 1);
-
-		//auto& shroomentity2 = SECS::Entity::Create("entiteetti", this->secs);
-		//shroomentity2.get() -> AssignComponent<MeshRenderer>(Sphere::Make<Vertex>(), 1);
 	}
 }
 
@@ -160,11 +141,11 @@ void App::DoFrame()
 	//---------------------------
 	//IMGUI
 	//---------------------------
-	static bool show_demo_window = true;
+	/*static bool show_demo_window = true;
 	if (show_demo_window)
 	{
 		ImGui::ShowDemoWindow(&show_demo_window);
-	}
+	}*/
 	DrawImguiViews();
 	//---------------------------
 

@@ -8,7 +8,7 @@
 #include "SECS.h"
 
 #include "Renderer.h";
-#include "SolidRenderer.h"
+#include "LightBinder.h"
 
 #include "ShroomArcane3D/TextureRenderer.h"
 
@@ -17,6 +17,11 @@
 
 //Shroom imgui views in here
 #include "ShroomImguiContainer.h"
+
+
+#include "ShroomArcane3D/Surface.h"
+#include "ShroomArcane3D/GDIPlusManager.h"
+
 
 class App
 {
@@ -33,14 +38,9 @@ public:
 	
 	//SECS ECS
 	SECS secs;
-	
-	//TEMP ECS SYSTEM;
-	Renderer renderer;
-	SolidRenderer solid_renderer;
 
-public:
-
-	;
+	//GDIPlusManager needs to be initialised to use Surface
+	GDIPlusManager gdipm;
 
 private:
 	void  DoFrame();

@@ -1,3 +1,7 @@
+Texture2D tex;
+
+SamplerState splr;
+
 cbuffer LightCBuf
 {
     float3 lightPos;
@@ -14,6 +18,7 @@ static const float attQuad = 0.0075f; // Light exponential scaling by range
 
 float4 main(float3 worldPos : Position, float2 tc : TexCoord, float3 n : Normal) : SV_Target
 {
+    
 	// fragment to light vector data
     const float3 vToL = lightPos - worldPos;
     const float distToL = length(vToL);
