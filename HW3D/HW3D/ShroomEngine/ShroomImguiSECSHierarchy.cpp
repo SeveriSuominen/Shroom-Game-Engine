@@ -29,11 +29,14 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			LetterMarker("E", ImVec4(0.5f, 0.7f, 1.0f, 1.0f));
 			ImGui::SameLine();
 			
-			bool node_open = ImGui::TreeNode("Object", "%s_%u", entity.get()->entityName.c_str(), uid);
-			
+			ImGuiTreeNodeFlags node_flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | (clicked == uid ? ImGuiTreeNodeFlags_Selected : 0);
+	
+			//bool node_open = ImGui::TreeNode("Object", "%s_%u", entity.get()->entityName.c_str(), uid, node_flags);
+			bool node_open = ImGui::TreeNodeEx("Object", node_flags, "%s_%u",  entity.get()->entityName.c_str(), uid);
+
 			if (ImGui::IsItemClicked() || ImGui::IsItemFocused())
 				clicked = uid;
-
+			
 			if (node_open)
 			{
 				for (size_t i = 0; i < entity.get()->components.size(); i++)

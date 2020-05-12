@@ -7,8 +7,8 @@
 #include <utility>;
 
 #include "ShroomSerialize.h"
-#include "SECS.h"
 
+#include "SECS.h"
 #include "Cube.h"
 
 struct MeshRenderer : SECS::Component
