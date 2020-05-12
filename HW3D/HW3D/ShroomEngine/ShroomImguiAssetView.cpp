@@ -12,8 +12,7 @@
 
 void ShroomImguiAssetView::Draw(App * app, bool * open)
 {
-
-	ImGui::SetNextWindowSize(ImVec2(730, 250), ImGuiCond_Once);
+	ImGui::SetNextWindowSize(ImVec2(730, 250), ImGuiCond_FirstUseEver);
 	ImGui::Begin("Shroom Assets", nullptr,  ImGuiWindowFlags_NoCollapse);
 
 	static int selection_mask = (1 << 2);

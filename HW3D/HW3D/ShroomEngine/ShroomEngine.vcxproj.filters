@@ -145,6 +145,12 @@
     <Filter Include="Header Files\App\Imgui\Utility">
       <UniqueIdentifier>{aa13a350-0a7b-429b-94f7-c3b17608fb27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\SECS">
+      <UniqueIdentifier>{7b03cc78-fc97-4d80-ba95-fee78bc65f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Serialize">
+      <UniqueIdentifier>{731005e2-5c1e-4b76-8242-c8f43f19593c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -203,6 +209,12 @@
     </ClCompile>
     <ClCompile Include="LightBinder.cpp">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="SECS_Scene.cpp">
+      <Filter>Resource Files\Source Files\Engine\SECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomImguiContainer.cpp">
+      <Filter>Resource Files\Source Files\App\Imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="LightBinder.h">
       <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomSerialize.h">
+      <Filter>Header Files\App\Serialize</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomString.h">
+      <Filter>Header Files\App\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardAssets.h">
+      <Filter>Header Files\Engine\Assets\Standard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

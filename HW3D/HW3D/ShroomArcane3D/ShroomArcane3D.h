@@ -11,6 +11,7 @@
 #include "ShroomArcaneMath.h"
 #include "IndexedTriangleList.h"
 #include "Components.h"
+#include "Parts.h"
 #include "DrawableStatic.h"
 #include "Drawable.h"
 #include "Bindable.h"

@@ -132,9 +132,6 @@
     <ClInclude Include="Color.h">
       <Filter>Header Files\Parts\Structs</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Header Files\Parts</Filter>
-    </ClInclude>
     <ClInclude Include="ShroomArcaneException.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
@@ -222,9 +219,6 @@
     <ClInclude Include="Sampler.h">
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="TextureRenderer.h">
-      <Filter>Header Files\Drawable\Renderers</Filter>
-    </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Header Files\Assets\Components</Filter>
     </ClInclude>
@@ -272,6 +266,12 @@
     </ClInclude>
     <ClInclude Include="ImGuizmo\ImSequencer.h">
       <Filter>Header Files\Imgui\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Parts.h">
+      <Filter>Header Files\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files\Assets\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -331,9 +331,6 @@
     </ClCompile>
     <ClCompile Include="Sampler.cpp">
       <Filter>Source Files\Graphics\Bindable\Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureRenderer.cpp">
-      <Filter>Source Files\Graphics\Drawable\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_widgets.cpp">
       <Filter>Source Files\Imgui\IMGUI</Filter>

@@ -6,7 +6,10 @@
 #include <algorithm>;
 #include <utility>;
 
+#include "ShroomSerialize.h"
 #include "SECS.h"
+
+#include "Cube.h"
 
 struct MeshRenderer : SECS::Component
 {
@@ -14,15 +17,11 @@ public:
 	//----------------------------------
 	//CONSTRUCT
 	//----------------------------------
-	MeshRenderer
-	(
-		IndexedTriangleList<Vertex> model,
-		int test
-	)
-	: model(model), test(test), Component() {}
+	MeshRenderer() : Component() 
+	{
+		model = Cube::MakeIndependent<Vertex>();
+	}
 	//----------------------------------
-
-	int test = 0;
 
 	//MeshRenderer & operator=(const MeshRenderer &) = delete;
 	//MeshRenderer() = default;
@@ -33,7 +32,6 @@ public:
 	MeshRenderer(MeshRenderer &&other)
 		: binds{ std::move(other.binds) },
 		  model{ std::move(other.model) },
-		  test { std::move(other.test) },
 		  Component()
 	{}
 
@@ -41,7 +39,6 @@ public:
 		auto tmp{ std::move(other) };
 		std::swap(binds, other.binds);
 		std::swap(model, other.model);
-		std::swap(test,  other.test);
 		return *this;
 	}
 	//----------------------------------
@@ -57,11 +54,29 @@ public:
 	const class IndexBuffer* pIndexBuffer = nullptr;
 
 	void AddIndexBuffer(std::unique_ptr<IndexBuffer> ibuf) noexcept
-	{
-		
+	{		
 		assert("Attempting to add index buffer a second time" && pIndexBuffer == nullptr);
 		pIndexBuffer = ibuf.get();
 		binds.push_back(std::move(ibuf));
 	}
+
+	//-----------------------------------------------
+	// SERIALIZE
+	//-----------------------------------------------
+	void Serialize(SHROOM_JSON_WRITER& writer) override
+	{
+		writer.Key("Name");
+		writer.String("MeshRenderer");
+
+		writer.Key("PathToModel");
+		writer.String("yolonki");
+	}
+
+	void Deserialize(SHROOM_JSON_DOCUMENT_ENTRY entry) override
+	{
+		//TEMP, NOT IMPLEMENTED YET
+		model = Cube::MakeIndependent<Vertex>();
+	}
+	//-----------------------------------------------
 };
 

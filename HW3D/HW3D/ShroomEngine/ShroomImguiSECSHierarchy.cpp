@@ -23,7 +23,7 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 
 		static void ShowEntityComponents(std::unique_ptr<SECS::Entity>& entity, int& clicked, int uid)
 		{
-			ImGui::PushID(uid);                      // Use object uid as identifier. Most commonly you could also use the object pointer as a base ID.
+			ImGui::PushID(uid);                // Use object uid as identifier. Most commonly you could also use the object pointer as a base ID.
 			ImGui::AlignTextToFramePadding();  // Text and Tree nodes are less high than regular widgets, here we add vertical spacing to make the tree lines equal high.
 			
 			LetterMarker("E", ImVec4(0.5f, 0.7f, 1.0f, 1.0f));
@@ -80,24 +80,24 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
 
 			//ImGui::Columns(2);
-			ShroomImguiViewUtility::IconByComponentType("struct Transform");
+			ShroomImguiViewUtility::IconByComponentType("Transform");
 			ImGui::SameLine();
 			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.3f, 1), "Transform");
 			ImGui::Text("");
 			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Global Position");
-			ImGui::InputFloat("X", &transform->pos.x);
-			ImGui::InputFloat("Y", &transform->pos.y);
-			ImGui::InputFloat("Z", &transform->pos.z);
-
+			ImGui::SliderFloat("X", &transform->pos.x, -100, 100);
+			ImGui::SliderFloat("Y", &transform->pos.y, -100, 100);
+			ImGui::SliderFloat("Z", &transform->pos.z, -100, 100);
+	
 			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation");
-			ImGui::InputFloat("Rot X", &transform->roll);
-			ImGui::InputFloat("Rot Y", &transform->pitch);
-			ImGui::InputFloat("Rot Z", &transform->yaw);
+			ImGui::SliderFloat("Rot X", &transform->roll, -180, 180);
+			ImGui::SliderFloat("Rot Y", &transform->pitch, -180, 180);
+			ImGui::SliderFloat("Rot Z", &transform->yaw, -180, 180);
 			
 			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation over Pivot");
-			ImGui::InputFloat("Theta", &transform->theta);
-			ImGui::InputFloat("Phi", &transform->phi);
-			ImGui::InputFloat("Chi", &transform->chi);
+			ImGui::SliderFloat("Theta", &transform->theta, -180, 180);
+			ImGui::SliderFloat("Phi", &transform->phi, -180, 180);
+			ImGui::SliderFloat("Chi", &transform->chi, -180, 180);
 	
 			ImGui::PopStyleVar();
 			ImGui::EndChild();

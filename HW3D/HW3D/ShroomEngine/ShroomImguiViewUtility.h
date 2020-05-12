@@ -60,17 +60,17 @@ public:
 
 		types.push_back
 		(
-			EXTENSION_ICON("struct Transform", ICON_FA_ARROWS_ALT " ", ImVec4(0.0f, 0.95f, 0.35f , 1.0f))
+			EXTENSION_ICON("Transform",  ICON_FA_ARROWS_ALT " ", ImVec4(0.0f, 0.95f, 0.35f , 1.0f))
 		);
 
 		types.push_back
 		(
-			EXTENSION_ICON("struct PointLight",  ICON_FA_LIGHTBULB  " ", ImVec4(0.95f, 0.75f, 0.0f, 1.0f))
+			EXTENSION_ICON("PointLight", ICON_FA_LIGHTBULB  " ", ImVec4(0.95f, 0.75f, 0.0f, 1.0f))
 		);
 
 		types.push_back
 		(
-			EXTENSION_ICON("struct MeshRenderer",  ICON_FA_DRAW_POLYGON " ", ImVec4(0.0f, 0.35f, 0.95f, 1.0f))
+			EXTENSION_ICON("MeshRenderer",  ICON_FA_DRAW_POLYGON " ", ImVec4(0.0f, 0.35f, 0.95f, 1.0f))
 		);
 
 		if (exc == "dir")

@@ -182,11 +182,13 @@
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SECS_Scene.cpp" />
     <ClCompile Include="ShroomECSException.cpp" />
     <ClCompile Include="ShroomException.cpp" />
     <ClCompile Include="ShroomImguiAnalyticsOverlay.cpp" />
     <ClCompile Include="ShroomImguiAssetView.cpp" />
     <ClCompile Include="ShroomImguiCameraControl.cpp" />
+    <ClCompile Include="ShroomImguiContainer.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomImguiSECSHierarchy.cpp" />
     <ClCompile Include="ShroomImguiSECSObjectView.cpp" />
@@ -200,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="StandardAssets.h" />
     <ClInclude Include="Imgui\IconsFontaudio.h" />
     <ClInclude Include="Imgui\IconsFontaudio_c.h" />
     <ClInclude Include="Imgui\IconsFontAwesome4.h" />
@@ -242,6 +245,8 @@
     <ClInclude Include="ShroomImguiView.h" />
     <ClInclude Include="ShroomImguiViews.h" />
     <ClInclude Include="ShroomImguiViewUtility.h" />
+    <ClInclude Include="ShroomSerialize.h" />
+    <ClInclude Include="ShroomString.h" />
     <ClInclude Include="ShroomThrowMacros.h" />
     <ClInclude Include="ShroomTimer.h" />
     <ClInclude Include="ShroomWindow.h" />

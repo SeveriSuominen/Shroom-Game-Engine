@@ -7,6 +7,8 @@
 #include <filesystem>
 #include <DirectXMath.h>
 
+#include "Parts.h"
+
 //IMGUI
 #include "imgui/imgui_impl_dx11.h"
 #include "imgui/imgui_impl_win32.h"

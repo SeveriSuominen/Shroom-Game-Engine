@@ -12,6 +12,8 @@
 #include "Sphere.h"
 #include "ShroomArcane3D/Imgui/imgui.h"
 
+#include "ShroomSerialize.h"
+
 struct PointLight : SECS::Component
 {
 public:
@@ -85,5 +87,21 @@ public:
 	};
 
 	mutable PixelConstantBuffer<PSLightConstants> cbuf;
+
+	//-----------------------------------------------
+	// SERIALIZE
+	//-----------------------------------------------
+	void Serialize(SHROOM_JSON_WRITER& writer) override
+	{
+		writer.Key("Name");
+		writer.String("PointLight");
+	};
+
+	void Deserialize(SHROOM_JSON_DOCUMENT_ENTRY entry) override
+	{
+		//writer.Key("Name");
+		//writer.String("PointLight");
+	};
+	//-----------------------------------------------
 };
 

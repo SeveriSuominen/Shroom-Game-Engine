@@ -1,32 +1,7 @@
 #include "ShroomImguiMenuBar.h"
+#include "App.h"
 
-void ShroomImguiMenuBar::Draw(App * shroom_app, bool * p_open)
-{
-	ImGui::SetNextWindowBgAlpha(0.4f); // Transparent background
-
-	if (ImGui::BeginMainMenuBar())
-	{
-		ImGui::Dummy(ImVec2(15.0f, 20.0f));
-		if (ImGui::BeginMenu("File"))
-		{
-			//ShowMenuFile();
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Edit"))
-		{
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-			ImGui::Separator();
-			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
-			ImGui::EndMenu();
-		}
-		ImGui::EndMainMenuBar();
-	}
-}
-
-void ShroomImguiMenuBar::ShowMenuFile()
+void ShroomImguiMenuBar::ShowMenuFile(App* shroom_app)
 {
 	ImGui::MenuItem("(dummy menu)", NULL, false, false);
 	if (ImGui::MenuItem("New")) {}
@@ -42,14 +17,15 @@ void ShroomImguiMenuBar::ShowMenuFile()
 			ImGui::MenuItem("Sailor");
 			if (ImGui::BeginMenu("Recurse.."))
 			{
-				ShowMenuFile();
+				ShowMenuFile(shroom_app);
 				ImGui::EndMenu();
 			}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMenu();
 	}
-	if (ImGui::MenuItem("Save", "Ctrl+S")) {}
+	if (ImGui::MenuItem("Load", "Ctrl+L")) {}
+	if (ImGui::MenuItem("Save", "Ctrl+S")) { Save(shroom_app); }
 	if (ImGui::MenuItem("Save As..")) {}
 	ImGui::Separator();
 	if (ImGui::BeginMenu("Options"))
@@ -89,4 +65,40 @@ void ShroomImguiMenuBar::ShowMenuFile()
 	}
 	if (ImGui::MenuItem("Checked", NULL, true)) {}
 	if (ImGui::MenuItem("Quit", "Alt+F4")) {}
+}
+
+void ShroomImguiMenuBar::Load(App* shroom_app)
+{
+
+}
+
+void ShroomImguiMenuBar::Save(App* shroom_app)
+{
+	SECS::Scene::Save(shroom_app->secs);
+}
+
+void ShroomImguiMenuBar::Draw(App* shroom_app, bool * p_open)
+{
+	ImGui::SetNextWindowBgAlpha(0.4f); // Transparent background
+
+	if (ImGui::BeginMainMenuBar())
+	{
+		ImGui::Dummy(ImVec2(15.0f, 20.0f));
+		if (ImGui::BeginMenu("File"))
+		{
+			ShowMenuFile(shroom_app);
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Edit"))
+		{
+			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
+			ImGui::Separator();
+			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
+			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
+			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
 }

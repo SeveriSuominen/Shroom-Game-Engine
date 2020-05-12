@@ -14,12 +14,11 @@
 #include "ShroomAssets.h"
 
 void Renderer::Initialize() 
-{
+{	// Get only the components that are going to be used ...
 	auto view = secs.view<Transform, MeshRenderer>();
 
 	for (auto entity : view) {
-		
-		// gets only the components that are going to be used ...
+
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer  = view.get<MeshRenderer>(entity);
 		
@@ -56,6 +55,7 @@ void Renderer::Initialize()
 					float a;
 				} face_colors[6];
 			};
+
 			const ConstantBuffer2 cb2 =
 			{
 				{
@@ -132,12 +132,12 @@ void Renderer::Update(float dt)
 		auto&  renderer  = view.get<MeshRenderer>(entity);
 
 		//TESTING
-		transform.roll  += transform.droll  * dt;
+		/*transform.roll  += transform.droll  * dt;
 		transform.pitch += transform.dpitch * dt;
 		transform.yaw   += transform.dyaw   * dt;
 		transform.theta += transform.dtheta * dt;
 		transform.phi   += transform.dphi   * dt;
-		transform.chi   += transform.dchi   * dt;
+		transform.chi   += transform.dchi   * dt;*/
 
 		Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
 	}

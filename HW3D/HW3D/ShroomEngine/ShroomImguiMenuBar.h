@@ -9,5 +9,7 @@ public:
 	void Draw(App* app, bool* open) override;
 
 private:
-	void ShowMenuFile();
+	void ShowMenuFile(App* shroom_app);
+	void Load(App* shroom_app);
+	void Save(App* shroom_app);
 };

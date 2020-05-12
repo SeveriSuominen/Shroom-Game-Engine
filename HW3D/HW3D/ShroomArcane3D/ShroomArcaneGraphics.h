@@ -1,7 +1,7 @@
 #pragma once
 #include "ShroomArcaneWin.h"
 
-#include "Components.h"
+#include "Parts.h"
 
 #include <wrl.h> //Smart COM Pointers
 #include "DxgiInfoManager.h"

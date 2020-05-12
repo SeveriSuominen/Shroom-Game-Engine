@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="Bindables.h" />
+    <ClInclude Include="Components.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableStatic.h" />
@@ -171,7 +172,7 @@
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Components.h" />
+    <ClInclude Include="Parts.h" />
     <ClInclude Include="dxerr.h" />
     <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="Float2.h" />
@@ -188,7 +189,6 @@
     <ClInclude Include="ShroomArcaneImguiManager.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="Topology.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformCbuf.h" />
@@ -225,7 +225,6 @@
     <ClCompile Include="ShroomArcaneSurfaceException.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="TextureRenderer.cpp" />
     <ClCompile Include="Topology.cpp" />
     <ClCompile Include="TransformCbuf.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />

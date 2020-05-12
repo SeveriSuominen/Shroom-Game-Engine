@@ -33,11 +33,13 @@
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), secs(root_wnd.Gfx()) /*, solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)*/
 {
-	auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
+	SECS::Scene::Load(secs);
+
+	/*auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
 	shroomentity.get()->AssignComponent<PointLight>(root_wnd.Gfx());
 
-	AddCubes(50);
-
+	AddCubes(1000);*/
+	
 	secs.AddSystem<LightBinder>();
 	secs.AddSystem<Renderer>();
 
@@ -47,6 +49,9 @@ App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nu
 	//const Surface s = Surface::FromFile("test.png");
 
 	root_wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f/*Min clip*/, 400.0f/*Max clip*/));
+
+	//SECS::Scene::Save(secs);
+	//SECS::Scene::Load(secs);
 }
 
 void App::AddCubes(int amount)
@@ -60,20 +65,7 @@ void App::AddCubes(int amount)
 	for (auto i = 0; i < amount; i++)
 	{
 		auto& shroomentity  = SECS::Entity::Create("entiteetti", this->secs);
-		shroomentity.get()  -> AssignComponent<MeshRenderer>(Cube::MakeIndependent<Vertex>(), 1);
-	}
-}
-
-void App::RemoveCubes(int amount)
-{
-	if (boxes.size() > 0)
-	{
-		for (auto i = 0; i < amount; i++)
-		{
-			//this insted of release for unique_ptr, release wont destroy
-			boxes.back().reset();
-			boxes.pop_back();
-		}
+		shroomentity.get()  -> AssignComponent<MeshRenderer>();
 	}
 }
 
@@ -94,21 +86,9 @@ int App::Go()
 	io.Fonts->AddFontFromFileTTF(std::filesystem::current_path().append("fa-solid-900.ttf").string().c_str(), 16.0f, &icons_config, icons_ranges);
 	//--------------------------------------------
 
-	//Window wnd(300, 500, "Shroom Tool", Window::SHROOM_WINDOW_TYPE::SECONDARY, root_wnd.handle);
-
 	//This is our main loop
 	while (true)
 	{
-		if (root_wnd.input.mouse.LeftIsPressed())
-		{
-			//AddCubes(1);
-		}
-
-		if (root_wnd.input.mouse.RightIsPressed())
-		{
-			//RemoveCubes(1);
-		}
-
 		//Peeking messages from all windows with static ProcessMessages
 		if (const auto ecode = Window::ProcessMessages()) 
 		{
