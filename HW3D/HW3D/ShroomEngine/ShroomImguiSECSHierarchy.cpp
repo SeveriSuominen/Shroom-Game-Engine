@@ -9,6 +9,7 @@
 void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 {
 	static int clicked = -1;
+	static bool contextMenuOpen;
 
 	struct FUNCS
 	{
@@ -19,6 +20,19 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::TextColored(col, m.c_str());
 			ImGui::SameLine(0.0f, 0.0f);
 			ImGui::Text("]");
+		}
+
+		static void ContextMenu(App * app)
+		{
+			if (ImGui::BeginPopupContextWindow())
+			{
+				ImGui::Text("TERVE");
+				if (ImGui::MenuItem("Add Entity"))
+				{
+					SECS::Entity::Create("New Entity", app->secs);
+				}
+				ImGui::EndPopup();
+			}
 		}
 
 		static void ShowEntityComponents(std::unique_ptr<SECS::Entity>& entity, int& clicked, int uid)
@@ -47,6 +61,15 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 					ImGui::TextColored(ImVec4(1.0f, 0.95, 0.1f, 1.0f), entity.get()->componentNames[i].c_str());
 					ImGui::Separator();
 					
+				}
+
+				if (ImGui::BeginMenu(ICON_FA_PLUS))
+				{
+					if (ImGui::MenuItem("MeshRenderer")) 
+					{
+						entity.get()->AssignComponent<MeshRenderer>();
+					}
+					ImGui::EndMenu();
 				}
 				ImGui::TreePop();
 			}
@@ -83,8 +106,6 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::GetFont()->DisplayOffset.y = 0;
 
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
-
-			
 
 			ShroomImguiViewUtility::IconByComponentType("Transform");
 			ImGui::SameLine();
@@ -123,6 +144,21 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 	{
 		ImGui::End();
 		return;
+	}
+
+	if (contextMenuOpen && ImGui::GetIO().MouseClicked[1])
+	{
+		contextMenuOpen = false;
+	}
+
+	if (!contextMenuOpen && ImGui::GetIO().MouseClicked[1])
+	{
+		contextMenuOpen = true;
+	}
+
+	if (contextMenuOpen)
+	{	//MessageBox(nullptr, "terve", "yolonki", MB_OK);
+		FUNCS::ContextMenu(app);
 	}
 
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(2, 2));

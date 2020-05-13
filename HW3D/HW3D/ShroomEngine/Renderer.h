@@ -4,7 +4,7 @@
 #include <random>
 
 #include "SECS.h"
-
+#include "MeshRenderer.h";
 
 class Renderer : public SECS::System, public DrawableStatic<Renderer>
 {
@@ -14,6 +14,8 @@ public:
 	void Initialize()     override;
 	void Update(float dt) override;
 private:
+	void CreateRendererBinds(MeshRenderer& renderer, Transform& transform);
+	
 	SECS& secs;
 	ShroomArcaneGraphics& gfx;
 };

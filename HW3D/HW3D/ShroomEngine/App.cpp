@@ -121,11 +121,11 @@ void App::DoFrame()
 	//---------------------------
 	//IMGUI
 	//---------------------------
-	static bool show_demo_window = true;
+	/*static bool show_demo_window = true;
 	if (show_demo_window)
 	{
 		ImGui::ShowDemoWindow(&show_demo_window);
-	}
+	}*/
 	DrawImguiViews();
 	//---------------------------
 

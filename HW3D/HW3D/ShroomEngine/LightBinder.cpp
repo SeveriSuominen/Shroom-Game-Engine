@@ -8,8 +8,10 @@
 
 void LightBinder::Initialize()
 {
-	namespace dx = DirectX;
-	auto view = secs.view<Transform, PointLight>();
+	//namespace dx = DirectX;
+	//auto view = secs.view<Transform, PointLight>();
+
+	//SetInitialized()
 
 	/*for (auto entity : view) 
 	{

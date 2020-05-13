@@ -53,7 +53,10 @@ public:
 //SECS COMPONENTS
 //*******************************************
 public:
-	class ComponentBase {};
+	class ComponentBase 
+	{ 
+		protected: bool INITIALIZED = false; 
+    };
 	class Component : ComponentBase
 	{
 	public:
@@ -64,6 +67,10 @@ public:
 
 			enum { value = check(static_cast<Type*>(0)) };
 		};
+	
+		void SetInitialized() { INITIALIZED = true; };
+		bool IsInitialized()  { return INITIALIZED; };
+
 		virtual void Serialize(SHROOM_JSON_WRITER& writer)
 		{ throw std::exception("Component serializer not implemented"); };
 		virtual void Deserialize(SHROOM_JSON_DOCUMENT_ENTRY entry)
@@ -115,6 +122,11 @@ public:
 		template<typename AddComponent, typename... Args>
 		AddComponent* AssignComponent(Args &&... args) 
 		{
+			if (secs_ref.has<AddComponent>(entity))
+			{
+				return GetComponent<AddComponent>();
+			}
+
 			if (SECS::Component::IS_BASE<AddComponent>::value)
 			{
 				components.push_back((Component*)&this->secs_ref.assign<AddComponent>(this->entity, std::forward<Args>(args)...));

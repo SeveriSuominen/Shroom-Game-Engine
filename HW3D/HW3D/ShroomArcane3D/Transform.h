@@ -36,6 +36,10 @@ public:
 		//TEMP
 		//pos.z = rdist(rng);
 
+		pos.x = 0;
+		pos.y = 0;
+		pos.z = 0;
+
 		droll  = ddist(rng);
 		dpitch = ddist(rng);
 		dyaw   = ddist(rng);
