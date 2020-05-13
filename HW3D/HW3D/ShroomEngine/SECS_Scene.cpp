@@ -2,11 +2,12 @@
 #include "SECS.h"
 
 #include "StandardAssets.h"
+#include  <filesystem>
 
-void SECS::Scene::Save(SECS& secs)
+void SECS::Scene::Save(SECS& secs, std::filesystem::path savepath)
 {
 	std::ofstream savefile;
-	savefile.open("test001.shroom");
+	savefile.open(savepath);
 	savefile.clear();
 
 	StringBuffer sb;
@@ -65,10 +66,10 @@ void SECS::Scene::Save(SECS& secs)
 	savefile.close();
 }
 
-void SECS::Scene::Load(SECS& secs)
+void SECS::Scene::Load(SECS& secs, std::filesystem::path savepath)
 {
 	std::ifstream savefile;
-	savefile.open("test001.shroom");
+	savefile.open(savepath);
 
 	//try
 	{

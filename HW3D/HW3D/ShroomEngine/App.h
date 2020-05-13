@@ -10,6 +10,8 @@
 #include "Renderer.h";
 #include "LightBinder.h"
 
+#include "ShroomApplicationCache.h"
+
 //IMGUI
 #include "ShroomArcane3D/ShroomArcaneImguiManager.h"
 
@@ -24,6 +26,9 @@ class App
 public:
 	    App();
 	int Go();
+
+	//APP CACHE
+	ShroomApplicationCache cache;
 
 	//IMGUI manager
 	ShroomArcaneImguiManager imgui;
@@ -42,7 +47,6 @@ private:
 	void  DoFrame();
 	void  DrawImguiViews();
 	void  AddCubes(int amount);
-	void  RemoveCubes(int amount);
 	float frameDelta;
 
 private:

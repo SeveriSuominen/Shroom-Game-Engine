@@ -74,7 +74,7 @@ void ShroomImguiMenuBar::Load(App* shroom_app)
 
 void ShroomImguiMenuBar::Save(App* shroom_app)
 {
-	SECS::Scene::Save(shroom_app->secs);
+
 }
 
 void ShroomImguiMenuBar::Draw(App* shroom_app, bool * p_open)

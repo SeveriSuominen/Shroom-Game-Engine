@@ -1,4 +1,6 @@
 #include "ShroomImguiContainer.h"
+#include "ShroomWin32Tools.h"
+
 #include "App.h"
 
 std::vector<std::unique_ptr<ShroomImguiView>*> ShroomImguiContainer::GetByCategory(ShroomImguiView::Category category)
@@ -97,11 +99,11 @@ void ShroomImguiContainer::DrawContainerByCategory(App* app)
 void ShroomImguiContainer::ShowMenuFile(App* shroom_app)
 {
 	ImGui::MenuItem("(dummy menu)", NULL, false, false);
-	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {}
+	if (ImGui::MenuItem("New")) { New(shroom_app); }
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { Load(shroom_app); }
 	if (ImGui::BeginMenu("Open Recent"))
 	{
-		ImGui::MenuItem("fish_hat.c");
+		/*ImGui::MenuItem("fish_hat.c");
 		ImGui::MenuItem("fish_hat.inl");
 		ImGui::MenuItem("fish_hat.h");
 		if (ImGui::BeginMenu("More.."))
@@ -114,12 +116,12 @@ void ShroomImguiContainer::ShowMenuFile(App* shroom_app)
 				ImGui::EndMenu();
 			}
 			ImGui::EndMenu();
-		}
+		}*/
 		ImGui::EndMenu();
 	}
-	if (ImGui::MenuItem("Load", "Ctrl+L")) {}
+	//if (ImGui::MenuItem("Load", "Ctrl+L")) { Load(shroom_app); }
 	if (ImGui::MenuItem("Save", "Ctrl+S")) { Save(shroom_app); }
-	if (ImGui::MenuItem("Save As..")) {}
+	if (ImGui::MenuItem("Save As..")) { SaveAs(shroom_app); }
 	ImGui::Separator();
 	if (ImGui::BeginMenu("Options"))
 	{
@@ -160,12 +162,51 @@ void ShroomImguiContainer::ShowMenuFile(App* shroom_app)
 	if (ImGui::MenuItem("Quit", "Alt+F4")) {}
 }
 
+void ShroomImguiContainer::New(App* shroom_app)
+{
+	shroom_app->cache.ResetCache();
+	shroom_app->secs.ClearEntities();
+}
+
 void ShroomImguiContainer::Load(App* shroom_app)
 {
+	auto path = ShroomWin32Tools::OpenFileDialog();
 
+	if (path.empty())
+	{
+		return;
+	}
+
+	shroom_app->cache.ResetCache();
+	shroom_app->secs.ClearEntities();
+
+	SECS::Scene::Load(shroom_app->secs, path);
+
+	shroom_app->cache.SetCurrentSave(path);
+
+	shroom_app->secs.Initialize();
 }
 
 void ShroomImguiContainer::Save(App* shroom_app)
 {
-	SECS::Scene::Save(shroom_app->secs);
+	auto path = shroom_app->cache.GetCurrentSave();
+
+	if (path.empty())
+	{
+		SaveAs(shroom_app);
+		return;
+	}
+	SECS::Scene::Save(shroom_app->secs, path);
+}
+
+void ShroomImguiContainer::SaveAs(App* shroom_app)
+{
+	auto path = ShroomWin32Tools::SaveAsDialog();
+
+	if (path.empty())
+	{
+		return;
+	}
+	SECS::Scene::Save(shroom_app->secs, path);
+	shroom_app->cache.SetCurrentSave(path);
 }

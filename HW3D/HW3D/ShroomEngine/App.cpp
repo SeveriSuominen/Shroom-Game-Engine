@@ -33,7 +33,7 @@
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), secs(root_wnd.Gfx()) /*, solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)*/
 {
-	SECS::Scene::Load(secs);
+	//SECS::Scene::Load(secs);
 
 	/*auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
 	shroomentity.get()->AssignComponent<PointLight>(root_wnd.Gfx());
@@ -121,11 +121,11 @@ void App::DoFrame()
 	//---------------------------
 	//IMGUI
 	//---------------------------
-	/*static bool show_demo_window = true;
+	static bool show_demo_window = true;
 	if (show_demo_window)
 	{
 		ImGui::ShowDemoWindow(&show_demo_window);
-	}*/
+	}
 	DrawImguiViews();
 	//---------------------------
 

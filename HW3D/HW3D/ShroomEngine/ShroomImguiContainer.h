@@ -36,6 +36,8 @@ public:
 
 private:
 	void ShowMenuFile(App* shroom_app);
-	void Save(App* shroom_app);
-	void Load(App* shroom_app);
+	void New    (App* shroom_app);
+	void Save   (App* shroom_app);
+	void SaveAs (App* shroom_app);
+	void Load   (App* shroom_app);
 };

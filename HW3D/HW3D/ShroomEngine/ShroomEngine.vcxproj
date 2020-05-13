@@ -195,6 +195,7 @@
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
+    <ClCompile Include="ShroomWin32Tools.cpp" />
     <ClCompile Include="ShroomWindowException.cpp" />
     <ClCompile Include="ShroomWindow.cpp" />
     <ClCompile Include="ShroomWindowHandleProcs.cpp" />
@@ -202,6 +203,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="ShroomApplicationCache.h" />
+    <ClInclude Include="ShroomWin32Tools.h" />
     <ClInclude Include="StandardAssets.h" />
     <ClInclude Include="Imgui\IconsFontaudio.h" />
     <ClInclude Include="Imgui\IconsFontaudio_c.h" />

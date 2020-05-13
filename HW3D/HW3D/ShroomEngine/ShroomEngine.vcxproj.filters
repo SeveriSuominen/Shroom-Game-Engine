@@ -151,6 +151,9 @@
     <Filter Include="Header Files\App\Serialize">
       <UniqueIdentifier>{731005e2-5c1e-4b76-8242-c8f43f19593c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\App\App">
+      <UniqueIdentifier>{93230b04-d879-4d06-95b7-9f2259f1ee7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -215,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="ShroomImguiContainer.cpp">
       <Filter>Resource Files\Source Files\App\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomWin32Tools.cpp">
+      <Filter>Resource Files\Source Files\App\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="StandardAssets.h">
       <Filter>Header Files\Engine\Assets\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomWin32Tools.h">
+      <Filter>Header Files\App\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomApplicationCache.h">
+      <Filter>Header Files\App\App</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

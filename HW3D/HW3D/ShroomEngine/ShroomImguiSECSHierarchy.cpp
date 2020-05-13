@@ -66,15 +66,17 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 				return;
 			}
 
-			//ImGui::InputFloat3("Rotation", {transform->} );
-			/*if (!ImGui::BeginChild("Transform"))
+			//ENTITY EXISTING?
+			if (entity.get() == nullptr)
 			{
-				ImGui::EndChild();
+				clicked = -1;
+				ImGui::End(); //REMEMBER TO END
 				return;
-			}*/
+			}
 
 			//TRANSFORM
 			auto transform = entity.get()->GetComponent<Transform>();
+
 			auto size = ImGui::GetWindowSize();
 
 			ImGui::BeginChild("too big" /*ImVec2(size.x -15, 260),true*/);
@@ -82,25 +84,31 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
 
-			//ImGui::Columns(2);
+			
+
 			ShroomImguiViewUtility::IconByComponentType("Transform");
 			ImGui::SameLine();
 			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.3f, 1), "Transform");
 			ImGui::Text("");
-			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Global Position");
+
+			ImGui::Columns(2);
+
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Position");
 			ImGui::SliderFloat("X", &transform->pos.x, -100, 100);
 			ImGui::SliderFloat("Y", &transform->pos.y, -100, 100);
 			ImGui::SliderFloat("Z", &transform->pos.z, -100, 100);
 	
+			ImGui::NextColumn();
+
 			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation");
-			ImGui::SliderFloat("Rot X", &transform->roll, -180, 180);
-			ImGui::SliderFloat("Rot Y", &transform->pitch, -180, 180);
-			ImGui::SliderFloat("Rot Z", &transform->yaw, -180, 180);
+			ImGui::SliderFloat("RX", &transform->roll, -180, 180);
+			ImGui::SliderFloat("RY", &transform->pitch, -180, 180);
+			ImGui::SliderFloat("RZ", &transform->yaw, -180, 180);
 			
 			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation over Pivot");
-			ImGui::SliderFloat("Theta", &transform->theta, -180, 180);
-			ImGui::SliderFloat("Phi", &transform->phi, -180, 180);
-			ImGui::SliderFloat("Chi", &transform->chi, -180, 180);
+			ImGui::SliderFloat("T", &transform->theta, -180, 180);
+			ImGui::SliderFloat("P", &transform->phi, -180, 180);
+			ImGui::SliderFloat("C", &transform->chi, -180, 180);
 	
 			ImGui::PopStyleVar();
 			ImGui::EndChild();
@@ -131,5 +139,10 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 	if (clicked != -1) 
 	{
 		FUNCS::ShowEntityEditor(app->secs.GetEntity(clicked));
+
+		if (ImGui::GetIO().MouseClicked[1])
+		{
+			clicked = -1;
+		}
 	}
 }

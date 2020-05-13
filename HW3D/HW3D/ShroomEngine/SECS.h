@@ -238,8 +238,8 @@ public:
 		std::vector<Scene::Entity> entities;
 		std::vector<Scene::System> systems;
 
-		static void Save(SECS& secs);
-		static void Load(SECS& secs);
+		static void Save(SECS& secs, std::filesystem::path savepath);
+		static void Load(SECS& secs, std::filesystem::path savepath);
 	};
 
 //*******************************************
@@ -248,4 +248,15 @@ public:
 private:
 	std::vector<std::unique_ptr<System>> systems;
 	std::vector<std::unique_ptr<Entity>> entities;
+
+public:
+	void ClearEntities()
+	{
+		for (size_t i = 0; i < entities.size(); i++)
+		{
+			entities[i].release();
+		}
+		entities.clear();
+		this->clear();
+	};
 };
