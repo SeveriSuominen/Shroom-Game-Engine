@@ -154,6 +154,9 @@
     <Filter Include="Header Files\App\App">
       <UniqueIdentifier>{93230b04-d879-4d06-95b7-9f2259f1ee7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\App\Imgui\Styles">
+      <UniqueIdentifier>{23ec21aa-179f-4e4b-a5aa-b13abab60957}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="ShroomApplicationCache.h">
       <Filter>Header Files\App\App</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiStyles.h">
+      <Filter>Header Files\App\Imgui\Styles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,8 @@
 #include "ShroomImguiViews.h"
 #include <memory>
 
+#include "ShroomImguiStyles.h"
+
 //FORWARD DEC
 class App;
 
@@ -12,6 +14,7 @@ class ShroomImguiContainer
 public: 
 	ShroomImguiContainer() 
 	{
+		ShroomImguiStyles::BasicStyle();
 		//-----------------------------------------------------------------
 		//MAIN
 		//-----------------------------------------------------------------

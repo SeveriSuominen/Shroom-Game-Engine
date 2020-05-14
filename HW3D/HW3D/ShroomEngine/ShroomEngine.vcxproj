@@ -204,6 +204,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="ShroomApplicationCache.h" />
+    <ClInclude Include="ShroomImguiStyles.h" />
     <ClInclude Include="ShroomWin32Tools.h" />
     <ClInclude Include="StandardAssets.h" />
     <ClInclude Include="Imgui\IconsFontaudio.h" />

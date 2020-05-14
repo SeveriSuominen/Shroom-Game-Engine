@@ -59,8 +59,7 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 					ImGui::SameLine(0.0f, 0.0f);
 					ImGui::PushItemWidth(50);
 					ImGui::TextColored(ImVec4(1.0f, 0.95, 0.1f, 1.0f), entity.get()->componentNames[i].c_str());
-					ImGui::Separator();
-					
+					//ImGui::Separator();
 				}
 
 				if (ImGui::BeginMenu(ICON_FA_PLUS))
