@@ -8,6 +8,7 @@ public:
 	//void SetMatrix(DirectX::FXMMATRIX cameraMatrix);
 	void Reset();
 
+	DirectX::XMMATRIX GetCameraMatrix();
 	DirectX::XMMATRIX GetMatrix();
 private:
 	DirectX::XMMATRIX projection;

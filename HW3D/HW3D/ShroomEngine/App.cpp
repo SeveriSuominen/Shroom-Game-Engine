@@ -117,7 +117,9 @@ void App::DoFrame()
 	root_wnd.Gfx().BeginFrame();
 
 	secs.Update(deltatime);
-	
+
+	auto view = secs.view<Transform, MeshRenderer>();
+
 	//---------------------------
 	//IMGUI
 	//---------------------------

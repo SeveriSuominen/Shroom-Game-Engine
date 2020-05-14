@@ -3,7 +3,7 @@
 #include "ShroomImguiViewUtility.h"
 
 #include "ShroomArcane3D/Transform.h"
-
+#include "PointLight.h"
 #include <string>
 
 void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
@@ -35,7 +35,7 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			}
 		}
 
-		static void ShowEntityComponents(std::unique_ptr<SECS::Entity>& entity, int& clicked, int uid)
+		static void ShowEntityComponents(App * app, std::unique_ptr<SECS::Entity>& entity, int& clicked, int uid)
 		{
 			ImGui::PushID(uid);                // Use object uid as identifier. Most commonly you could also use the object pointer as a base ID.
 			ImGui::AlignTextToFramePadding();  // Text and Tree nodes are less high than regular widgets, here we add vertical spacing to make the tree lines equal high.
@@ -65,9 +65,14 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 
 				if (ImGui::BeginMenu(ICON_FA_PLUS))
 				{
-					if (ImGui::MenuItem("MeshRenderer")) 
+					if (ImGui::MenuItem(ICON_FA_PEN " Mesh Renderer"))
 					{
 						entity.get()->AssignComponent<MeshRenderer>();
+					}
+				
+					if (ImGui::MenuItem(ICON_FA_LIGHTBULB " Point Light"))
+					{
+						entity.get()->AssignComponent<PointLight>(app->root_wnd.Gfx());
 					}
 					ImGui::EndMenu();
 				}
@@ -112,29 +117,49 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.3f, 1), "Transform");
 			ImGui::Text("");
 
-			ImGui::Columns(2);
+			/*ImGui::Columns(3);
 
-			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Position");
-			ImGui::SliderFloat("X", &transform->pos.x, -100, 100);
-			ImGui::SliderFloat("Y", &transform->pos.y, -100, 100);
-			ImGui::SliderFloat("Z", &transform->pos.z, -100, 100);
+			float matrixTranslation[3], matrixRotation[3], matrixScale[3];
+			
+			//<<<<<<<<<<<<<<<<<<<<<<<<
+			transform->RecomposeMatrix
+			(
+				matrixTranslation,
+				matrixRotation,
+				matrixScale
+			);
+
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Pos");
+			ImGui::SliderFloat("TX", &matrixTranslation[0], -100, 100);
+			ImGui::SliderFloat("TY", &matrixTranslation[1], -100, 100);
+			ImGui::SliderFloat("TZ", &matrixTranslation[2], -100, 100);
 	
 			ImGui::NextColumn();
 
-			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation");
-			ImGui::SliderFloat("RX", &transform->roll, -180, 180);
-			ImGui::SliderFloat("RY", &transform->pitch, -180, 180);
-			ImGui::SliderFloat("RZ", &transform->yaw, -180, 180);
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rot");
+			ImGui::SliderFloat("RX", &matrixRotation[0], -180, 180);
+			ImGui::SliderFloat("RY", &matrixRotation[1], -180, 180);
+			ImGui::SliderFloat("RZ", &matrixRotation[2], -180, 180);
 			
-			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Rotation over Pivot");
-			ImGui::SliderFloat("T", &transform->theta, -180, 180);
-			ImGui::SliderFloat("P", &transform->phi, -180, 180);
-			ImGui::SliderFloat("C", &transform->chi, -180, 180);
+			ImGui::NextColumn();
+
+			ImGui::TextColored(ImVec4(1.0f, 0.8f, 0, 1), "Scale");
+
+			ImGui::SliderFloat("SX", &matrixScale[0], -180, 180);
+			ImGui::SliderFloat("SY", &matrixScale[1], -180, 180);
+			ImGui::SliderFloat("SZ", &matrixScale[2], -180, 180);
 	
+			//>>>>>>>>>>>>>>>>>>>>>>>>
+			transform->DecomposeMatrix
+			(
+				matrixTranslation,
+				matrixRotation,
+				matrixScale
+			);*/
+
 			ImGui::PopStyleVar();
 			ImGui::EndChild();
 
-			//ImGui::EndChild();
 			ImGui::End();
 		}
 	};
@@ -166,7 +191,7 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 	//ImGui::Separator();
 
 	for (size_t i = 0; i < app->secs.GetEntitiesSize(); i++)
-		FUNCS::ShowEntityComponents(app->secs.GetEntity(i), clicked, i);
+		FUNCS::ShowEntityComponents(app, app->secs.GetEntity(i), clicked, i);
 	//ImGui::Columns(1);
 	//ImGui::Separator();
 	ImGui::PopStyleVar();
@@ -174,7 +199,15 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 
 	if (clicked != -1) 
 	{
-		FUNCS::ShowEntityEditor(app->secs.GetEntity(clicked));
+		//FUNCS::ShowEntityEditor(app->secs.GetEntity(clicked));
+		
+		//TRANSFORM
+		if (ImGui::Begin(ICON_FA_ARROWS_ALT " SECS Transform"))
+		{
+			auto transform = app->secs.GetEntity(clicked).get()->GetComponent<Transform>();
+			app->root_wnd.Gfx().EditTransform(app->root_wnd.Gfx().camera, *transform);
+			ImGui::End();
+		}
 
 		if (ImGui::GetIO().MouseClicked[1])
 		{

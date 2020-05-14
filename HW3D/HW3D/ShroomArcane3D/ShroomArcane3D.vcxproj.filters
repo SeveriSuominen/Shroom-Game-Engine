@@ -273,6 +273,9 @@
     <ClInclude Include="Components.h">
       <Filter>Header Files\Assets\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\Parts\Structs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShroomArcaneException.cpp">

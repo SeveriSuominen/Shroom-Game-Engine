@@ -40,8 +40,6 @@ class Transform;
 //*******************************************
 class SECS : public ENTT_ECS
 {
-	friend class boost::serialization::access;
-
 //*******************************************
 //SECS
 //*******************************************
@@ -64,7 +62,6 @@ public:
 		struct IS_BASE {
 			constexpr static bool check(SECS::ComponentBase*) { return true; }
 			constexpr static bool check(...)   { return false; }
-
 			enum { value = check(static_cast<Type*>(0)) };
 		};
 	
@@ -266,7 +263,7 @@ public:
 	{
 		for (size_t i = 0; i < entities.size(); i++)
 		{
-			entities[i].release();
+			entities[i].reset();
 		}
 		entities.clear();
 		this->clear();

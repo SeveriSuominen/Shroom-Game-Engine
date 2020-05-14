@@ -9,7 +9,10 @@
 
 #include "ShroomArcaneCamera.h"
 
+#include <DirectXMath.h>
 #include <vector>
+
+#include "Transform.h"
 
 class ShroomArcaneGraphics
 {
@@ -34,6 +37,7 @@ public:
 	void DrawIndexed(UINT count) noexcept;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
 	DirectX::XMMATRIX GetProjection() const noexcept;
+	void EditTransform(ShroomArcaneCamera& camera, Transform& transform);
 //--------------------------------------------------------------------------
 //Camera
 //--------------------------------------------------------------------------

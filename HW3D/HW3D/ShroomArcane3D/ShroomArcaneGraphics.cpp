@@ -5,7 +5,6 @@
 #include <d3dcompiler.h>
 #include <iostream>
 #include <filesystem>
-#include <DirectXMath.h>
 
 #include "Parts.h"
 
@@ -161,31 +160,21 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
-/*void ShroomArcaneGraphics::EditTransform(const float *cameraView, float *cameraProjection, float* matrix)
+#include <sstream>
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+long PI()
 {
-	float matrix[16] =
-	{ 1.f, 0.f, 0.f, 0.f,
-	  0.f, 1.f, 0.f, 0.f,
-	  0.f, 0.f, 1.f, 0.f,
-	  0.f, 0.f, 0.f, 1.f };
+	return 3.141592653589793238462643383279502884L;
+}
 
-	float cameraView[16] =
-	{ 1.f, 0.f, 0.f, 0.f,
-	  0.f, 1.f, 0.f, 0.f,
-	  0.f, 0.f, 1.f, 0.f,
-	  0.f, 0.f, 0.f, 1.f };
+void ShroomArcaneGraphics::EditTransform(ShroomArcaneCamera& camera, Transform& transform)
+{
+	DX::XMMATRIX& matrix = transform.GetTransformXM();
 
-	float cameraProjection[16];
-
-	static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
-	static ImGuizmo::MODE mCurrentGizmoMode(ImGuizmo::LOCAL);
-	static bool useSnap = false;
-	static float snap[3] = { 1.f, 1.f, 1.f };
-	static float bounds[] = { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
-	static float boundsSnap[] = { 0.1f, 0.1f, 0.1f };
-	static bool boundSizing = false;
-	static bool boundSizingSnap = false;
-
+	static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::ROTATE);
+	static ImGuizmo::MODE mCurrentGizmoMode(ImGuizmo::WORLD);
 	if (ImGui::IsKeyPressed(90))
 		mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 	if (ImGui::IsKeyPressed(69))
@@ -200,12 +189,14 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 	ImGui::SameLine();
 	if (ImGui::RadioButton("Scale", mCurrentGizmoOperation == ImGuizmo::SCALE))
 		mCurrentGizmoOperation = ImGuizmo::SCALE;
+
 	float matrixTranslation[3], matrixRotation[3], matrixScale[3];
-	ImGuizmo::DecomposeMatrixToComponents(matrix, matrixTranslation, matrixRotation, matrixScale);
+	ImGuizmo::DecomposeMatrixToComponents((float*)&matrix, matrixTranslation, matrixRotation, matrixScale);
+	
 	ImGui::InputFloat3("Tr", matrixTranslation, 3);
 	ImGui::InputFloat3("Rt", matrixRotation, 3);
 	ImGui::InputFloat3("Sc", matrixScale, 3);
-	ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, matrix);
+	ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, (float*)&matrix);
 
 	if (mCurrentGizmoOperation != ImGuizmo::SCALE)
 	{
@@ -215,37 +206,60 @@ ShroomArcaneGraphics::ShroomArcaneGraphics(HWND whdl)
 		if (ImGui::RadioButton("World", mCurrentGizmoMode == ImGuizmo::WORLD))
 			mCurrentGizmoMode = ImGuizmo::WORLD;
 	}
+	static bool useSnap(false);
 	if (ImGui::IsKeyPressed(83))
 		useSnap = !useSnap;
 	ImGui::Checkbox("", &useSnap);
 	ImGui::SameLine();
+	//vec_t snap;
+
+	float snap;
 
 	switch (mCurrentGizmoOperation)
 	{
 	case ImGuizmo::TRANSLATE:
-		ImGui::InputFloat3("Snap", &snap[0]);
+		snap = 0.5f;
+		ImGui::InputFloat3("Snap", &snap);
 		break;
 	case ImGuizmo::ROTATE:
-		ImGui::InputFloat("Angle Snap", &snap[0]);
+		snap = 0.5f;
+		ImGui::InputFloat("Angle Snap", &snap);
 		break;
 	case ImGuizmo::SCALE:
-		ImGui::InputFloat("Scale Snap", &snap[0]);
+		snap = 0.5f;
+		ImGui::InputFloat("Scale Snap", &snap);
 		break;
 	}
-	ImGui::Checkbox("Bound Sizing", &boundSizing);
-	if (boundSizing)
-	{
-		ImGui::PushID(3);
-		ImGui::Checkbox("", &boundSizingSnap);
-		ImGui::SameLine();
-		ImGui::InputFloat3("Snap", boundsSnap);
-		ImGui::PopID();
-	}
-
 	ImGuiIO& io = ImGui::GetIO();
 	ImGuizmo::SetRect(0, 0, io.DisplaySize.x, io.DisplaySize.y);
-	ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
-}*/
+
+	const auto cam_matrix = camera.GetMatrix();
+	const auto projection_matrix = GetProjection();
+
+	ImGuizmo::Manipulate((float*)&cam_matrix, (float*)&projection_matrix, mCurrentGizmoOperation, mCurrentGizmoMode, (float*)&matrix, NULL, useSnap ? &snap : NULL);
+	
+	//DECOMPOSE
+	float DmatrixTranslation[3], DmatrixRotation[3], DmatrixScale[3];
+	ImGuizmo::DecomposeMatrixToComponents((float*)&matrix, DmatrixTranslation, DmatrixRotation, DmatrixScale);
+
+	/*transform.pos.x = DmatrixTranslation[0];
+	transform.pos.y = DmatrixTranslation[1];
+	transform.pos.z = DmatrixTranslation[2];
+	
+	transform.roll  = (DmatrixRotation[0] * PI()) / 180.0f;
+	transform.pitch = (DmatrixRotation[1] * PI()) / 180.0f;
+	transform.yaw   = (DmatrixRotation[2] * PI()) / 180.0f;*/
+
+	//std::stringstream ss;
+	//ss << matrixTranslation[0];
+
+	//MessageBox(nullptr, ss.str().c_str(), "terve", MB_OK);
+
+	/*transform.pos.x = matrixTranslation[0];
+	transform.pos.y = matrixTranslation[1];
+	transform.pos.z = matrixTranslation[2];*/
+}
+
 
 void ShroomArcaneGraphics::BeginFrame()
 {

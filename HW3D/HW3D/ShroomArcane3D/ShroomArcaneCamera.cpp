@@ -5,6 +5,14 @@
 	this->cameraMatrix = cameraMatrix;
 }*/
 
+DirectX::XMMATRIX ShroomArcaneCamera::GetCameraMatrix()
+{
+	return //DirectX::XMMatrixRotationRollPitchYaw(theta, phi, 0.0f);
+		// DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
+		DirectX::XMMatrixTranslation(0.0f, 0.0f, 0.0f);//*
+		//DirectX::XMMatrixRotationRollPitchYaw(theta, phi, 0.0f);
+}
+
 DirectX::XMMATRIX ShroomArcaneCamera::GetMatrix()
 {
 	const auto pos = DirectX::XMVector3Transform

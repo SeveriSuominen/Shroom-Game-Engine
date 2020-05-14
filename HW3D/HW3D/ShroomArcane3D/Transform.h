@@ -20,6 +20,8 @@
 using namespace rapidjson;
 //------------------------------------------
 
+//IMGUIZMO
+#include "ImGuizmo\ImGuizmo.h"
 
 struct Transform
 {
@@ -36,31 +38,72 @@ public:
 		//TEMP
 		//pos.z = rdist(rng);
 
-		pos.x = 0;
+	  /*pos.x = 0;
 		pos.y = 0;
-		pos.z = 0;
+		pos.z = 0;*/
 
-		droll  = ddist(rng);
+		/*droll  = ddist(rng);
 		dpitch = ddist(rng);
 		dyaw   = ddist(rng);
 		dphi   = odist(rng);
 		dtheta = odist(rng);
-		dchi   = odist(rng);
+		dchi   = odist(rng);*/
 		//chi    = adist(rng);
 		//theta  = adist(rng);
 		//phi    = adist(rng);
+
+		transformMatrix =
+			DirectX::XMMatrixRotationRollPitchYaw(0, 0, 0) *
+			DirectX::XMMatrixTranslation(0, 0, 0) *
+			DirectX::XMMatrixRotationRollPitchYaw(1, 1, 1);
+
+		float DmatrixTranslation[3] = { 0.0f, 0.0f, 0.0f };
+		float DmatrixRotation[3]    = { 0.0f, 0.0f, 0.0f };
+		float DmatrixScale[3]       = { 1.0f, 1.0f, 1.0f };
+		
+		DecomposeMatrix
+		(
+			DmatrixTranslation,
+			DmatrixRotation,
+			DmatrixScale
+		);
 	}
 
-	DirectX::XMMATRIX GetTransformXM() const noexcept
+	//TRANSFORM!!
+	mutable DirectX::XMMATRIX transformMatrix;
+
+	//DX
+	DirectX::XMMATRIX& GetTransformXM() const noexcept
 	{
-		return  DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
-			    DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z) *
-			    DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi);
+		/*transformMatrix = 
+			DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
+			DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z) *
+			DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi);*/
+
+		return transformMatrix;
 	}
 
-	int test;
+	void RecomposeMatrix(float* translation, float* rotation, float* scale)
+	{
+		ImGuizmo::RecomposeMatrixFromComponents
+		(
+			translation,
+			rotation,
+			scale,
+			(float*)&transformMatrix  //<<< MATRIX
+		);
+	}
 
-	DirectX::XMFLOAT3 pos;
+	void DecomposeMatrix(float* translation, float* rotation, float* scale)
+	{
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			(float*)&transformMatrix, //<<< MATRIX
+			translation,
+			rotation,
+			scale
+		);
+	}
 
 	//SERIALIZE
 	void Serialize(Writer<StringBuffer>& writer) 
@@ -68,52 +111,76 @@ public:
 		writer.Key("Name");
 		writer.String("Transform");
 
+		float DmatrixTranslation[3], DmatrixRotation[3], DmatrixScale[3];
+		DecomposeMatrix
+		(
+			DmatrixTranslation,
+			DmatrixRotation,
+			DmatrixScale
+		);
+
 		writer.Key("Pos X");
-		writer.Double(pos.x);
+		writer.Double(DmatrixTranslation[0]);
 		writer.Key("Pos Y");
-		writer.Double(pos.y);
+		writer.Double(DmatrixTranslation[1]);
 		writer.Key("Pos Z");
-		writer.Double(pos.z);
+		writer.Double(DmatrixTranslation[2]);
 
 		writer.Key("Roll");
-		writer.Double(roll);
+		writer.Double(DmatrixRotation[0]);
 		writer.Key("Pitch");
-		writer.Double(pitch);
+		writer.Double(DmatrixRotation[1]);
 		writer.Key("Yaw");
-		writer.Double(yaw);
+		writer.Double(DmatrixRotation[2]);
 
-		writer.Key("Theta");
-		writer.Double(theta);
-		writer.Key("Phi");
-		writer.Double(phi);
-		writer.Key("Chi");
-		writer.Double(chi);
+		writer.Key("Scale X");
+		writer.Double(DmatrixScale[0]);
+		writer.Key("Scale Y");
+		writer.Double(DmatrixScale[1]);
+		writer.Key("Scale Z");
+		writer.Double(DmatrixScale[2]);
 	}
 
 	virtual void Deserialize(rapidjson::Value& json)
 	{
 		if (json.IsObject())
 		{
-			pos.x = json["Pos X"].GetDouble();
-			pos.y = json["Pos Y"].GetDouble();
-			pos.z = json["Pos Z"].GetDouble();
+			float RmatrixTranslation[3] = 
+			{ 
+				json["Pos X"].GetDouble(),
+				json["Pos Y"].GetDouble(),
+				json["Pos Z"].GetDouble()		
+			};
 
-			roll  = json["Roll"] .GetDouble();
-			pitch = json["Pitch"].GetDouble();
-			yaw   = json["Yaw"]  .GetDouble();
+			float RmatrixRotation[3] = 
+			{ 
+				json["Roll"] .GetDouble(),
+				json["Pitch"].GetDouble(),
+				json["Yaw"]  .GetDouble()
+			};
 
-			theta = json["Theta"].GetDouble();
-			phi   = json["Phi"]  .GetDouble();
-			chi   = json["Chi"]  .GetDouble();
+			float RmatrixScale[3] = 
+			{ 
+				json["Scale X"].GetDouble(),
+				json["Scale Y"].GetDouble(),
+				json["Scale Z"].GetDouble(),
+			};
+
+			RecomposeMatrix
+			(
+				RmatrixTranslation,
+				RmatrixRotation,
+				RmatrixScale
+			);
 		}
 		else
 		{
-			throw std::exception("yolonki");
+			throw std::exception("yolo");
 		}
 	};
 
 	// positional
-	float r;
+	/*float r;
 
 	float roll = 0.0f;
 	float pitch = 0.0f;
@@ -128,5 +195,5 @@ public:
 	float dyaw;
 	float dtheta;
 	float dphi;
-	float dchi;
+	float dchi;*/
 };

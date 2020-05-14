@@ -42,6 +42,8 @@
 // 
 // -------------------------------------------------------------------------------------------
 // Example 
+#include "../imgui/imgui.h"
+
 #if 0
 void EditTransform(const Camera& camera, matrix_t& matrix)
 {

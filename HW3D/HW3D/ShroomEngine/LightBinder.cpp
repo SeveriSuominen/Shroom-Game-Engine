@@ -64,7 +64,30 @@ void LightBinder::Update(float dt)
 		
 		renderer.SpawnControlWindow();
 
-		renderer.cbuf.Update(gfx, PointLight::PSLightConstants{ transform.pos });
+		float DmatrixTranslation[3], DmatrixRotation[3], DmatrixScale[3];
+		transform.DecomposeMatrix
+		(
+			DmatrixTranslation,
+			DmatrixRotation,
+			DmatrixScale
+		);
+
+		/*float RmatrixTranslation[3], RmatrixRotation[3], RmatrixScale[3];
+		transform.RecomposeMatrix
+		(
+			RmatrixTranslation,
+			RmatrixRotation,
+			RmatrixScale
+		);*/
+
+		DirectX::XMFLOAT3 vec3
+		(
+			DmatrixTranslation[0], 
+			DmatrixTranslation[1],
+			DmatrixTranslation[2]	
+		);
+
+		renderer.cbuf.Update(gfx, PointLight::PSLightConstants{ vec3 });
 		renderer.cbuf.Bind(gfx);
 
 		//Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
