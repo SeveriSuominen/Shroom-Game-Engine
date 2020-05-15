@@ -60,9 +60,9 @@ void LightBinder::Update(float dt)
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
-		auto& renderer = view.get<PointLight>(entity);
+		auto& light     = view.get<PointLight>(entity);
 		
-		renderer.SpawnControlWindow();
+		light.SpawnControlWindow();
 
 		float DmatrixTranslation[3], DmatrixRotation[3], DmatrixScale[3];
 		transform.DecomposeMatrix
@@ -72,14 +72,6 @@ void LightBinder::Update(float dt)
 			DmatrixScale
 		);
 
-		/*float RmatrixTranslation[3], RmatrixRotation[3], RmatrixScale[3];
-		transform.RecomposeMatrix
-		(
-			RmatrixTranslation,
-			RmatrixRotation,
-			RmatrixScale
-		);*/
-
 		DirectX::XMFLOAT3 vec3
 		(
 			DmatrixTranslation[0], 
@@ -87,10 +79,27 @@ void LightBinder::Update(float dt)
 			DmatrixTranslation[2]	
 		);
 
-		renderer.cbuf.Update(gfx, PointLight::PSLightConstants{ vec3 });
-		renderer.cbuf.Bind(gfx);
+		light.cbuf.Update(gfx, 
+			PointLight::PSLightConstants
+			{
+				vec3,
+				light.attConst,
+				light.attLin,
+				light.attQuad,
+				light.diffuseIntensity,
+				DirectX::XMFLOAT4
+				(
+					light.diffuseColor[0],
+					light.diffuseColor[1],
+					light.diffuseColor[2],
+					light.diffuseColor[3]
+				)
+			}
+		);
 
-		//Draw(gfx, renderer.binds, renderer.pIndexBuffer->GetCount());
+		light.cbuf.Bind(gfx);
+
+		//Draw(gfx, light.binds, light.pIndexBuffer->GetCount());
 	}
 }
 

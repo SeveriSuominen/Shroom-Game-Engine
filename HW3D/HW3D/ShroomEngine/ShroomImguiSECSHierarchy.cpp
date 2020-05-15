@@ -201,10 +201,49 @@ void ShroomImguiSECSHierarchy::Draw(App * app, bool * open)
 		//FUNCS::ShowEntityEditor(app->secs.GetEntity(clicked));
 		
 		//TRANSFORM
-		if (ImGui::Begin(ICON_FA_ARROWS_ALT " SECS Transform"))
+		if (ImGui::Begin(ICON_FA_ROBOT " SECS Entity"))
 		{
+			//ENTITY EXISTING?
+			if (app->secs.GetEntity(clicked).get() == nullptr)
+			{
+				clicked = -1;
+				ImGui::End(); //REMEMBER TO END
+				return;
+			}
+			ShroomImguiViewUtility::IconByComponentType("Transform");
+			ImGui::Separator();
+
 			auto transform = app->secs.GetEntity(clicked).get()->GetComponent<Transform>();
 			app->root_wnd.Gfx().EditTransform(app->root_wnd.Gfx().camera, *transform);
+
+			auto pointlight = app->secs.GetEntity(clicked).get()->GetComponent<PointLight>();
+			if (pointlight != nullptr)
+			{
+				ImGui::Separator();
+				ShroomImguiViewUtility::IconByComponentType("PointLight");
+				ImGui::Separator();
+
+				ImGui::ColorPicker4("##picker", pointlight->diffuseColor, ImGuiColorEditFlags_RGB | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoSmallPreview);
+				
+
+				ImGui::TextColored
+				(
+					ImVec4
+					(
+						pointlight->diffuseColor[0],
+						pointlight->diffuseColor[1],
+						pointlight->diffuseColor[2],
+						pointlight->diffuseColor[3]
+					),
+					"Patonki"
+				);
+
+				ImGui::SliderFloat("Intensity", &pointlight->diffuseIntensity, 0, 3);
+
+				ImGui::SliderFloat("Const",  &pointlight->attConst,  0, 5);
+				ImGui::SliderFloat("Linear", &pointlight->attLin,    0, 5);
+				ImGui::SliderFloat("Quad",   &pointlight->attQuad,   0, 5);
+			}
 			ImGui::End();
 		}
 

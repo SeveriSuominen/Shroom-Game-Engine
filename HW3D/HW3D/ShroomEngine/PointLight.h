@@ -83,10 +83,28 @@ public:
 	struct PSLightConstants
 	{
 		DirectX::XMFLOAT3 pos;
+
+		float  attConst = 1.0f;    //Light constant aka enviromental light
+		float  attLin   = 0.045f;   //Light linear scaling by range
+		float  attQuad  = 0.0075f; // Light exponential scaling by range
+
+		float  diffuseIntensity = 1.0f;
+		
+		DirectX::XMFLOAT4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
+
 		float padding;
 	};
 
 	mutable PixelConstantBuffer<PSLightConstants> cbuf;
+
+
+	//Light color
+	float  diffuseColor[4] = { 1.0f, 0.5f, 1.0f, 1.0f };
+	float  diffuseIntensity = 1.0f;
+
+	float  attConst = 1.0f; 
+	float  attLin   = 0.045f; 
+	float  attQuad  = 0.0075f; 
 
 	//-----------------------------------------------
 	// SERIALIZE
@@ -95,12 +113,38 @@ public:
 	{
 		writer.Key("Name");
 		writer.String("PointLight");
+		
+		writer.Key("DiffuseColor");
+		writer.StartArray();
+		writer.Double(diffuseColor[0]);
+		writer.Double(diffuseColor[1]);
+		writer.Double(diffuseColor[2]);
+		writer.Double(diffuseColor[3]);
+		writer.EndArray();
+
+		writer.Key("DiffuseIntensity");
+		writer.Double(diffuseIntensity);
+		
+		writer.Key("AttCon");
+		writer.Double(attConst);
+		writer.Key("AttLin");
+		writer.Double(attLin);
+		writer.Key("AttQua");
+		writer.Double(attQuad);
 	};
 
 	void Deserialize(SHROOM_JSON_DOCUMENT_ENTRY entry) override
-	{
-		//writer.Key("Name");
-		//writer.String("PointLight");
+	{		 
+		diffuseColor[0] = entry["DiffuseColor"][0].GetDouble();
+		diffuseColor[1] = entry["DiffuseColor"][1].GetDouble();
+		diffuseColor[2] = entry["DiffuseColor"][2].GetDouble();
+		diffuseColor[3] = entry["DiffuseColor"][3].GetDouble();
+		
+		diffuseIntensity = entry["DiffuseIntensity"].GetDouble();
+
+		attConst = entry["AttCon"].GetDouble();
+		attLin   = entry["AttLin"].GetDouble();
+		attQuad  = entry["AttQua"].GetDouble();
 	};
 	//-----------------------------------------------
 };

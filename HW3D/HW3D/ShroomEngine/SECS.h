@@ -99,7 +99,11 @@ public:
 		template<typename ComponentType>
 		ComponentType* GetComponent()
 		{
-			return &secs_ref.get<ComponentType>(entity);
+			if (secs_ref.has<ComponentType>(entity))
+			{
+				return &secs_ref.get<ComponentType>(entity);
+			}
+			return nullptr;
 		}
 
 		static std::unique_ptr<Entity>& Create(const std::string name, SECS& secs)
