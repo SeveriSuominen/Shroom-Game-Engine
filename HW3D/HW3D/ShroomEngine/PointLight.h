@@ -82,17 +82,15 @@ public:
 
 	struct PSLightConstants
 	{
-		DirectX::XMFLOAT3 pos;
+		DirectX::XMFLOAT4 pos;
+		DirectX::XMFLOAT4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 
+		float  diffuseIntensity = 1.0f;
 		float  attConst = 1.0f;    //Light constant aka enviromental light
 		float  attLin   = 0.045f;   //Light linear scaling by range
 		float  attQuad  = 0.0075f; // Light exponential scaling by range
 
-		float  diffuseIntensity = 1.0f;
-		
-		DirectX::XMFLOAT4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-		float padding;
+		//float padding;		
 	};
 
 	mutable PixelConstantBuffer<PSLightConstants> cbuf;

@@ -4,14 +4,13 @@ SamplerState splr;
 
 cbuffer LightCBuf
 {
-    float3 lightPos;
-    
+    float4 lightPos;
+    float4 diffuseColor = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+    float  diffuseIntensity = 1.0f;
     float  attConst = 1.0f; //Light constant aca enviromental light
     float  attLin = 0.045f; //Light linear scaling by range
     float  attQuad = 0.0075f; // Light exponential scaling by range
-
-    float  diffuseIntensity = 1.0f;
-    float4 diffuseColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 };
 
 static const float3 materialColor = { 1.0f, 1.0f, 1.0f };
@@ -25,8 +24,10 @@ static const float attQuad = 0.0075f; // Light exponential scaling by range*/
 float4 main(float3 worldPos : Position, float2 tc : TexCoord, float3 n : Normal) : SV_Target
 {
     
+    float3 testpos = { lightPos.x, lightPos.y, lightPos.z };
+    
 	// fragment to light vector data
-    const float3 vToL = lightPos - worldPos;
+    const float3 vToL   = testpos - worldPos;
     const float distToL = length(vToL);
     const float3 dirToL = vToL / distToL;
 	// diffuse attenuation

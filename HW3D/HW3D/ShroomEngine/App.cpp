@@ -57,15 +57,37 @@ App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nu
 void App::AddCubes(int amount)
 {
 	std::mt19937 rng(std::random_device{}());
-	std::uniform_real_distribution<float> adist(0.0f, 3.1415f * 2.0f);
-	std::uniform_real_distribution<float> ddist(0.0f, 3.1415f * 2.0f);
-	std::uniform_real_distribution<float> odist(0.0f, 3.1415f * 0.3f);
-	std::uniform_real_distribution<float> rdist(6.0f, 20.0f);
+	std::uniform_real_distribution<float> rdist(-10.0f, 10.0f);
+	std::uniform_real_distribution<float> tdist(-10.0f, 10.0f);
 
 	for (auto i = 0; i < amount; i++)
 	{
 		auto& shroomentity  = SECS::Entity::Create("entiteetti", this->secs);
 		shroomentity.get()  -> AssignComponent<MeshRenderer>();
+
+		auto trans = shroomentity.get()->GetComponent<Transform>();
+
+		float RmatrixTranslation[3] =
+		{
+			 tdist(rng), tdist(rng), rdist(rng)
+		};
+
+		float RmatrixRotation[3] =
+		{
+			0,0,0
+		};
+
+		float RmatrixScale[3] =
+		{
+			1,1,1
+		};
+
+		trans->RecomposeMatrix
+		(
+			RmatrixTranslation,
+			RmatrixRotation,
+			RmatrixScale
+		);
 	}
 }
 

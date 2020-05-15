@@ -37,7 +37,6 @@ public:
 	void DrawIndexed(UINT count) noexcept;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
 	DirectX::XMMATRIX GetProjection() const noexcept;
-	void EditTransform(ShroomArcaneCamera& camera, Transform& transform);
 //--------------------------------------------------------------------------
 //Camera
 //--------------------------------------------------------------------------

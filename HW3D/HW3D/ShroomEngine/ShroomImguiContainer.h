@@ -28,7 +28,6 @@ public:
 		views.push_back(std::make_unique<ShroomImguiAssetView>(ShroomImguiView::Category::All));
 
 		views.push_back(std::make_unique<ShroomImguiSECSHierarchy>(ShroomImguiView::Category::SECS));
-		views.push_back(std::make_unique<ShroomImguiSECSObjectView>(ShroomImguiView::Category::SECS));
 	}
 
 	std::vector<std::unique_ptr<ShroomImguiView>*> GetByCategory(ShroomImguiView::Category category);

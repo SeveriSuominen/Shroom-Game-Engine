@@ -191,7 +191,6 @@
     <ClCompile Include="ShroomImguiContainer.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomImguiSECSHierarchy.cpp" />
-    <ClCompile Include="ShroomImguiSECSObjectView.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
@@ -245,7 +244,7 @@
     <ClInclude Include="ShroomImguiContainer.h" />
     <ClInclude Include="ShroomImguiMenuBar.h" />
     <ClInclude Include="ShroomImguiSECSHierarchy.h" />
-    <ClInclude Include="ShroomImguiSECSObjectView.h" />
+    <ClInclude Include="ShroomImguiSECSEntityEditor.h" />
     <ClInclude Include="ShroomImguiView.h" />
     <ClInclude Include="ShroomImguiViews.h" />
     <ClInclude Include="ShroomImguiViewUtility.h" />
@@ -256,6 +255,7 @@
     <ClInclude Include="ShroomWindow.h" />
     <ClInclude Include="LightBinder.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="TransformEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\icon.ico" />

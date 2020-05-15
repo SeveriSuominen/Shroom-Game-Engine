@@ -72,28 +72,30 @@ void LightBinder::Update(float dt)
 			DmatrixScale
 		);
 
-		DirectX::XMFLOAT3 vec3
+		DirectX::XMFLOAT4 vec4
 		(
 			DmatrixTranslation[0], 
 			DmatrixTranslation[1],
-			DmatrixTranslation[2]	
+			DmatrixTranslation[2],
+			0
 		);
 
 		light.cbuf.Update(gfx, 
 			PointLight::PSLightConstants
 			{
-				vec3,
-				light.attConst,
-				light.attLin,
-				light.attQuad,
-				light.diffuseIntensity,
-				DirectX::XMFLOAT4
-				(
+				vec4,
+				{
 					light.diffuseColor[0],
 					light.diffuseColor[1],
 					light.diffuseColor[2],
 					light.diffuseColor[3]
-				)
+				},
+
+			    light.diffuseIntensity,
+				
+			    light.attConst,
+				light.attLin,
+				light.attQuad
 			}
 		);
 

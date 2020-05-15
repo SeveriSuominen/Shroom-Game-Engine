@@ -56,7 +56,7 @@ public:
 			DirectX::XMMatrixRotationRollPitchYaw(0, 0, 0) *
 			DirectX::XMMatrixTranslation(0, 0, 0) *
 			DirectX::XMMatrixRotationRollPitchYaw(1, 1, 1);
-
+		
 		float DmatrixTranslation[3] = { 0.0f, 0.0f, 0.0f };
 		float DmatrixRotation[3]    = { 0.0f, 0.0f, 0.0f };
 		float DmatrixScale[3]       = { 1.0f, 1.0f, 1.0f };

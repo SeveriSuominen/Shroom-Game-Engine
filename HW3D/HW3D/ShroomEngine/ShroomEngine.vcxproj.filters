@@ -157,6 +157,12 @@
     <Filter Include="Header Files\App\Imgui\Styles">
       <UniqueIdentifier>{23ec21aa-179f-4e4b-a5aa-b13abab60957}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\App\Imgui\Editors3D">
+      <UniqueIdentifier>{ad46d9f7-e704-4014-9814-c924e1da6ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App\Imgui\SECS\Static">
+      <UniqueIdentifier>{b1cc9b99-3db6-4caf-b3de-8e01bfcc2b45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -209,9 +215,6 @@
     </ClCompile>
     <ClCompile Include="ShroomImguiAssetView.cpp">
       <Filter>Resource Files\Source Files\App\Imgui\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="ShroomImguiSECSObjectView.cpp">
-      <Filter>Resource Files\Source Files\App\Imgui\SECS</Filter>
     </ClCompile>
     <ClCompile Include="LightBinder.cpp">
       <Filter>Resource Files\Source Files\Engine\Assets\Standard\Renderers</Filter>
@@ -365,9 +368,6 @@
     <ClInclude Include="PointLight.h">
       <Filter>Header Files\Engine\Assets\Standard\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ShroomImguiSECSObjectView.h">
-      <Filter>Header Files\App\Imgui\SECS</Filter>
-    </ClInclude>
     <ClInclude Include="LightBinder.h">
       <Filter>Header Files\Engine\Assets\Standard\Renderers</Filter>
     </ClInclude>
@@ -388,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="ShroomImguiStyles.h">
       <Filter>Header Files\App\Imgui\Styles</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformEditor.h">
+      <Filter>Header Files\App\Imgui\Editors3D</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomImguiSECSEntityEditor.h">
+      <Filter>Header Files\App\Imgui\SECS\Static</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
