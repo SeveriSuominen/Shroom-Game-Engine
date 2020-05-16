@@ -3,7 +3,7 @@
 #include "ShroomImguiView.h"
 #include "ShroomImguiViews.h"
 #include <memory>
-
+#include <vector>
 #include "ShroomImguiStyles.h"
 
 //FORWARD DEC

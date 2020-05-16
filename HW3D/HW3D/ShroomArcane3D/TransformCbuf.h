@@ -8,7 +8,7 @@
 class TransformCbuf : public Bindable
 {
 public:
-	TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform);
+	TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform, UINT slot = 0u);
 	void Bind(ShroomArcaneGraphics& gfx) noexcept override;
 private:
 	struct Transforms

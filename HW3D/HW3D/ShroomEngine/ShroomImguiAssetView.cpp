@@ -16,8 +16,10 @@ void ShroomImguiAssetView::Draw(App * app, bool * open)
 	ImGui::Begin("Shroom Assets", nullptr,  ImGuiWindowFlags_NoCollapse);
 
 	static int selection_mask = (1 << 2);
+	static int file_selected  = -1;
+	
 	int        node_clicked   = -1;
-
+	
 	ImGui::PushStyleVar(ImGuiStyleVar_IndentSpacing, ImGui::GetFontSize());
 
 	std::vector<boost::filesystem::path> selected_directory_paths;
@@ -30,7 +32,7 @@ void ShroomImguiAssetView::Draw(App * app, bool * open)
 	) 
 	{
 		for (auto &&p : boost::filesystem::directory_iterator(path)) {
-			ImGuiTreeNodeFlags node_flags =
+			ImGuiTreeNodeFlags node_flags = 
 				ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick |
 				((selection_mask & (1 << idx)) ? ImGuiTreeNodeFlags_Selected : 0);
 
@@ -79,7 +81,7 @@ void ShroomImguiAssetView::Draw(App * app, bool * open)
 		if (ImGui::GetIO().KeyCtrl)
 			selection_mask ^= (1 << node_clicked);          // CTRL+click to toggle
 		else //if (!(selection_mask & (1 << node_clicked))) // Depending on selection behavior you want, this commented bit preserve selection when clicking on item that is part of the selection
-			selection_mask = (1 << node_clicked);           // Click to single-select
+			selection_mask  = (1 << node_clicked);           // Click to single-select
 	}
 
 	ImGui::NextColumn();
@@ -104,10 +106,31 @@ void ShroomImguiAssetView::Draw(App * app, bool * open)
 		ImGui::Text(path.filename().string().c_str());
 	}
 
+	int file_i = 0;
+
 	for (auto path : files)
 	{
+		if (file_selected == file_i)
+		{
+			ShroomAssets::ResolveAsset(path);
+		}
+
 		ShroomImguiViewUtility::IconByFileExtension(path.filename().extension().string());
-		ImGui::Text(path.filename().string().c_str());
+		ImGui::Selectable(path.filename().string().c_str(), file_selected == file_i);
+
+		/*ImGui::TreeNodeEx
+		(
+			(void *)(intptr_t)0,
+			0, 
+			"%s", 
+			path.filename().string().c_str()
+		);*/
+
+		//ImGui::TreePop();
+
+		if (ImGui::IsItemClicked())
+			file_selected = file_i;
+		file_i++;
 	}
 
 	ImGui::PopStyleVar();

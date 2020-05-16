@@ -82,9 +82,6 @@
     <Filter Include="Header Files\Engine">
       <UniqueIdentifier>{fb361ed1-f18e-4e4f-b69d-f5abfabe0a77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Engine\ECS">
-      <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Engine\Assets">
       <UniqueIdentifier>{dc887940-38e0-420f-ac85-f555981317ab}</UniqueIdentifier>
     </Filter>
@@ -162,6 +159,15 @@
     </Filter>
     <Filter Include="Header Files\App\Imgui\SECS\Static">
       <UniqueIdentifier>{b1cc9b99-3db6-4caf-b3de-8e01bfcc2b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Nodes">
+      <UniqueIdentifier>{97a26bb8-036b-4f1e-89f1-33d0332edf90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\SECS">
+      <UniqueIdentifier>{2465104b-e8e4-4e77-962f-518f59c9d6c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Nodes">
+      <UniqueIdentifier>{a9a7d742-bdb9-409b-bf0d-b80617b2adb1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -276,7 +282,7 @@
       <Filter>Header Files\Engine\Assets\Standard\Components</Filter>
     </ClInclude>
     <ClInclude Include="SECS.h">
-      <Filter>Header Files\Engine\ECS</Filter>
+      <Filter>Header Files\Engine\SECS</Filter>
     </ClInclude>
     <ClInclude Include="ShroomImguiAnalyticsOverlay.h">
       <Filter>Header Files\App\Imgui\Analytics</Filter>
@@ -394,6 +400,9 @@
     </ClInclude>
     <ClInclude Include="ShroomImguiSECSEntityEditor.h">
       <Filter>Header Files\App\Imgui\SECS\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomAssetResolver.h">
+      <Filter>Header Files\Engine\Assets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

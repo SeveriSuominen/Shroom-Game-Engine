@@ -26,7 +26,6 @@ public:
 	//PointLight & operator=(const PointLight &) = delete;
 	//PointLight() = default;
 
-
 	void SpawnControlWindow() noexcept
 	{
 		/*if (ImGui::Begin("Light"))

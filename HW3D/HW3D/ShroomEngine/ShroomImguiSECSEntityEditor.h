@@ -34,6 +34,7 @@ public:
 			// Light
 			//-------------------------------------------------------------
 			auto pointlight = entity->GetComponent<PointLight>();
+
 			if (pointlight != nullptr)
 			{
 				ImGui::Separator();

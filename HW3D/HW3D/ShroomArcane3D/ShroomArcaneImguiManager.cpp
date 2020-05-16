@@ -3,7 +3,7 @@
 
 ShroomArcaneImguiManager::ShroomArcaneImguiManager()
 {
-	IMGUI_CHECKVERSION();
+	//IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGui::StyleColorsDark();
 }

@@ -1,14 +1,14 @@
 
 #include "TransformCbuf.h"
 
-TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform)
+TransformCbuf::TransformCbuf(ShroomArcaneGraphics& gfx, const Transform& parentTransform, UINT slot)
 	:
 	parentTransform(parentTransform)
 {
 	// CONFIRM STATIC TRANSFORM CBUFFER ALLOCATED
 	if (!pVCbuf)
 	{
-		pVCbuf = std::make_unique<VertexConstantBuffer<Transforms>>(gfx);
+		pVCbuf = std::make_unique<VertexConstantBuffer<Transforms>>(gfx, slot);
 	}
 }
 

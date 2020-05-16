@@ -203,6 +203,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="ShroomApplicationCache.h" />
+    <ClInclude Include="ShroomAssetResolver.h" />
     <ClInclude Include="ShroomImguiStyles.h" />
     <ClInclude Include="ShroomWin32Tools.h" />
     <ClInclude Include="StandardAssets.h" />

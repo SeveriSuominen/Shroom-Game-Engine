@@ -16,7 +16,7 @@ private:
 
 //3D controls
 public:
-	float r = -20.0f;
+	float r = 1.0f;
 	float roll = 0.0f;
 	float pitch = 0.0f;
 	float yaw = 0.0f;
