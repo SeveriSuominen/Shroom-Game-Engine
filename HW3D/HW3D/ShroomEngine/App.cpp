@@ -33,8 +33,6 @@
 //APP DEF  //MAIN WINDOW
 App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nullptr), secs(root_wnd.Gfx()) /*, solid_renderer(root_wnd.Gfx(), secs), renderer(root_wnd.Gfx(), secs)*/
 {
-	//SECS::Scene::Load(secs);
-
 	/*auto& shroomentity = SECS::Entity::Create("Point light", this->secs);
 	shroomentity.get()->AssignComponent<PointLight>(root_wnd.Gfx());
 
@@ -45,13 +43,11 @@ App::App() : root_wnd(1920, 1080, "Shroom", Window::SHROOM_WINDOW_TYPE::MAIN, nu
 
 	//INITIALIZE ALL SYSTEMS
 	secs.Initialize();
-	
-	//const Surface s = Surface::FromFile("test.png");
 
 	root_wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f/*Min clip*/, 400.0f/*Max clip*/));
 
-	//SECS::Scene::Save(secs);
-	//SECS::Scene::Load(secs);
+	//INITIALIZE NODE EDITOR
+	nodeEditor.Initialize();
 }
 
 void App::AddCubes(int amount)
@@ -101,7 +97,6 @@ int App::Go()
 	//--------------------------------------------
 	ImGuiIO& io = ImGui::GetIO();
 	io.Fonts->AddFontDefault();
-	 
 
 	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
 	ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
@@ -160,7 +155,6 @@ void App::DoFrame()
 
 void App::DrawImguiViews()
 {
-	static bool open = true;
 	imguiContainer.DrawContainerByCategory(this);
 }
 

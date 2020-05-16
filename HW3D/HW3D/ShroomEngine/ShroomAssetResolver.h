@@ -3,11 +3,14 @@
 #include <map>
 #include <boost\filesystem.hpp>
 
+#include "App.h"
+
+#include "imgui/IconsFontAwesome5.h"
 
 class ShroomAssetResolver
 {
 public:
-	static void ResolveAssetEditor(boost::filesystem::path path, std::string& type)
+	static void ResolveAssetEditor(App* app, boost::filesystem::path path, std::string& type)
 	{
 		std::map<std::string, unsigned int> asset_type_map
 		{
@@ -31,51 +34,46 @@ public:
 		{
 			if (type_id == asset_type_map[".shroom_mat"])
 			{
-				MaterialEditor(path);
+				MaterialEditor(app, path);
 				return;
 			}
 		}
 	}
 
 private:
-	static void MaterialEditor(boost::filesystem::path path)
+	static void MaterialEditor(App* app, boost::filesystem::path path)
 	{
-		//static ImNodes::CanvasState canvas;
-
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 		if (ImGui::Begin("Shroom Material"))
 		{
-			/*ImNodes::BeginCanvas(&canvas);
+			imnodes::BeginNodeEditor();
 
-			struct Node
-			{
-				ImVec2 pos{};
-				bool selected{};
-				ImNodes::Ez::SlotInfo inputs[2];
-				ImNodes::Ez::SlotInfo outputs[1];
-			};
+			imnodes::BeginNode(1);
+			
 
-			static Node nodes[3] = {
-				{{50, 100}, false,  {{"In", 1},  {"yolonki", true}}, {{"Out", 1}}},
-				{{250, 50}, false,  {{"In", 1}}, {{"Out", 1}}},
-				{{250, 100}, false, {{"In", 1}}, {{"Out", 1}}},
-			};
+			imnodes::BeginOutputAttribute(0);
+			// in between Begin|EndAttribute calls, you can call ImGui
+			// UI functions
+			ImGui::Text(ICON_FA_MAP);
+			ImGui::Dummy(ImVec2(80.0f, 45.0f));
+			imnodes::EndAttribute();
+			imnodes::EndNode();
 
-			for (Node& node : nodes)
-			{
-				if (ImNodes::Ez::BeginNode(&node, "Node Title", &node.pos, &node.selected))
-				{
-					ImNodes::Ez::InputSlots(node.inputs, 1);
-					ImNodes::Ez::OutputSlots(node.outputs, 1);
-					ImNodes::Ez::EndNode();
-				}
-			}
+			imnodes::BeginNode(2);
+			//ImGui::Dummy(ImVec2(80.0f, 45.0f));
+			imnodes::BeginInputAttribute(1);
+			// in between Begin|EndAttribute calls, you can call ImGui
+			// UI functions
+			ImGui::Text(ICON_FA_MAP);
+			ImGui::Dummy(ImVec2(80.0f, 45.0f));
+			imnodes::EndAttribute();
+			imnodes::EndNode();
 
-			ImNodes::Connection(&nodes[1], "In", &nodes[0], "Out");
-			ImNodes::Connection(&nodes[2], "In", &nodes[0], "Out");
 
-			ImNodes::EndCanvas();
-			*/
+			imnodes::EndNodeEditor();
+
 			ImGui::End();
 		}
+		ImGui::PopStyleVar();
 	}
 };

@@ -22,6 +22,6 @@ public:
 
 	ShroomImguiView(Category category) : category(category) {}
 	Category category;
-
+	
 	virtual void Draw(App* app, bool* open) = 0;
 };

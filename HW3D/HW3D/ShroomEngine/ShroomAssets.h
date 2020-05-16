@@ -21,12 +21,12 @@ private:
 	}
 
 public:
-	static void ResolveAsset(boost::filesystem::path path)
+	static void ResolveAsset(App* app,boost::filesystem::path path)
 	{
 		if (file_exists(path.string())) 
 		{ 
 			auto ext = path.extension().string();
-			ShroomAssetResolver::ResolveAssetEditor(path, ext);
+			ShroomAssetResolver::ResolveAssetEditor(app, path, ext);
 		}
 	}
 

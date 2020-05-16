@@ -191,6 +191,8 @@
     <ClCompile Include="ShroomImguiContainer.cpp" />
     <ClCompile Include="ShroomImguiMenuBar.cpp" />
     <ClCompile Include="ShroomImguiSECSHierarchy.cpp" />
+    <ClCompile Include="ShroomNode.cpp" />
+    <ClCompile Include="ShroomNodes\NodeEditor\imnodes.cpp" />
     <ClCompile Include="ShroomTimer.cpp" />
     <ClCompile Include="ShroomExceptionHandler.cpp" />
     <ClCompile Include="ShroomWin.cpp" />
@@ -205,6 +207,9 @@
     <ClInclude Include="ShroomApplicationCache.h" />
     <ClInclude Include="ShroomAssetResolver.h" />
     <ClInclude Include="ShroomImguiStyles.h" />
+    <ClInclude Include="ShroomNode.h" />
+    <ClInclude Include="ShroomNodeEditor.h" />
+    <ClInclude Include="ShroomNodes\NodeEditor\imnodes.h" />
     <ClInclude Include="ShroomWin32Tools.h" />
     <ClInclude Include="StandardAssets.h" />
     <ClInclude Include="Imgui\IconsFontaudio.h" />

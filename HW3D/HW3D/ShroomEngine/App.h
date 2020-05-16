@@ -15,11 +15,15 @@
 //IMGUI
 #include "ShroomArcane3D/ShroomArcaneImguiManager.h"
 
+//NODE EDITOR
+#include "ShroomNodeEditor.h"
+
 //Shroom imgui views in here
 #include "ShroomImguiContainer.h"
 
 #include "ShroomArcane3D/Surface.h"
 #include "ShroomArcane3D/GDIPlusManager.h"
+
 
 class App
 {
@@ -42,6 +46,9 @@ public:
 
 	//GDIPlusManager needs to be initialised to use Surface
 	GDIPlusManager gdipm;
+
+	//Nodes
+	ShroomNodeEditor nodeEditor;
 
 private:
 	void  DoFrame();

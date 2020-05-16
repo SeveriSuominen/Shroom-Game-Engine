@@ -112,7 +112,7 @@ void ShroomImguiAssetView::Draw(App * app, bool * open)
 	{
 		if (file_selected == file_i)
 		{
-			ShroomAssets::ResolveAsset(path);
+			ShroomAssets::ResolveAsset(app, path);
 		}
 
 		ShroomImguiViewUtility::IconByFileExtension(path.filename().extension().string());

@@ -169,6 +169,15 @@
     <Filter Include="Resource Files\Source Files\Engine\Nodes">
       <UniqueIdentifier>{a9a7d742-bdb9-409b-bf0d-b80617b2adb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Nodes\NodeEditor">
+      <UniqueIdentifier>{4db8ff86-44e6-4a9d-b705-fa09860d77f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Source Files\Engine\Nodes\NodeEditor">
+      <UniqueIdentifier>{497fce3d-830c-4b66-9060-7235f04e4842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Nodes\Nodes">
+      <UniqueIdentifier>{3ab9fcee-6025-4832-a724-bf8e7f1aaa67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Keyboard.cpp">
@@ -233,6 +242,12 @@
     </ClCompile>
     <ClCompile Include="ShroomWin32Tools.cpp">
       <Filter>Resource Files\Source Files\App\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomNode.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShroomNodes\NodeEditor\imnodes.cpp">
+      <Filter>Resource Files\Source Files\Engine\Nodes\NodeEditor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +418,15 @@
     </ClInclude>
     <ClInclude Include="ShroomAssetResolver.h">
       <Filter>Header Files\Engine\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomNodeEditor.h">
+      <Filter>Header Files\Engine\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomNode.h">
+      <Filter>Header Files\Engine\Nodes\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="ShroomNodes\NodeEditor\imnodes.h">
+      <Filter>Header Files\Engine\Nodes\NodeEditor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

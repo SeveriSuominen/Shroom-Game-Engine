@@ -9,7 +9,7 @@ public:
 	{
 		ImGuiStyle * style = &ImGui::GetStyle();
 
-		/*style->WindowPadding = ImVec2(15, 15);
+		style->WindowPadding = ImVec2(15, 15);
 		style->WindowRounding = 5.0f;
 		style->FramePadding = ImVec2(5, 5);
 		style->FrameRounding = 4.0f;
@@ -63,6 +63,6 @@ public:
 		style->Colors[ImGuiCol_PlotHistogram] = ImVec4(0.40f, 0.39f, 0.38f, 0.63f);
 		style->Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.25f, 1.00f, 0.00f, 1.00f);
 		style->Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.25f, 1.00f, 0.00f, 0.43f);
-		style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);*/
+		style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
 	}
 };
