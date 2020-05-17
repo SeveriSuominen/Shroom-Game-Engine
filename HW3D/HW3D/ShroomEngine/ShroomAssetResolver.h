@@ -49,7 +49,6 @@ private:
 			imnodes::BeginNodeEditor();
 
 			imnodes::BeginNode(1);
-			
 
 			imnodes::BeginOutputAttribute(0);
 			// in between Begin|EndAttribute calls, you can call ImGui

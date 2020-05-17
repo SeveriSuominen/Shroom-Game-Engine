@@ -49,6 +49,27 @@ public:
 				ImGui::SliderFloat("Linear", &pointlight->attLin, 0, 5);
 				ImGui::SliderFloat("Quad", &pointlight->attQuad, 0, 5);
 			}
+
+			//-------------------------------------------------------------
+			// Light
+			//-------------------------------------------------------------
+			auto meshrenderer = entity->GetComponent<MeshRenderer>();
+
+			if (meshrenderer != nullptr)
+			{
+				ImGui::Separator();
+				ShroomImguiViewUtility::IconByComponentType("MeshRenderer");
+				ImGui::Separator();
+
+				char* path = _strdup(meshrenderer->modelPath.c_str());
+
+				ImGui::InputText("Model path", path, sizeof(path));
+				
+				meshrenderer->modelPath = std::string(path);
+
+				//Release
+			}
+
 			ImGui::End();
 		}
 		return true;

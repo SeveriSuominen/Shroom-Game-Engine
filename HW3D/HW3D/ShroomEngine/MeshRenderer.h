@@ -8,6 +8,8 @@
 
 #include "ShroomSerialize.h"
 
+#include <string>
+
 #include "SECS.h"
 #include "Cube.h"
 
@@ -32,6 +34,7 @@ public:
 	MeshRenderer(MeshRenderer &&other)
 		: binds{ std::move(other.binds) },
 		  model{ std::move(other.model) },
+		  modelPath { std::move(other.modelPath) },
 		  Component()
 	{}
 
@@ -39,10 +42,12 @@ public:
 		auto tmp{ std::move(other) };
 		std::swap(binds, other.binds);
 		std::swap(model, other.model);
+		std::swap(modelPath,  other.modelPath);
 		return *this;
 	}
-	//----------------------------------
 
+	//----------------------------------
+	std::string modelPath;
 	IndexedTriangleList<Vertex> model;
 	std::vector<std::unique_ptr<Bindable>> binds;
 
